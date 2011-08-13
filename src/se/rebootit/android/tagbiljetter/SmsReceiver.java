@@ -74,45 +74,43 @@ public class SmsReceiver extends BroadcastReceiver
 					ticket = ticketLoader.parseMessage(fromaddress, sms.getTimestampMillis(), sms.getMessageBody());
 
 					putSmsToDatabase( contentResolver, sms );
+					
+					// Notification
+					NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+					int icon = R.drawable.icon;
+					CharSequence tickerText = "Ny biljett mottagen!";
+					long when = System.currentTimeMillis();
+
+					Notification notification = new Notification(icon, tickerText, when);
+
+					//Context context = getApplicationContext();
+					CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
+					CharSequence contentText = "För resa "+ticket.getTicketTimestampFormatted();
+					Intent notificationIntent = new Intent(context, TicketView.class);
+					notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
+					notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					notificationIntent.putExtra("ticket", (Parcelable)ticket);
+
+
+					Editor e = sharedPreferences.edit();
+					e.putBoolean("rescan", true);
+					e.commit();
+
+					PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+
+					notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+
+					mNotificationManager.notify(ticket.hashCode(), notification);
+
+					// Prevent the incoming sms from displaying a notification
+					this.abortBroadcast(); 
 				}
 				else {
 					return;
 				}
 			}
-
-			// Notification
-			NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-			int icon = R.drawable.icon;
-			CharSequence tickerText = "Ny biljett mottagen!";
-			long when = System.currentTimeMillis();
-
-			Notification notification = new Notification(icon, tickerText, when);
-
-			//Context context = getApplicationContext();
-			CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
-			CharSequence contentText = "För resa "+ticket.getTicketTimestampFormatted();
-			Intent notificationIntent = new Intent(context, TicketView.class);
-			notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
-			notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			notificationIntent.putExtra("ticket", (Parcelable)ticket);
-			
-			
-			Editor e = sharedPreferences.edit();
-			e.putBoolean("rescan", true);
-			e.commit();
-			
-			PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-
-			notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-
-			mNotificationManager.notify(ticket.hashCode(), notification);
 		}
-
-		// WARNING!!! 
-		// If you uncomment next line then received SMS will not be put to incoming.
-		// Be careful!
-		this.abortBroadcast(); 
 	}
 
 	private void putSmsToDatabase( ContentResolver contentResolver, SmsMessage sms )
