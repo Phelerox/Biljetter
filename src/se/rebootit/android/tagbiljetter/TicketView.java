@@ -26,8 +26,10 @@ public class TicketView extends Activity
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
 		
 		if (ticket.getProvider() != TicketLoader.PROVIDER_SJ && ticket.getProvider() != TicketLoader.PROVIDER_RESPLUS) {
-			((TextView)findViewById(R.id.sender)).setText("Avsändare: "+ticket.getAddress());
+			((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
 			((TextView)findViewById(R.id.sender)).setVisibility(TextView.VISIBLE);
+			((TextView)findViewById(R.id.senderHeader)).setVisibility(TextView.VISIBLE);
 		}
+		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
     }
 }
