@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:paddingLeft="4sp"
+	android:paddingRight="4sp">
+	
+	<TextView android:id="@+id/header"
+		android:text="Inställningar"
+		android:textSize="25sp"
+		android:textStyle="bold"
+		android:textColor="@color/white"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:paddingBottom="9sp"
+		android:layout_alignParentTop="true" />
+	
+	<ScrollView
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_alignParentBottom="true">
+		
+			<TextView
+				android:text="Visa biljetter från"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:textColor="@color/white"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent" />
+			<CheckBox android:id="@+id/chkShowResplus"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/white"
+				android:text="Resplus"
+				android:enabled="true"
+				android:checked="true" />
+			<CheckBox android:id="@+id/chkShowSJ"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/white"
+				android:text="SJ"
+				android:enabled="true"
+				android:checked="true" />
+			<CheckBox android:id="@+id/chkShowSkanetrafiken"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/white"
+				android:text="Skånetrafiken"
+				android:enabled="true"
+				android:checked="true" />
+			<CheckBox android:id="@+id/chkShowSL"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/white"
+				android:text="Stockholms lokaltrafik"
+				android:enabled="true"
+				android:checked="true" />
+			<CheckBox android:id="@+id/chkShowVarmlandstrafiken"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/white"
+				android:text="Värmlandstrafiken"
+				android:enabled="true"
+				android:checked="true" />
+			<CheckBox android:id="@+id/chkShowVasttrafik"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="16sp"
+				android:textColor="@color/white"
+				android:text="Västtrafik"
+				android:enabled="true"
+				android:checked="true" />
+				
+			<Button android:id="@+id/btnSave"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="Spara" />
+				
+			<Button android:id="@+id/btnClearCache"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="Rensa cache" />
+
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

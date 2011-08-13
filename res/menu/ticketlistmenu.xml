@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/scan"
+		android:title="Ladda SMS" />
+	<item android:id="@+id/scan2"
+		android:title="Ladda alla SMS" />
+	<item android:id="@+id/settings"
+		android:title="Inställningar" />
+	<item android:id="@+id/donate"
+		android:title="Donera" />
+	<item android:id="@+id/quit"
+		android:title="Avsluta" />
+</menu>

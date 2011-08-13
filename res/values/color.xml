@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<drawable name="darkgray">#808080FF</drawable>
+	<drawable name="white">#FFFFFFFF</drawable>
+	<drawable name="black">#00000000</drawable>
+	
+	<color name="white">#ffffff</color>
+	<color name="black">#000000</color>
+	<color name="red">#ff0000</color>
+	<color name="orange">#ff6600</color>
+	<color name="yellow">#ffff00</color>
+	<color name="green">#00ff00</color>
+	<color name="blue">#0000ff</color>
+	<color name="grey">#808080</color>
+</resources> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:paddingLeft="4sp"
+	android:paddingRight="4sp">
+	
+	<TextView android:id="@+id/header"
+		android:text="Donera - Biljetter"
+		android:textSize="25sp"
+		android:textStyle="bold"
+		android:textColor="@color/white"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:paddingBottom="9sp"
+		android:layout_alignParentTop="true" />
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<ScrollView
+			android:layout_height="fill_parent"
+			android:layout_width="fill_parent">
+			<TextView 
+				android:text="Snaaart! Det kommer! ;)"
+				android:textSize="20sp"
+				android:textColor="@color/white"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:layout_gravity="top|center_horizontal"
+				android:paddingTop="9sp"
+				android:layout_alignParentBottom="true"	/>
+		</ScrollView>
+	</LinearLayout>
+</LinearLayout>
