@@ -14,6 +14,8 @@ import android.util.*;
 
 public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 {
+	private static final long serialVersionUID = 7428325774966936563L;
+	
 	private int provider = 0;
 	private long timestamp = 0;
 	private long tickettimestamp = 0;
