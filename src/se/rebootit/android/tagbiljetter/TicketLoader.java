@@ -27,7 +27,7 @@ public class TicketLoader
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 	
 	ArrayList<Ticket> lstTickets = new ArrayList<Ticket>();
-	String[] months = new String[] { "jan", "feb", "mars", "april", "maj", "juni", "juli", "aug", "sept", "okt", "nov", "dec" };
+	String[] months = new String[] { "jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
 	
 	public ArrayList<Ticket> getTickets() {
 		return getTickets(false);
