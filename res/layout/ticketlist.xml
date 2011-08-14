@@ -29,7 +29,7 @@
 			android:layout_width="fill_parent"
 			android:paddingBottom="20sp"
 			android:layout_alignParentTop="true" />
-		<Button android:id="@+id/btnAdd"
+		<Button android:id="@+id/btnScan"
 			android:text="Ladda SMS"
 			android:textSize="20sp"
 			android:layout_height="wrap_content"

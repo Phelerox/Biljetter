@@ -44,8 +44,6 @@ public class Settings extends Activity implements OnClickListener
 		switch(v.getId())
 		{
 			case R.id.btnSave:
-				intent.putExtra("rescan", true);
-				
 				e.putBoolean("pref_show_RESPLUS", ((CheckBox)findViewById(R.id.chkShowResplus)).isChecked());
 				e.putBoolean("pref_show_SJ", ((CheckBox)findViewById(R.id.chkShowSJ)).isChecked());
 				e.putBoolean("pref_show_SKANETRAFIKEN", ((CheckBox)findViewById(R.id.chkShowSkanetrafiken)).isChecked());
@@ -53,6 +51,7 @@ public class Settings extends Activity implements OnClickListener
 				e.putBoolean("pref_show_VARMLANDSTRAFIKEN", ((CheckBox)findViewById(R.id.chkShowVarmlandstrafiken)).isChecked());
 				e.putBoolean("pref_show_VASTTRAFIK", ((CheckBox)findViewById(R.id.chkShowVasttrafik)).isChecked());
 				
+				intent.putExtra("reload", true);
 				setResult(RESULT_OK, intent);
 				
 				finish();
@@ -60,7 +59,7 @@ public class Settings extends Activity implements OnClickListener
 				break;
 				
 			case R.id.btnClearCache:
-				e.putLong("lastscan", 0);
+				e.putLong("lastmessage", 0);
 				intent.putExtra("clearcache", true);
 				
 				setResult(RESULT_OK, intent);

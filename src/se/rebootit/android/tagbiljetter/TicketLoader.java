@@ -87,17 +87,6 @@ public class TicketLoader
 			e.commit();
 		}
 		Log.d(TicketList.LOG_TAG, "Scan complete! "+messageScanned+" messages scanned!");
-/*
-		
-		Ticket ticket = parseMessage("72150123", 1313266327000l, "R-A 08:04 13\n+'643732949'+\n+'475926302'+\n+'922407994'+\nSL biljett giltig till 08:04 2011-07-21\nRED PRIS 18 kr ink 6% moms\n0649G211034HL20K1\nhttp://mobil.sl.se");
-		this.lstTickets.add(ticket);
-		
-		ticket = parseMessage("72032713", 1313266357000l, "713 Värmlandstrafik\nGiltig till kl 23:32, 7 aug 11\nSKOLUNGDOM HAMMARÖ-KARLSTAD\nGäller för övergång till Karlstadsbus\n14 SEK (6% moms)\nD8EW4DUNC");
-		this.lstTickets.add(ticket);
-		
-		ticket = parseMessage("720406912", 1313267357000l, "12* SK giltig till 11:09 2011-06-08\nBARN MALMÖ\nZ250/255/281/274*11kr (inkl.6% moms)\n1009N08MÖb8772L134700");
-		this.lstTickets.add(ticket);
-*/
 		
 		return this.lstTickets;
 	}

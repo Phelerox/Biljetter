@@ -33,6 +33,8 @@ public class TicketList extends Activity implements OnClickListener
 	
 	IntentFilter mIntentFilter;
 	
+	boolean scanRunning = false;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -47,7 +49,7 @@ public class TicketList extends Activity implements OnClickListener
 		mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST");
 
-		((Button)findViewById(R.id.btnAdd)).setOnClickListener(this);
+		((Button)findViewById(R.id.btnScan)).setOnClickListener(this);
 		
 		ListView list = (ListView)findViewById(R.id.ticketlist);
 		list.setAdapter(adapter);
@@ -99,7 +101,7 @@ public class TicketList extends Activity implements OnClickListener
 	{
 		switch(v.getId())
 		{
-			case R.id.btnAdd:
+			case R.id.btnScan:
 				loadTickets(true, true);
 				break;
 		}
@@ -115,6 +117,11 @@ public class TicketList extends Activity implements OnClickListener
 
 	private void loadTickets(final boolean clearCache, final boolean notify)
 	{
+		if (scanRunning) {
+			return;
+		}
+		scanRunning = true;
+				
 		final Handler mHandler = new Handler();
 
 		final Runnable mUpdateResults = new Runnable() {
@@ -135,6 +142,7 @@ public class TicketList extends Activity implements OnClickListener
 				}
 				lstTickets.addAll(tmpList);
 				mHandler.post(mUpdateResults);
+				scanRunning = false;
 			}
 		};
 		t.start();
@@ -153,7 +161,7 @@ public class TicketList extends Activity implements OnClickListener
 						Toast.makeText(this, "Cache rensad", Toast.LENGTH_LONG).show();
 						updateList();
 					}
-					if (data.getBooleanExtra("rescan", false)) {
+					if (data.getBooleanExtra("reload", false)) {
 						updateList();
 					}
 				}
@@ -181,7 +189,6 @@ public class TicketList extends Activity implements OnClickListener
 		super.onPause();
 	}
 
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
@@ -192,7 +199,7 @@ public class TicketList extends Activity implements OnClickListener
 				loadTickets(false, true);
 				return true;
 				
-			case R.id.scan2:
+			case R.id.scanAll:
 				loadTickets(true, true);
 				return true;
 				
