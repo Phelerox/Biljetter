@@ -65,7 +65,7 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 	 */
 	public String getTimestampFormatted() {
 		if (this.timestampformatted == null) {
-			this.timestampformatted = new SimpleDateFormat("yyyy-MM-dd").format(new Date(this.timestamp));
+			this.timestampformatted = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(this.timestamp));
 		}
 		return this.timestampformatted;
 	}
@@ -129,11 +129,13 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 		String hashcode = this.timestamp+this.address+this.message+this.provider;
 		return (hashcode == null) ? 0 : hashcode.hashCode();
      }
-
 	
 	private Ticket(Parcel in) {
 		this.provider = in.readInt();
 		this.timestamp = in.readLong();
+		this.tickettimestamp = in.readLong();
+		this.timestampformatted = in.readString();
+		this.tickettimestampformatted = in.readString();
 		this.address = in.readString();
 		this.message = in.readString();
 	}
@@ -141,6 +143,9 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 	public void writeToParcel(Parcel out, int flags) {
 		out.writeInt(this.provider);
 		out.writeLong(this.timestamp);
+		out.writeLong(this.tickettimestamp);
+		out.writeString(this.timestampformatted);
+		out.writeString(this.tickettimestampformatted);
 		out.writeString(this.address);
 		out.writeString(this.message);
 	}
