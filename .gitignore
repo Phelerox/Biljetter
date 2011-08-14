@@ -4,4 +4,3 @@ javadoc/
 javadoc.sh
 release.sh
 local.properties
-build.xml
