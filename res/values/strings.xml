@@ -10,11 +10,11 @@
     
     <string name="TicketList_header">Mina biljetter</string>
     <string name="TicketList_notickets">Inga biljetter laddade.</string>
-    <string name="TicketList_findsms">Hitta sms</string>
+    <string name="TicketList_findsms">Hitta biljetter</string>
     <string name="TicketList_ticketsloaded">Biljetter laddade!</string>
     <string name="TicketList_cachecleared">Cachen rensad!</string>
-    <string name="TicketList_findnewsms">Hitta nya sms</string>
-    <string name="TicketList_findallsms">Hitta alla sms</string>
+    <string name="TicketList_findnewsms">Hitta nya biljetter</string>
+    <string name="TicketList_findallsms">Hitta alla biljetter</string>
     <string name="TicketList_settings">Inställningar</string>
     <string name="TicketList_donate">Stöd oss</string>
     <string name="TicketList_quit">Avsluta</string>
