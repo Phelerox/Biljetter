@@ -15,13 +15,6 @@ import android.widget.*;
 
 public class SmsReceiver extends BroadcastReceiver 
 {
-	// All available column names in SMS table
-	// [_id, thread_id, address, 
-	// person, date, protocol, read, 
-	// status, type, reply_path_present, 
-	// subject, body, service_center, 
-	// locked, error_code, seen]
-
 	public static final String SMS_EXTRA_NAME = "pdus";
 	public static final String SMS_URI = "content://sms";
 
@@ -78,13 +71,8 @@ public class SmsReceiver extends BroadcastReceiver
 					// Notification
 					NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-					int icon = R.drawable.icon;
-					CharSequence tickerText = "Ny biljett mottagen!";
-					long when = System.currentTimeMillis();
+					Notification notification = new Notification(R.drawable.icon, "Ny biljett mottagen!", System.currentTimeMillis());
 
-					Notification notification = new Notification(icon, tickerText, when);
-
-					//Context context = getApplicationContext();
 					CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
 					CharSequence contentText = "För resa "+ticket.getTicketTimestampFormatted();
 					Intent notificationIntent = new Intent(context, TicketView.class);
@@ -92,18 +80,17 @@ public class SmsReceiver extends BroadcastReceiver
 					notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					notificationIntent.putExtra("ticket", (Parcelable)ticket);
 
+					PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+					notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+					mNotificationManager.notify(ticket.hashCode(), notification);
+
 					// Send broadcast to TicketList telling it to update the tickets
 					context.sendBroadcast(new Intent("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST"));	
 
+					// Tell TicketList to update tickets on next start
 					Editor e = sharedPreferences.edit();
 					e.putBoolean("rescan", true);
 					e.commit();
-
-					PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-
-					notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-
-					mNotificationManager.notify(ticket.hashCode(), notification);
 
 					// Prevent the incoming sms from displaying a notification
 					this.abortBroadcast(); 
