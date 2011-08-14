@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Biljetter</string>
     
-    <string name="colortheme_prompt">Färgtema</string>
+    <string name="donate">Det skulle uppskattas jättemycket ifall ni vill donera några kronor för att visa er uppskattning av appen. Tack på förhand! &lt;3</string>
 </resources>
