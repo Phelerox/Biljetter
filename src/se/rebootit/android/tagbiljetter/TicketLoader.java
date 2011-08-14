@@ -39,9 +39,9 @@ public class TicketLoader
 			Editor e = sharedPreferences.edit();
 			e.putLong("lastmessage", 0);
 			e.commit();
-			
-			this.lstTickets.clear();
 		}
+		this.lstTickets.clear();
+		
 		long lastmessage = sharedPreferences.getLong("lastmessage", 0);
 		long lastmessagetime = 0;
 		
@@ -60,12 +60,15 @@ public class TicketLoader
 			while (cursor.moveToNext())
 			{
 				long timestamp = cursor.getLong(cursor.getColumnIndex(columns[2]));
+				
 				if (lastmessagetime == 0) {
 					lastmessagetime = timestamp;
 				}
-				if (lastmessage > timestamp) {
-					continue;
+				
+				if (lastmessage >= timestamp) {
+					break;
 				}
+				
 				String fromaddress = cursor.getString(cursor.getColumnIndex(columns[0]));
 				String message = cursor.getString(cursor.getColumnIndex(columns[3]));
 				int provider = getProvider(fromaddress);
@@ -95,9 +98,6 @@ public class TicketLoader
 		ticket = parseMessage("720406912", 1313267357000l, "12* SK giltig till 11:09 2011-06-08\nBARN MALMÖ\nZ250/255/281/274*11kr (inkl.6% moms)\n1009N08MÖb8772L134700");
 		this.lstTickets.add(ticket);
 */
-		
-		// Sort the tickets
-		Collections.sort(this.lstTickets);
 		
 		return this.lstTickets;
 	}

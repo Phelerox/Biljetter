@@ -92,6 +92,8 @@ public class SmsReceiver extends BroadcastReceiver
 					notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					notificationIntent.putExtra("ticket", (Parcelable)ticket);
 
+					// Send broadcast to TicketList telling it to update the tickets
+					context.sendBroadcast(new Intent("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST"));	
 
 					Editor e = sharedPreferences.edit();
 					e.putBoolean("rescan", true);

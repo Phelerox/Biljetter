@@ -44,7 +44,7 @@ public class Settings extends Activity implements OnClickListener
 		switch(v.getId())
 		{
 			case R.id.btnSave:
-				intent.putExtra("need_rescan", true);
+				intent.putExtra("rescan", true);
 				
 				e.putBoolean("pref_show_RESPLUS", ((CheckBox)findViewById(R.id.chkShowResplus)).isChecked());
 				e.putBoolean("pref_show_SJ", ((CheckBox)findViewById(R.id.chkShowSJ)).isChecked());

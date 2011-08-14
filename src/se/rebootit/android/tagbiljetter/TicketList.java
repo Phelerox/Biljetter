@@ -31,16 +31,24 @@ public class TicketList extends Activity implements OnClickListener
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 	TicketLoader ticketLoader = new TicketLoader();
 	
+	IntentFilter mIntentFilter;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
 		
-		((Button)findViewById(R.id.btnAdd)).setOnClickListener(this);
 
+		// Load the previous list of tickets
 		loadState();
 
+		// Listen for messages from SmsReceiver
+		mIntentFilter = new IntentFilter();
+		mIntentFilter.addAction("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST");
+
+		((Button)findViewById(R.id.btnAdd)).setOnClickListener(this);
+		
 		ListView list = (ListView)findViewById(R.id.ticketlist);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new OnItemClickListener()
@@ -57,13 +65,6 @@ public class TicketList extends Activity implements OnClickListener
 		});
 		
 		updateList();
-		
-		if (sharedPreferences.getBoolean("rescan", false)) {
-			loadTickets(false);	
-			Editor e = sharedPreferences.edit();
-			e.putBoolean("rescan", false);
-			e.commit();
-		}
 	}
 
 	/**
@@ -72,7 +73,10 @@ public class TicketList extends Activity implements OnClickListener
 	private void updateList()
 	{
 		if (lstTickets.size() > 0)
-		{
+		{			
+			// Sort the tickets
+			Collections.sort(this.lstTickets);
+			
 			TicketListAdapter adapter = ((TicketListAdapter)((ListView)findViewById(R.id.ticketlist)).getAdapter());
 			
 			adapter.setProvider(TicketLoader.PROVIDER_RESPLUS, sharedPreferences.getBoolean("pref_show_RESPLUS", true));
@@ -96,12 +100,20 @@ public class TicketList extends Activity implements OnClickListener
 		switch(v.getId())
 		{
 			case R.id.btnAdd:
-				loadTickets(true);
+				loadTickets(true, true);
 				break;
 		}
 	}
+	
+	private void loadTickets() {
+		loadTickets(false, false);
+	}
+	
+	private void loadTickets(boolean clearCache) {
+		loadTickets(clearCache, false);
+	}
 
-	private void loadTickets(final boolean clearCache)
+	private void loadTickets(final boolean clearCache, final boolean notify)
 	{
 		final Handler mHandler = new Handler();
 
@@ -109,14 +121,19 @@ public class TicketList extends Activity implements OnClickListener
 			public void run() {
 				updateList();
 				
-				Toast.makeText(TicketList.this, "Biljetter laddade!", Toast.LENGTH_LONG).show();
+				if (notify) {
+					Toast.makeText(TicketList.this, "Biljetter laddade!", Toast.LENGTH_LONG).show();
+				}
 			}
 		};
 
 		Thread t = new Thread() {
 			public void run() {
-				lstTickets.clear();
-				lstTickets.addAll(ticketLoader.getTickets(clearCache));
+				ArrayList<Ticket> tmpList = ticketLoader.getTickets(clearCache);
+				if (clearCache) {
+					lstTickets.clear();
+				}
+				lstTickets.addAll(tmpList);
 				mHandler.post(mUpdateResults);
 			}
 		};
@@ -133,10 +150,10 @@ public class TicketList extends Activity implements OnClickListener
 				{
 					if (data.getBooleanExtra("clearcache", false)) {
 						this.lstTickets.clear();
-						Toast.makeText(this, "Cache rensat", Toast.LENGTH_LONG).show();
+						Toast.makeText(this, "Cache rensad", Toast.LENGTH_LONG).show();
 						updateList();
 					}
-					if (data.getBooleanExtra("need_rescan", false)) {
+					if (data.getBooleanExtra("rescan", false)) {
 						updateList();
 					}
 				}
@@ -151,6 +168,19 @@ public class TicketList extends Activity implements OnClickListener
 		
 		return true;
 	}
+	
+	@Override
+	protected void onResume() {
+		registerReceiver(mIntentReceiver, mIntentFilter);
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		unregisterReceiver(mIntentReceiver);
+		super.onPause();
+	}
+
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -159,11 +189,11 @@ public class TicketList extends Activity implements OnClickListener
 		// Handle item selection
 		switch (item.getItemId()) {
 			case R.id.scan:
-				loadTickets(false);
+				loadTickets(false, true);
 				return true;
 				
 			case R.id.scan2:
-				loadTickets(true);
+				loadTickets(true, true);
 				return true;
 				
 			case R.id.settings:
@@ -212,7 +242,8 @@ public class TicketList extends Activity implements OnClickListener
 		super.finish();
 	}
 	
-	private void saveState() {
+	private void saveState()
+	{
 		final File cache_dir = this.getCacheDir(); 
 		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + SUSPEND_FILE);
 
@@ -220,7 +251,8 @@ public class TicketList extends Activity implements OnClickListener
 		ObjectOutputStream oos  = null;
 		boolean            keep = true;
 
-		try {
+		try
+		{
 			fos = new FileOutputStream(suspend_f);
 			oos = new ObjectOutputStream(fos);
 
@@ -236,11 +268,12 @@ public class TicketList extends Activity implements OnClickListener
 				if (fos != null)   fos.close();
 				if (keep == false) suspend_f.delete();
 			}
-			catch (Exception e) { /* do nothing */ }
+			catch (Exception e) { }
 		}
 	}
 
-	public void loadState() {
+	public void loadState()
+	{		
 		final File cache_dir = this.getCacheDir(); 
 		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + SUSPEND_FILE);
 
@@ -248,7 +281,8 @@ public class TicketList extends Activity implements OnClickListener
 		ObjectInputStream  ois  = null;
 		boolean            keep = true;
 
-		try {
+		try
+		{
 			fis = new FileInputStream(suspend_f);
 			ois = new ObjectInputStream(fis);
 
@@ -264,8 +298,23 @@ public class TicketList extends Activity implements OnClickListener
 				if (fis != null)   fis.close();
 				if (keep == false) suspend_f.delete();
 			}
-			catch (Exception e) { /* do nothing */ }
+			catch (Exception e) { }
+		}
+		
+		
+		if (sharedPreferences.getBoolean("rescan", false)) {
+			loadTickets(false, false);
+			Editor e = sharedPreferences.edit();
+			e.putBoolean("rescan", false);
+			e.commit();
 		}
 	}
+	
+	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			loadTickets(false);     
+		}
+	};
 
 }
