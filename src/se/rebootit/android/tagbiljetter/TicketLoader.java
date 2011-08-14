@@ -54,7 +54,7 @@ public class TicketLoader
 		int messageCount = cursor.getCount();
 		int messageScanned = 0;
 		
-		Log.i(TicketList.LOG_TAG, "Scan for tickets started");
+		Log.i(Biljetter.LOG_TAG, "Scan for tickets started");
 		if (messageCount > 0)
 		{
 			while (cursor.moveToNext())
@@ -66,6 +66,7 @@ public class TicketLoader
 				}
 				
 				if (lastmessage >= timestamp) {
+					Log.i(Biljetter.LOG_TAG, "No scan needed!");
 					break;
 				}
 				
@@ -86,7 +87,7 @@ public class TicketLoader
 			e.putLong("lastmessage", lastmessagetime);
 			e.commit();
 		}
-		Log.d(TicketList.LOG_TAG, "Scan complete! "+messageScanned+" messages scanned!");
+		Log.i(Biljetter.LOG_TAG, "Scan complete! "+messageScanned+" messages scanned!");
 		
 		return this.lstTickets;
 	}

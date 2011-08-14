@@ -5,6 +5,9 @@ import android.content.*;
 
 public class Biljetter extends Application
 {
+	protected static final String SUSPEND_FILE = "Biljetter";
+	protected static final String LOG_TAG = "Biljetter";
+	
 	static Context context;
 	
 	@Override

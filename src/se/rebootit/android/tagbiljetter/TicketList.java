@@ -22,9 +22,6 @@ import android.widget.AdapterView.*;
 
 public class TicketList extends Activity implements OnClickListener
 {
-	protected static final String SUSPEND_FILE = "Biljetter";
-	protected static final String LOG_TAG = "Biljetter";
-
 	ArrayList<Ticket> lstTickets = new ArrayList<Ticket>();
 	ListAdapter adapter = new TicketListAdapter(this.lstTickets, this);
 	
@@ -41,7 +38,6 @@ public class TicketList extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
 		
-
 		// Load the previous list of tickets
 		loadState();
 
@@ -252,7 +248,7 @@ public class TicketList extends Activity implements OnClickListener
 	private void saveState()
 	{
 		final File cache_dir = this.getCacheDir(); 
-		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + SUSPEND_FILE);
+		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
 
 		FileOutputStream   fos  = null;
 		ObjectOutputStream oos  = null;
@@ -267,7 +263,7 @@ public class TicketList extends Activity implements OnClickListener
 		}
 		catch (Exception e) {
 			keep = false;
-			Log.e(TicketList.LOG_TAG, "Failed to suspend");
+			Log.e(Biljetter.LOG_TAG, "Failed to suspend");
 		}
 		finally {
 			try {
@@ -282,7 +278,7 @@ public class TicketList extends Activity implements OnClickListener
 	public void loadState()
 	{		
 		final File cache_dir = this.getCacheDir(); 
-		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + SUSPEND_FILE);
+		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
 
 		FileInputStream    fis  = null;
 		ObjectInputStream  ois  = null;
@@ -297,7 +293,7 @@ public class TicketList extends Activity implements OnClickListener
 		}
 		catch (Exception e) {
 			keep = false;
-			Log.e(TicketList.LOG_TAG, "Failed to resume");
+			Log.e(Biljetter.LOG_TAG, "Failed to resume");
 		}
 		finally {
 			try {
