@@ -1,3 +1,8 @@
+/**
+ * This file is licensed under the GNU General Public License Version 3
+ * For more information, please visit http://www.gnu.org/licenses/gpl.txt
+ */
+
 package se.rebootit.android.tagbiljetter;
 
 import java.text.*;
@@ -16,12 +21,15 @@ import android.widget.*;
 public class TicketLoader
 {
 	protected static final int PROVIDER_UNKNOWN = 0;
-	protected static final int PROVIDER_SJ = 1;
-	protected static final int PROVIDER_RESPLUS = 2;
-	protected static final int PROVIDER_SL = 3;
-	protected static final int PROVIDER_VASTTRAFIK = 4;
-	protected static final int PROVIDER_SKANETRAFIKEN = 5;
-	protected static final int PROVIDER_VARMLANDSTRAFIKEN = 6;
+	protected static final int PROVIDER_SJ = 1;					// SJ
+	protected static final int PROVIDER_RESPLUS = 2;			// Resplus
+	protected static final int PROVIDER_STOCKHOLM = 3;			// Storstockholms Lokaltrafik
+	protected static final int PROVIDER_VASTTRAFIK = 4;			// Västtrafik
+	protected static final int PROVIDER_SKANETRAFIKEN = 5;		// Skånetrafiken
+	protected static final int PROVIDER_VARMLANDSTRAFIKEN = 6;	// Värmlandstrafiken
+	protected static final int PROVIDER_UPPLAND = 7;			// Upplands Lokaltrafik
+	protected static final int PROVIDER_OSTGOTA = 8;			// Östgötatrafiken
+	protected static final int PROVIDER_VASTMANLAND = 9;		// Västmanlands lokaltrafik
 	
 	Context context = Biljetter.getContext();
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
@@ -118,7 +126,7 @@ public class TicketLoader
 				
 				ticket.setTicketTimestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(date+" "+parts[3]).getTime());
 			}
-			else if (provider == TicketLoader.PROVIDER_SL)
+			else if (provider == TicketLoader.PROVIDER_STOCKHOLM)
 			{
 				parts = parts[4].split(" ");
 				
@@ -169,13 +177,22 @@ public class TicketLoader
 			return PROVIDER_VASTTRAFIK;
 		}
 		else if (address.startsWith("72150")) { // Stockholms Lokaltrafik
-			return PROVIDER_SL;
+			return PROVIDER_STOCKHOLM;
 		}
 		else if (address.startsWith("72040")) { // Skånetrafiken
 			return PROVIDER_SKANETRAFIKEN;
 		}
 		else if (address.startsWith("72032")) { // Värmlandstrafiken
 			return PROVIDER_VARMLANDSTRAFIKEN;
+		}
+		else if (address.startsWith("72472")) { // Upplands Lokaltrafik
+			return PROVIDER_UPPLAND;
+		}
+		else if (address.startsWith("72365")) { // Östgötatrafiken
+			return PROVIDER_OSTGOTA;
+		}
+		else if (address.startsWith("72372")) { // Västmanlands Lokaltrafik
+			return PROVIDER_VASTMANLAND;
 		}
 		
 		return PROVIDER_UNKNOWN;
@@ -193,7 +210,7 @@ public class TicketLoader
 				return "SJ";
 			case TicketLoader.PROVIDER_RESPLUS:
 				return "Resplus";
-			case TicketLoader.PROVIDER_SL:
+			case TicketLoader.PROVIDER_STOCKHOLM:
 				return "SL";
 			case TicketLoader.PROVIDER_VASTTRAFIK:
 				return "Västtrafik";
@@ -201,6 +218,13 @@ public class TicketLoader
 				return "Skånetrafiken";
 			case TicketLoader.PROVIDER_VARMLANDSTRAFIKEN:
 				return "Värmlandstrafiken";
+			case TicketLoader.PROVIDER_UPPLAND:
+				return "Upplands Lokaltrafik";
+			case TicketLoader.PROVIDER_OSTGOTA:
+				return "Östgötatrafiken";
+			case TicketLoader.PROVIDER_VASTMANLAND:
+				return "Västmanlands Lokaltrafik";
+
 			default:
 				return "Okänd";
 		}

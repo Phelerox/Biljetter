@@ -1,5 +1,10 @@
-package se.rebootit.android.tagbiljetter;
+/**
+ * This file is licensed under the GNU General Public License Version 3
+ * For more information, please visit http://www.gnu.org/licenses/gpl.txt
+ */
 
+package se.rebootit.android.tagbiljetter;
+ 
 import java.util.*;
 import java.io.*;
 
@@ -80,7 +85,7 @@ public class TicketList extends Activity implements OnClickListener
 			adapter.setProvider(TicketLoader.PROVIDER_RESPLUS, sharedPreferences.getBoolean("pref_show_RESPLUS", true));
 			adapter.setProvider(TicketLoader.PROVIDER_SJ, sharedPreferences.getBoolean("pref_show_SJ", true));
 			adapter.setProvider(TicketLoader.PROVIDER_SKANETRAFIKEN, sharedPreferences.getBoolean("pref_show_SKANETRAFIKEN", true));
-			adapter.setProvider(TicketLoader.PROVIDER_SL, sharedPreferences.getBoolean("pref_show_SL", true));
+			adapter.setProvider(TicketLoader.PROVIDER_STOCKHOLM, sharedPreferences.getBoolean("pref_show_SL", true));
 			adapter.setProvider(TicketLoader.PROVIDER_VARMLANDSTRAFIKEN, sharedPreferences.getBoolean("pref_show_VARMLANDSTRAFIKEN", true));
 			adapter.setProvider(TicketLoader.PROVIDER_VASTTRAFIK, sharedPreferences.getBoolean("pref_show_VASTTRAFIK", true));
 
