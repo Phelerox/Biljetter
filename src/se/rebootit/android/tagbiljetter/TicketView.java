@@ -53,7 +53,7 @@ public class TicketView extends Activity
 				Notification notification = new Notification(R.drawable.icon, null, System.currentTimeMillis());
 
 				CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
-				CharSequence contentText = "För resa "+this.ticket.getTicketTimestampFormatted();
+				CharSequence contentText = getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
 				Intent notificationIntent = new Intent(this, TicketView.class);
 				notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
 				notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

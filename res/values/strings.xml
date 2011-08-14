@@ -1,4 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Biljetter</string>
+    
+    <string name="TicketView_header">Visa biljett</string>
+    <string name="TicketView_received">Mottaget:</string>
+    <string name="TicketView_sender">Avsändare:</string>
+    <string name="TicketView_createnotification">Lägg i statusfältet</string>
+    <string name="TicketView_close">Stäng</string>
+    
+    <string name="TicketList_header">Mina biljetter</string>
+    <string name="TicketList_notickets">Inga biljetter laddade.</string>
+    <string name="TicketList_findsms">Hitta sms</string>
+    <string name="TicketList_ticketsloaded">Biljetter laddade!</string>
+    <string name="TicketList_cachecleared">Cachen rensad!</string>
+    <string name="TicketList_findnewsms">Hitta nya sms</string>
+    <string name="TicketList_findallsms">Hitta alla sms</string>
+    <string name="TicketList_settings">Inställningar</string>
+    <string name="TicketList_donate">Stöd oss</string>
+    <string name="TicketList_quit">Avsluta</string>
+    
+    <string name="Settings_header">Inställningar</string>
+    <string name="Settings_showticketsfrom">Visa biljetter från</string>
+    <string name="Settings_save">Spara</string>
+    <string name="Settings_clearcache">Rensa cache</string>
+    
+    <string name="Donate_header">Stöd oss</string>
+    <string name="Donate_description">Det skulle uppskattas jättemycket ifall ni vill donera några kronor för att visa er uppskattning av appen.\n\nTack på förhand! &lt;3</string>
+    <string name="Donate_btnFlattr">Donera genom Flattr</string>
+    
+    <string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
+    <string name="SmsReceiver_description">För resa %date%</string>
 </resources>

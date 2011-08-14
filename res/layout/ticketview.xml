@@ -8,7 +8,7 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
-		android:text="Visa biljett"
+		android:text="@string/TicketView_header"
 		android:textSize="25sp"
 		android:textStyle="bold"
 		android:textColor="@color/white"
@@ -23,7 +23,7 @@
 		android:stretchColumns="1">
 		<TableRow>
 			<TextView android:id="@+id/senderHeader"
-				android:text="Avsändare:"
+				android:text="@string/TicketView_sender"
 				android:textSize="19sp"
 				android:textStyle="bold"
 				android:textColor="@color/white"
@@ -41,7 +41,7 @@
 		</TableRow>
 		<TableRow>
 			<TextView 
-				android:text="Mottaget:"
+				android:text="@string/TicketView_received"
 				android:textSize="19sp"
 				android:textStyle="bold"
 				android:textColor="@color/white"

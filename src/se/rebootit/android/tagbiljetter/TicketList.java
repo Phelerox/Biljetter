@@ -125,7 +125,7 @@ public class TicketList extends Activity implements OnClickListener
 				updateList();
 				
 				if (notify) {
-					Toast.makeText(TicketList.this, "Biljetter laddade!", Toast.LENGTH_LONG).show();
+					Toast.makeText(TicketList.this, getString(R.string.TicketList_ticketsloaded), Toast.LENGTH_LONG).show();
 				}
 			}
 		};
@@ -154,7 +154,7 @@ public class TicketList extends Activity implements OnClickListener
 				{
 					if (data.getBooleanExtra("clearcache", false)) {
 						this.lstTickets.clear();
-						Toast.makeText(this, "Cache rensad", Toast.LENGTH_LONG).show();
+						Toast.makeText(this, getString(R.string.TicketList_cachecleared), Toast.LENGTH_LONG).show();
 						updateList();
 					}
 					if (data.getBooleanExtra("reload", false)) {

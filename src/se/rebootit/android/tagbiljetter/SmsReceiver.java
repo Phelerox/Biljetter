@@ -71,10 +71,10 @@ public class SmsReceiver extends BroadcastReceiver
 					// Notification
 					NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-					Notification notification = new Notification(R.drawable.icon, "Ny biljett mottagen!", System.currentTimeMillis());
+					Notification notification = new Notification(R.drawable.icon, context.getString(R.string.SmsReceiver_newticket), System.currentTimeMillis());
 
 					CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
-					CharSequence contentText = "För resa "+ticket.getTicketTimestampFormatted();
+					CharSequence contentText = context.getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
 					Intent notificationIntent = new Intent(context, TicketView.class);
 					notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
 					notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

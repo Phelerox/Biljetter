@@ -8,7 +8,7 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
-		android:text="Inställningar"
+		android:text="@string/Settings_header"
 		android:textSize="25sp"
 		android:textStyle="bold"
 		android:textColor="@color/white"
@@ -27,7 +27,7 @@
 			android:layout_alignParentBottom="true">
 		
 			<TextView
-				android:text="Visa biljetter från"
+				android:text="@string/Settings_showticketsfrom"
 				android:textSize="18sp"
 				android:textStyle="bold"
 				android:textColor="@color/white"
@@ -85,12 +85,12 @@
 			<Button android:id="@+id/btnSave"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="Spara" />
+				android:text="@string/Settings_save" />
 				
 			<Button android:id="@+id/btnClearCache"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="Rensa cache" />
+				android:text="@string/Settings_clearcache" />
 
 		</LinearLayout>
 	</ScrollView>

@@ -8,7 +8,7 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
-		android:text="Donera"
+		android:text="@string/Donate_header"
 		android:textSize="25sp"
 		android:textStyle="bold"
 		android:textColor="@color/white"
@@ -18,7 +18,7 @@
 		android:layout_alignParentTop="true" />
 		
 	<TextView 
-		android:text="Det skulle uppskattas jättemycket ifall ni vill donera några kronor för att visa er uppskattning av appen.\n\nTack på förhand! &lt;3"
+		android:text="@string/Donate_description"
 		android:textSize="20sp"
 		android:textColor="@color/white"
 		android:layout_height="wrap_content"
@@ -27,7 +27,8 @@
 		android:paddingBottom="9sp"	/>
 		
 	<Button android:id="@+id/btnFlattr"
-		android:text="Donera genom Flattr."
+		android:text="@string/Donate_btnFlattr"
+		android:textSize="17sp"
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
 		android:drawableLeft="@drawable/donate_flattr"
