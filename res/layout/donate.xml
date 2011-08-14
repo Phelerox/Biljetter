@@ -18,7 +18,7 @@
 		android:layout_alignParentTop="true" />
 		
 	<TextView 
-		android:text="@string/donate"
+		android:text="Det skulle uppskattas jättemycket ifall ni vill donera några kronor för att visa er uppskattning av appen.\n\nTack på förhand! &lt;3"
 		android:textSize="20sp"
 		android:textColor="@color/white"
 		android:layout_height="wrap_content"
@@ -27,7 +27,11 @@
 		android:paddingBottom="9sp"	/>
 		
 	<Button android:id="@+id/btnFlattr"
-		android:text="Donera genom Flattr"
+		android:text="Donera genom Flattr."
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent" />
+		android:layout_width="fill_parent"
+		android:drawableLeft="@drawable/donate_flattr"
+        android:drawablePadding="15sp"
+		android:gravity="left|center_vertical" />
+
 </LinearLayout>
