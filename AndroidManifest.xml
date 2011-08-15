@@ -11,6 +11,8 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".TicketView" android:theme="@android:style/Theme.NoTitleBar" />
+		<activity android:name=".Order" android:theme="@android:style/Theme.NoTitleBar" />
+		<activity android:name=".OrderOptions" android:theme="@android:style/Theme.NoTitleBar" />
 		<activity android:name=".Donate" android:theme="@android:style/Theme.NoTitleBar" />
 		<activity android:name=".Settings" android:theme="@android:style/Theme.NoTitleBar" />
 		<receiver android:name=".SmsReceiver">

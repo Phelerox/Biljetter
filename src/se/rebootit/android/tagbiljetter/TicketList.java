@@ -43,6 +43,10 @@ public class TicketList extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
 		
+		Intent intent = new Intent(this, Order.class);
+		startActivity(intent);
+		finish();
+		
 		// Load the previous list of tickets
 		loadState();
 

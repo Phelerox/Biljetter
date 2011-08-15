@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:paddingLeft="4sp"
+	android:paddingRight="4sp">
+	
+	<TextView android:id="@+id/header"
+		android:text="Västtrafik"
+		android:textSize="25sp"
+		android:textStyle="bold"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:drawableLeft="@drawable/logo_vasttrafik"
+        android:drawablePadding="15sp"
+		android:gravity="left|center_vertical" 
+		android:paddingBottom="9sp"
+		android:layout_alignParentTop="true" />
+	
+	<!--Spinner 
+		android:id="@+id/spnCity"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:prompt="@string/TicketOrder_VT_city" /-->
+		
+	<RadioGroup android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:id="@+id/QueGroup1">
+		<RadioButton android:checked="true"
+			android:id="@+id/option1" android:text="Vuxen"/>
+		<RadioButton android:checked="false"
+			android:id="@+id/option2" android:text="Ungdom"/>
+	</RadioGroup>
+
+	<CheckBox android:id="@+id/chkShowVasttrafik"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="16sp"
+		android:text="Nattbiljett"
+		android:checked="false" />
+</LinearLayout>
