@@ -70,10 +70,6 @@ public class TicketListAdapter extends BaseAdapter
 		providers.put(key, value);
 	}
 	
-	public boolean isEnabled(int position) {
-		return true;
-	}
-	
 	@Override
 	public void notifyDataSetChanged() {
 		super.notifyDataSetChanged();
