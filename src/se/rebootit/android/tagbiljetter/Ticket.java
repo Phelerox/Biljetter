@@ -129,11 +129,16 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 		return (((Ticket) obj).hashCode() == hashCode() ? true : false);
 	}
 
-     @Override
-     public int hashCode() {
-		String hashcode = this.timestamp+this.address+this.message+this.provider;
-		return (hashcode == null) ? 0 : hashcode.hashCode();
-     }
+	@Override
+	public int hashCode() {
+		int code = 17;
+		code = 31*code + (int)(timestamp ^ (timestamp >> 32));
+		code = 31*code + address.hashCode();
+		code = 31*code + message.hashCode();
+		code = 31*code + provider;
+
+		return code;
+	}
 	
 	private Ticket(Parcel in) {
 		this.provider = in.readInt();
