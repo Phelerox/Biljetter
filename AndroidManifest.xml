@@ -22,9 +22,10 @@
 		</receiver>
 	</application>
 	
-	<uses-permission android:name="android.permission.RECEIVE_SMS" />
 	<uses-permission android:name="android.permission.READ_SMS" />
 	<uses-permission android:name="android.permission.WRITE_SMS" />
-	
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.SEND_SMS" />
+
 	<uses-sdk android:minSdkVersion="4" android:maxSdkVersion="10" android:targetSdkVersion="4" />
 </manifest>
