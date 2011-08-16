@@ -5,7 +5,9 @@
 
 package se.rebootit.android.tagbiljetter.models;
 
-public class TransportArea
+import android.os.*;
+
+public class TransportArea implements Parcelable
 {
     private String code;
     private String name;
@@ -28,4 +30,30 @@ public class TransportArea
 	
 	public void setDescription(String description) { this.description = description; }
 	public String getDescription() { return this.description; }
+	
+	private TransportArea(Parcel in) {
+		this.code = in.readString();
+		this.name = in.readString();
+		this.description = in.readString();
+	}
+	
+	public void writeToParcel(Parcel out, int flags) {
+		out.writeString(this.code);
+		out.writeString(this.name);
+		out.writeString(this.description);
+	}
+
+	public static final Parcelable.Creator<TransportArea> CREATOR = new Parcelable.Creator<TransportArea>() {
+		public TransportArea createFromParcel(Parcel in) {
+			return new TransportArea(in);
+		}
+
+		public TransportArea[] newArray(int size) {
+			return new TransportArea[size];
+		}
+	};
+
+	public int describeContents() {
+		return 0;
+	}
 }

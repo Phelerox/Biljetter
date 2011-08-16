@@ -14,6 +14,7 @@ import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+import android.widget.AdapterView.*;
 
 import se.rebootit.android.tagbiljetter.models.*;
 
@@ -21,47 +22,61 @@ import se.rebootit.android.tagbiljetter.models.*;
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
  
-public class Order extends Activity implements OnClickListener
+public class Order extends Activity
 {
 	ArrayList<TransportCompany> lstCompanies = new ArrayList<TransportCompany>();
 	ListAdapter adapter = new OrderCompanyListAdapter(this.lstCompanies, this);
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.order);
-		
-		//((Button)findViewById(R.id.btnVasttrafik)).setOnClickListener(this);
-		
+
 		TransportCompany transportCompany;
 
-		transportCompany = new DefaultTransportCompany("SL-jävlarna");
+		// Storstockholms Lokaltrafik
+		transportCompany = new TransportCompany_SL("SL", "72150");
 		transportCompany.setLogo(R.drawable.logo_sl);
+		transportCompany.addTransportArea(new TransportArea("A", "Zon A", ""));
+		transportCompany.addTransportArea(new TransportArea("B", "Zon B", ""));
+		transportCompany.addTransportArea(new TransportArea("C", "Zon C", ""));
+		transportCompany.addTransportArea(new TransportArea("AB", "Zon A+B", ""));
+		transportCompany.addTransportArea(new TransportArea("AC", "Zon A+C", ""));
+		transportCompany.addTransportArea(new TransportArea("BC", "Zon B+C", ""));
+		transportCompany.addTransportArea(new TransportArea("ABC", "Zon A+B+C", ""));
+		transportCompany.addTicketType(new TicketType("H", "Hel", "Helt pris på biljetten."));
+		transportCompany.addTicketType(new TicketType("R", "Reducerad", "Reducerat pris på biljetten."));
 		lstCompanies.add(transportCompany);
-		transportCompany = new DefaultTransportCompany("Värmlandstrafiken");
-		lstCompanies.add(transportCompany);
-		transportCompany = new DefaultTransportCompany("Västtrafik");
+		
+		// Västtrafik
+		transportCompany = new DefaultTransportCompany("Västtrafik", "72450");
 		transportCompany.setLogo(R.drawable.logo_vasttrafik);
+		transportCompany.addTransportArea(new TransportArea("G", "Göteborg", ""));
+		transportCompany.addTransportArea(new TransportArea("GP", "Göteborg+", ""));
+		transportCompany.addTransportArea(new TransportArea("TV", "Trollhättan och Vänersborg", ""));
+		transportCompany.addTicketType(new TicketType("V", "Vuxen", ""));
+		transportCompany.addTicketType(new TicketType("S", "Skolungdom", ""));
+		transportCompany.addTicketType(new TicketType("VN", "Vuxen (natt)", ""));
+		transportCompany.addTicketType(new TicketType("SN", "Skolungdom (natt)", ""));
 		lstCompanies.add(transportCompany);
-		
-		
+
+
+		Intent intent = new Intent(Order.this, OrderOptions.class);
+		intent.putExtra("transportcompany", (Parcelable)transportCompany);
+		startActivity(intent);
+
 		ListView list = (ListView)findViewById(R.id.companylist);
 		list.setAdapter(adapter);
-	}
-	
-	public void onClick(View v)
-	{
-/*
-		Intent intent = new Intent(this, OrderOptions.class);
-		switch(v.getId())
+		list.setOnItemClickListener(new OnItemClickListener()
 		{
-			case R.id.btnVasttrafik:
-				//intent.putExtra("provider", TicketLoader.PROVIDER_VASTTRAFIK);
-				startActivity(intent);
+			public void onItemClick(AdapterView<?> info, View v, int position, long id) {
+				TransportCompany transportCompany = lstCompanies.get(position);
 
-				break;
-		}
-*/
+				Intent intent = new Intent(Order.this, OrderOptions.class);
+				intent.putExtra("transportcompany", (Parcelable)transportCompany);
+				startActivity(intent);
+			}
+		});
 	}
 }

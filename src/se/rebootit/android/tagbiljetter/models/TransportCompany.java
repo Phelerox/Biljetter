@@ -21,7 +21,10 @@ public abstract class TransportCompany
     public abstract boolean checkMessage(String phonenumber, String message);
     
 	public abstract void addTicketType(TicketType type);
+	public abstract List<TicketType> getTicketTypes();
+	
 	public abstract void addTransportArea(TransportArea area);
+	public abstract List<TransportArea> getTransportAreas();
 	
 	public abstract void setId(int id);
 	public abstract int getId();

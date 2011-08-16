@@ -9,7 +9,7 @@ import java.util.*;
 
 import android.os.*;
 
-public class DefaultTransportCompany extends TransportCompany implements Parcelable
+public class TransportCompany_SL extends TransportCompany implements Parcelable
 {
 	private int id;
 	private int logo;
@@ -19,13 +19,13 @@ public class DefaultTransportCompany extends TransportCompany implements Parcela
 	private List<TransportArea> areas = new ArrayList<TransportArea>();
 	private List<TicketType> types = new ArrayList<TicketType>();
 
-	public DefaultTransportCompany(String name, String phonenumber) {
+	public TransportCompany_SL(String name, String phonenumber) {
 		this.name = name;
 		this.phonenumber = phonenumber;
 	}
 
 	public String getMessage(TransportArea area, TicketType type) {
-		return area.getCode()+type.getCode();
+		return type.getCode()+area.getCode();
 	}
 
 	public boolean checkMessage(String phonenumber, String message) { return false; }
@@ -48,7 +48,7 @@ public class DefaultTransportCompany extends TransportCompany implements Parcela
 	public void setPhoneNumber(String phonenumber) { this.phonenumber = phonenumber; }
 	public String getPhoneNumber() { return this.phonenumber; }
 	
-	private DefaultTransportCompany(Parcel in) {
+	private TransportCompany_SL(Parcel in) {
 		this.id = in.readInt();
 		this.logo = in.readInt();
 		this.name = in.readString();
@@ -66,13 +66,13 @@ public class DefaultTransportCompany extends TransportCompany implements Parcela
 		out.writeTypedList(this.types);
 	}
 
-	public static final Parcelable.Creator<DefaultTransportCompany> CREATOR = new Parcelable.Creator<DefaultTransportCompany>() {
-		public DefaultTransportCompany createFromParcel(Parcel in) {
-			return new DefaultTransportCompany(in);
+	public static final Parcelable.Creator<TransportCompany_SL> CREATOR = new Parcelable.Creator<TransportCompany_SL>() {
+		public TransportCompany_SL createFromParcel(Parcel in) {
+			return new TransportCompany_SL(in);
 		}
 
-		public DefaultTransportCompany[] newArray(int size) {
-			return new DefaultTransportCompany[size];
+		public TransportCompany_SL[] newArray(int size) {
+			return new TransportCompany_SL[size];
 		}
 	};
 
