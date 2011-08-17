@@ -29,19 +29,18 @@ public class TicketView extends Activity
         Intent intent = getIntent();
 		this.ticket = intent.getParcelableExtra("ticket");
 		
-		if (ticket.getProvider() != TicketLoader.PROVIDER_SJ && ticket.getProvider() != TicketLoader.PROVIDER_RESPLUS) {
-			((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
-			((TextView)findViewById(R.id.sender)).setVisibility(TextView.VISIBLE);
-			((TextView)findViewById(R.id.senderHeader)).setVisibility(TextView.VISIBLE);
-		}
-		((TextView)findViewById(R.id.received)).setText(ticket.getTicketTimestampFormatted());
+		((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
+		((TextView)findViewById(R.id.sender)).setVisibility(TextView.VISIBLE);
+		((TextView)findViewById(R.id.senderHeader)).setVisibility(TextView.VISIBLE);
+
+		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
     }
     
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.ticketviewmenu, menu);
+		inflater.inflate(R.menu.ticketview, menu);
 		
 		return true;
 	}
@@ -57,7 +56,7 @@ public class TicketView extends Activity
 
 				Notification notification = new Notification(R.drawable.icon, null, System.currentTimeMillis());
 
-				CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
+				CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
 				CharSequence contentText = getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
 				Intent notificationIntent = new Intent(this, TicketView.class);
 				notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);

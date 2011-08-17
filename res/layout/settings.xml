@@ -39,7 +39,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/white"
 				android:text="Resplus"
-				android:enabled="true"
+				android:enabled="false"
 				android:checked="true" />
 			<CheckBox android:id="@+id/chkShowSJ"
 				android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/white"
 				android:text="SJ"
-				android:enabled="true"
+				android:enabled="false"
 				android:checked="true" />
 			<CheckBox android:id="@+id/chkShowSkanetrafiken"
 				android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/white"
 				android:text="Skånetrafiken"
-				android:enabled="true"
+				android:enabled="false"
 				android:checked="true" />
 			<CheckBox android:id="@+id/chkShowSL"
 				android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/white"
 				android:text="Stockholms lokaltrafik"
-				android:enabled="true"
+				android:enabled="false"
 				android:checked="true" />
 			<CheckBox android:id="@+id/chkShowVarmlandstrafiken"
 				android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/white"
 				android:text="Värmlandstrafiken"
-				android:enabled="true"
+				android:enabled="false"
 				android:checked="true" />
 			<CheckBox android:id="@+id/chkShowVasttrafik"
 				android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/white"
 				android:text="Västtrafik"
-				android:enabled="true"
+				android:enabled="false"
 				android:checked="true" />
 				
 			<Button android:id="@+id/btnSave"

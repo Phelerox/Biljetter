@@ -11,13 +11,17 @@
     <string name="TicketList_header">Mina biljetter</string>
     <string name="TicketList_notickets">Inga biljetter laddade.</string>
     <string name="TicketList_findsms">Hitta biljetter</string>
+    <string name="TicketList_order">Beställ en biljett</string>
+    
     <string name="TicketList_ticketsloaded">Biljetter laddade!</string>
     <string name="TicketList_cachecleared">Cachen rensad!</string>
-    <string name="TicketList_findnewsms">Hitta nya biljetter</string>
-    <string name="TicketList_findallsms">Hitta alla biljetter</string>
-    <string name="TicketList_settings">Inställningar</string>
-    <string name="TicketList_donate">Stöd oss</string>
-    <string name="TicketList_quit">Avsluta</string>
+    
+    <string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>
+    <string name="TicketList_menu_findallsms">Hitta alla biljetter</string>
+    <string name="TicketList_menu_order">Beställ biljett</string>
+    <string name="TicketList_menu_settings">Inställningar</string>
+    <string name="TicketList_menu_donate">Stöd oss</string>
+    <string name="TicketList_menu_quit">Avsluta</string>
     
     <string name="Settings_header">Inställningar</string>
     <string name="Settings_showticketsfrom">Visa biljetter från</string>

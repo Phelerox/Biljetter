@@ -37,14 +37,13 @@ public class OrderOptions extends Activity implements OnClickListener
         Intent intent = getIntent();
 		this.transportCompany = (TransportCompany)intent.getParcelableExtra("transportcompany");
 
-		TextView txtHeader = (TextView)findViewById(R.id.header);
+		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);
 
-		txtHeader.setText(transportCompany.getName());
+		txtCompanyname.setText(transportCompany.getName());
 		if (transportCompany.getLogo() > 0) {
-			txtHeader.setCompoundDrawablePadding(15);
-			txtHeader.setCompoundDrawablesWithIntrinsicBounds(transportCompany.getLogo(), 0, 0, 0);
+			txtCompanyname.setCompoundDrawablePadding(15);
+			txtCompanyname.setCompoundDrawablesWithIntrinsicBounds(transportCompany.getLogo(), 0, 0, 0);
 		}
-
 
 		Spinner spnArea = (Spinner)findViewById(R.id.spnArea);
 		ArrayAdapter<CharSequence> adapterArea = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);

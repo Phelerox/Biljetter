@@ -12,6 +12,7 @@ import android.app.*;
 import android.content.*;
 import android.content.SharedPreferences.*;
 import android.util.*;
+import android.net.*;
 import android.os.*;
 import android.view.*;
 import android.view.ContextMenu.*;
@@ -31,7 +32,7 @@ public class TicketList extends Activity implements OnClickListener
 	ListAdapter adapter = new TicketListAdapter(this.lstTickets, this);
 	
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
-	TicketLoader ticketLoader = new TicketLoader();
+	DataParser dataParser = Biljetter.getDataParser();
 	
 	IntentFilter mIntentFilter;
 	
@@ -43,18 +44,40 @@ public class TicketList extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
 		
+		
+/*
+ 		// Skapa ett nytt sms
+		ContentValues values = new ContentValues();
+		values.put( "address", "721505461" );
+		values.put( "date", System.currentTimeMillis() );
+		values.put( "read", 0 );
+		values.put( "status", 1 );
+		values.put( "type", 1 );
+		values.put( "seen", 0 );
+		values.put( "body", "R-A 08:04 13+'643732949'+\n+'475926302'+\n+'922407994'+\nSL biljett giltig till 08:04 2011-07-21\nRED PRIS 18 kr ink 6% moms\n0649G211034HL20K1\nhttp://mobil.sl.se" );
+
+		// Push row into the SMS table
+		ContentResolver contentResolver = Biljetter.getContext().getContentResolver();
+		contentResolver.insert( Uri.parse( "content://sms" ), values );
+		
+		finish();
+*/
+
+/*
 		Intent intent = new Intent(this, Order.class);
 		startActivity(intent);
 		finish();
+*/
 		
 		// Load the previous list of tickets
 		loadState();
-
+		
 		// Listen for messages from SmsReceiver
 		mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST");
 
 		((Button)findViewById(R.id.btnScan)).setOnClickListener(this);
+		((Button)findViewById(R.id.btnOrder)).setOnClickListener(this);
 		
 		ListView list = (ListView)findViewById(R.id.ticketlist);
 		list.setAdapter(adapter);
@@ -79,19 +102,21 @@ public class TicketList extends Activity implements OnClickListener
 	 */
 	private void updateList()
 	{
-		if (lstTickets.size() > 0)
+		if (this.lstTickets.size() > 0)
 		{			
 			// Sort the tickets
 			Collections.sort(this.lstTickets);
 			
 			TicketListAdapter adapter = ((TicketListAdapter)((ListView)findViewById(R.id.ticketlist)).getAdapter());
 			
+/*
 			adapter.setProvider(TicketLoader.PROVIDER_RESPLUS, sharedPreferences.getBoolean("pref_show_RESPLUS", true));
 			adapter.setProvider(TicketLoader.PROVIDER_SJ, sharedPreferences.getBoolean("pref_show_SJ", true));
 			adapter.setProvider(TicketLoader.PROVIDER_SKANETRAFIKEN, sharedPreferences.getBoolean("pref_show_SKANETRAFIKEN", true));
 			adapter.setProvider(TicketLoader.PROVIDER_STOCKHOLM, sharedPreferences.getBoolean("pref_show_SL", true));
 			adapter.setProvider(TicketLoader.PROVIDER_VARMLANDSTRAFIKEN, sharedPreferences.getBoolean("pref_show_VARMLANDSTRAFIKEN", true));
 			adapter.setProvider(TicketLoader.PROVIDER_VASTTRAFIK, sharedPreferences.getBoolean("pref_show_VASTTRAFIK", true));
+*/
 
 			adapter.notifyDataSetChanged();
 			
@@ -108,6 +133,11 @@ public class TicketList extends Activity implements OnClickListener
 		{
 			case R.id.btnScan:
 				loadTickets(true, true);
+				break;
+				
+			case R.id.btnOrder:
+				Intent intent = new Intent(this, Order.class);
+				startActivity(intent);
 				break;
 		}
 	}
@@ -141,7 +171,7 @@ public class TicketList extends Activity implements OnClickListener
 
 		Thread t = new Thread() {
 			public void run() {
-				ArrayList<Ticket> tmpList = ticketLoader.getTickets(clearCache);
+				ArrayList<Ticket> tmpList = dataParser.getTickets(clearCache);
 				if (clearCache) {
 					lstTickets.clear();
 				}
@@ -177,7 +207,7 @@ public class TicketList extends Activity implements OnClickListener
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.ticketlistmenu, menu);
+		inflater.inflate(R.menu.ticketlist, menu);
 		
 		return true;
 	}
@@ -206,6 +236,11 @@ public class TicketList extends Activity implements OnClickListener
 				
 			case R.id.scanAll:
 				loadTickets(true, true);
+				return true;
+				
+			case R.id.order:
+				intent = new Intent(this, Order.class);
+				startActivity(intent);
 				return true;
 				
 			case R.id.settings:

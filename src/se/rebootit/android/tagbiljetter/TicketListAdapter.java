@@ -47,16 +47,19 @@ public class TicketListAdapter extends BaseAdapter
 		LinearLayout itemLayout;
 		Ticket ticket = lstTickets.get(position);
 
+/*
 		if (this.providers.containsKey(ticket.getProvider()) && this.providers.get(ticket.getProvider()))
 		{
+*/
 			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.ticketlistitem, parent, false);
 			
 			TextView txtType = (TextView)itemLayout.findViewById(R.id.type);
 			TextView txtDate = (TextView)itemLayout.findViewById(R.id.date);
-			txtType.setText(TicketLoader.getProviderFormatted(ticket.getProvider()));
+			txtType.setText(DataParser.getCompanyName(ticket.getProvider()));
 			txtDate.setText(ticket.getTicketTimestampFormatted());
 			
 			return itemLayout;
+/*
 		}
 		else
 		{
@@ -64,6 +67,7 @@ public class TicketListAdapter extends BaseAdapter
 			itemLayout.setVisibility(LinearLayout.GONE);
 			return itemLayout;
 		}
+*/
 	}
 	
 	public void setProvider(int key, boolean value) {

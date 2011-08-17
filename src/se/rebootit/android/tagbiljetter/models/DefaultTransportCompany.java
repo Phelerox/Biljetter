@@ -11,42 +11,17 @@ import android.os.*;
 
 public class DefaultTransportCompany extends TransportCompany implements Parcelable
 {
-	private int id;
-	private int logo;
-	private String name;
-	private String phonenumber;
-
-	private List<TransportArea> areas = new ArrayList<TransportArea>();
-	private List<TicketType> types = new ArrayList<TicketType>();
-
+	public DefaultTransportCompany() { }
+	
 	public DefaultTransportCompany(String name, String phonenumber) {
-		this.name = name;
-		this.phonenumber = phonenumber;
+		super(name, phonenumber);
 	}
-
+	
 	public String getMessage(TransportArea area, TicketType type) {
 		return area.getCode()+type.getCode();
 	}
 
 	public boolean checkMessage(String phonenumber, String message) { return false; }
-
-	public void addTicketType(TicketType type) { types.add(type); }
-	public List<TicketType> getTicketTypes() { return types; }
-	
-	public void addTransportArea(TransportArea area) { areas.add(area); }
-	public List<TransportArea> getTransportAreas() { return areas; }
-	
-	public void setId(int id) { this.id = id; }
-	public int getId() { return this.id; }
-	
-	public void setLogo(int logo) { this.logo = logo; }
-	public int getLogo() { return this.logo; }
-	
-	public void setName(String name) { this.name = name; }
-	public String getName() { return this.name; }
-	
-	public void setPhoneNumber(String phonenumber) { this.phonenumber = phonenumber; }
-	public String getPhoneNumber() { return this.phonenumber; }
 	
 	private DefaultTransportCompany(Parcel in) {
 		this.id = in.readInt();

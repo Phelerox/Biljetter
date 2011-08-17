@@ -24,8 +24,8 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 	private int provider = 0;
 	private long timestamp = 0;
 	private long tickettimestamp = 0;
-	private String timestampformatted = null;
-	private String tickettimestampformatted = null;
+	private String timestampformatted = "";
+	private String tickettimestampformatted = "";
 	private String address = "";
 	private String message = "";
 
@@ -69,7 +69,7 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 	 * @return Formatted string with the arrival of the SMS.
 	 */
 	public String getTimestampFormatted() {
-		if (this.timestampformatted == null) {
+		if ("".equals(this.timestampformatted) && this.timestamp > 0) {
 			this.timestampformatted = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(this.timestamp));
 		}
 		return this.timestampformatted;
@@ -77,7 +77,12 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 	
 	public void setTicketTimestamp(long tickettimestamp) { this.tickettimestamp = tickettimestamp; }
 	public long getTicketTimestamp() { return this.tickettimestamp; }
-	public String getTicketTimestampFormatted() { return this.tickettimestampformatted; }
+	public String getTicketTimestampFormatted() {
+		if ("".equals(this.tickettimestampformatted) && this.tickettimestamp > 0) {
+			this.tickettimestampformatted = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(this.tickettimestamp));
+		}
+		return this.tickettimestampformatted;
+	}
 	public void setTicketTimestampFormatted(String tickettimestampformatted) { this.tickettimestampformatted = tickettimestampformatted; }
 	
 	/**
@@ -126,7 +131,7 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 		if (!(obj instanceof Ticket))
 		return false;
 
-		return (((Ticket) obj).hashCode() == hashCode() ? true : false);
+		return (((Ticket)obj).hashCode() == hashCode() ? true : false);
 	}
 
 	@Override

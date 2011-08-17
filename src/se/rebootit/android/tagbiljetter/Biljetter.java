@@ -10,10 +10,11 @@ import android.content.*;
 
 public class Biljetter extends Application
 {
-	protected static final String SUSPEND_FILE = "Biljetter";
-	protected static final String LOG_TAG = "Biljetter";
+	public static final String SUSPEND_FILE = "Biljetter";
+	public static final String LOG_TAG = "Biljetter";
 	
 	static Context context;
+	static DataParser dataParser;
 	
 	@Override
 	public void onCreate() {
@@ -26,5 +27,13 @@ public class Biljetter extends Application
 	
 	public static SharedPreferences getSharedPreferences() {
 		return context.getSharedPreferences("Biljetter", Context.MODE_WORLD_READABLE);
+	}
+	
+	public static DataParser getDataParser() {
+		if (dataParser == null) {
+			dataParser = new DataParser();
+			dataParser.getCompanies();
+		}
+		return dataParser;
 	}
 }

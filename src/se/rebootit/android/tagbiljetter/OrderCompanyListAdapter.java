@@ -50,14 +50,23 @@ public class OrderCompanyListAdapter extends BaseAdapter
 
 		itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.order_companylist, parent, false);
 		
-		ImageView imgLogo = (ImageView)itemLayout.findViewById(R.id.companylogo);
-		TextView txtName = (TextView)itemLayout.findViewById(R.id.companyname);
-		if (transportCompany.getLogo() > 0) {
-			imgLogo.setImageResource(transportCompany.getLogo());
+		if (transportCompany.getTransportAreaCount() > 0 && transportCompany.getTicketTypeCount() > 0)
+		{
+			ImageView imgLogo = (ImageView)itemLayout.findViewById(R.id.companylogo);
+			TextView txtName = (TextView)itemLayout.findViewById(R.id.companyname);
+			if (transportCompany.getLogo() > 0) {
+				imgLogo.setImageResource(transportCompany.getLogo());
+			}
+			txtName.setText(transportCompany.getName());
+			
+			return itemLayout;
 		}
-		txtName.setText(transportCompany.getName());
-		
-		return itemLayout;
+		else
+		{
+			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.no_row, parent, false);
+			itemLayout.setVisibility(LinearLayout.GONE);
+			return itemLayout;
+		}
 	}
 	
 	@Override

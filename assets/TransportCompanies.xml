@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TransportCompanies>
+	<company id="1" name="SJ" phonenumber="SJ Biljett" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ">
+		<ticket format="(.*?) kl (.*?)\n.*?\nAvg\..*?\nAnk\..*?\nTåg:.*?\nPersonlig biljett giltig med ID\nBilj.*?" />
+	</company>
+	<company id="2" name="Resplus" phonenumber="RESPLUS" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ">
+		<ticket format="(.*?) kl (.*?)\n.*?\nAvg:.*?\nAnk:.*?\nSlutdest:.*?" />
+	</company>
+	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
+		<type code="H" name="Hel" description="" />
+		<type code="R" name="Reducerad" description="" />
+		
+		<area code="A" name="Zon A" description="" />
+		<area code="B" name="Zon B" description="" />
+		<area code="C" name="Zon C" description="" />
+		<area code="AB" name="Zon A+B" description="" />
+		<area code="AC" name="Zon A+C" description="" />
+		<area code="BC" name="Zon B+C" description="" />
+		<area code="ABC" name="Zon A+B+C" description="" />
+		
+		<ticket format=".*?\nSL biljett giltig till (.*?) (.*?)\n.*?kr ink 6% moms\n.*?" />
+	</company>
+	<company id="4" name="Västtrafik" phonenumber="72450">
+		<type code="V" name="Vuxen" description="" />
+		<type code="S" name="Skolungdom" description="" />
+		<type code="VN" name="Vuxen (natt)" description="" />
+		<type code="SN" name="Skolungdom (natt)" description="" />
+
+		<area code="A" name="Alingsås tätort" description="" />
+		<area code="B" name="Borås tätort" description="" />
+		<area code="F" name="Falköping tätort" description="" />
+		<area code="G" name="Göteborg" description="" />
+		<area code="GB" name="Göteborg-Borås" description="(Gäller för resa mellan Göteborg och Borås.)" />
+		<area code="GP" name="Göteborg+" description="(Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda Väst, Härryda Mitt och Ale Södra.)" />
+		<area code="GPP" name="Göteborg++" description="(Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale och Kungälv.)" />
+		<area code="GPPP" name="Göteborg+++" description="(Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale, Kungälv, Alingsås, Bollebygd, Lilla Edet, Mark, Mölndal, Orust, Stenungsund och Tjörn.) Vissa båtlinjer kräver tillägg.)" />
+		<area code="GMP" name="Göteborg-Mölndal-Partille" description="" />
+		<area code="K" name="Kungsbacka tätort" description="" />
+		<area code="KU" name="Kungälv tätort" description="" />
+		<area code="L" name="Lidköping tätort" description="" />
+		<area code="LJ" name="Ljungskile tätort" description="" />
+		<area code="LY" name="Lysekil tätort" description="" />
+		<area code="MA" name="Mariestad tätort" description="" />
+		<area code="MF" name="Marstrandsfärjan" description="(Returresan ingår)" />
+		<area code="MK" name="Mark tätort" description="" />
+		<area code="MD" name="Munkedal tätort" description="" />
+		<area code="M" name="Mölndal" description="" />
+		<area code="P" name="Partille" description="" />
+		<area code="SK" name="Skara tätort" description="" />
+		<area code="SU" name="Stenungsund tätort" description="" />
+		<area code="SN" name="Sotenäs tätort" description="" />
+		<area code="ST" name="Strömstad tätort" description="" />
+		<area code="S" name="Skövde tätort" description="" />
+		<area code="T" name="Tanum tätort" description="" />
+		<area code="TV" name="Trollhättan och Vänersborg tätorter" description="(Tvåstad)" />
+		<area code="U" name="Uddevalla tätort" description="" />
+		<area code="UL" name="Ulricehamn tätort" description="" />
+		<area code="AM" name="Åmål tätort" description="" />
+
+		<ticket format=".*? --VÄSTTRAFIK-- giltig till (.*?) (.*?)\n.*?." />
+	</company>
+	<company id="5" name="Skånetrafiken" phonenumber="72040">
+		<type code="V" name="Vuxen" description="" />
+		<type code="B" name="Barn" description="" />
+		<type code="D" name="Duo/Familj" description="" />
+
+		<area code="MA" name="Malmö" description="" />
+		<area code="LU" name="Lund" description="" />
+		<area code="KR" name="Kristianstad" description="" />
+		<area code="HE" name="Helsingborg" description="" />
+		<area code="LA" name="Landskrona" description="" />
+		<area code="HÄ" name="Hässleholm" description="" />
+		<area code="ES" name="Eslöv" description="" />
+		<area code="ÄN" name="Ängelholm" description="" />
+		<area code="TR" name="Trelleborg" description="" />
+		<area code="YS" name="Ystad" description="" />
+
+		<ticket format=".*? SK giltig till (.*?) (.*?)\n.*?." />
+	</company>
+	<company id="6" name="Värmlandstrafiken" phonenumber="72032" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Varmlandstrafiken">
+		<ticket format=".*? Värmlandstrafik\nGiltig till kl (.*?), (.*?)\n.*?" />
+	</company>
+</TransportCompanies>

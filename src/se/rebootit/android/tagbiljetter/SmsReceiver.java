@@ -42,14 +42,12 @@ public class SmsReceiver extends BroadcastReceiver
 	public static final int MESSAGE_IS_SEEN = 1;
 	
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
+	DataParser dataParser = Biljetter.getDataParser();
 
 	public void onReceive( Context context, Intent intent ) 
 	{
 		// Get SMS map from Intent
 		Bundle extras = intent.getExtras();
-
-		Ticket ticket = new Ticket();
-		TicketLoader ticketLoader = new TicketLoader();
 
 		if ( extras != null )
 		{
@@ -65,20 +63,18 @@ public class SmsReceiver extends BroadcastReceiver
 
 				String fromaddress = sms.getOriginatingAddress();
 
-				int provider = TicketLoader.getProvider(fromaddress);
-
-				if (provider > 0)
+				Ticket ticket = dataParser.parseMessage(fromaddress, sms.getTimestampMillis(), sms.getMessageBody());
+				
+				if (ticket != null)
 				{
-					ticket = ticketLoader.parseMessage(fromaddress, sms.getTimestampMillis(), sms.getMessageBody());
-
 					putSmsToDatabase( contentResolver, sms );
-					
+
 					// Notification
 					NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 					Notification notification = new Notification(R.drawable.icon, context.getString(R.string.SmsReceiver_newticket), System.currentTimeMillis());
 
-					CharSequence contentTitle = TicketLoader.getProviderFormatted(ticket.getProvider());
+					CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
 					CharSequence contentText = context.getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
 					Intent notificationIntent = new Intent(context, TicketView.class);
 					notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);

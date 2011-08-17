@@ -33,12 +33,14 @@ public class Settings extends Activity implements OnClickListener
 		((Button)findViewById(R.id.btnSave)).setOnClickListener(this);
 		((Button)findViewById(R.id.btnClearCache)).setOnClickListener(this);
 
+/*
 		((CheckBox)findViewById(R.id.chkShowResplus)).setChecked(sharedPreferences.getBoolean("pref_show_RESPLUS", true));
 		((CheckBox)findViewById(R.id.chkShowSJ)).setChecked(sharedPreferences.getBoolean("pref_show_SJ", true));
 		((CheckBox)findViewById(R.id.chkShowSkanetrafiken)).setChecked(sharedPreferences.getBoolean("pref_show_SKANETRAFIKEN", true));
 		((CheckBox)findViewById(R.id.chkShowSL)).setChecked(sharedPreferences.getBoolean("pref_show_SL", true));
 		((CheckBox)findViewById(R.id.chkShowVarmlandstrafiken)).setChecked(sharedPreferences.getBoolean("pref_show_VARMLANDSTRAFIKEN", true));
 		((CheckBox)findViewById(R.id.chkShowVasttrafik)).setChecked(sharedPreferences.getBoolean("pref_show_VASTTRAFIK", true));
+*/
     }
 
 	public void onClick(View v)
@@ -49,6 +51,7 @@ public class Settings extends Activity implements OnClickListener
 		switch(v.getId())
 		{
 			case R.id.btnSave:
+/*
 				e.putBoolean("pref_show_RESPLUS", ((CheckBox)findViewById(R.id.chkShowResplus)).isChecked());
 				e.putBoolean("pref_show_SJ", ((CheckBox)findViewById(R.id.chkShowSJ)).isChecked());
 				e.putBoolean("pref_show_SKANETRAFIKEN", ((CheckBox)findViewById(R.id.chkShowSkanetrafiken)).isChecked());
@@ -58,6 +61,7 @@ public class Settings extends Activity implements OnClickListener
 				
 				intent.putExtra("reload", true);
 				setResult(RESULT_OK, intent);
+*/
 				
 				finish();
 				
