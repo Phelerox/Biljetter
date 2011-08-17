@@ -6,7 +6,7 @@
 	<company id="2" name="Resplus" phonenumber="RESPLUS" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ">
 		<ticket format="(.*?) kl (.*?)\n.*?\nAvg:.*?\nAnk:.*?\nSlutdest:.*?" />
 	</company>
-	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
+	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" logo="sl.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
 		<type code="H" name="Hel" description="" />
 		<type code="R" name="Reducerad" description="" />
 		
@@ -20,7 +20,7 @@
 		
 		<ticket format=".*?\nSL biljett giltig till (.*?) (.*?)\n.*?kr ink 6% moms\n.*?" />
 	</company>
-	<company id="4" name="Västtrafik" phonenumber="72450">
+	<company id="4" name="Västtrafik" phonenumber="72450" logo="vasttrafik.png">
 		<type code="V" name="Vuxen" description="" />
 		<type code="S" name="Skolungdom" description="" />
 		<type code="VN" name="Vuxen (natt)" description="" />
