@@ -16,9 +16,9 @@ import se.rebootit.android.tagbiljetter.*;
 public abstract class TransportCompany
 {
     protected int id;
-    protected int logo;
     protected String name;
     protected String phonenumber;
+    protected String logo;
     protected String ticketformat;
 
     protected List<TransportArea> areas = new ArrayList<TransportArea>();
@@ -74,8 +74,8 @@ public abstract class TransportCompany
 	public void setId(int id) { this.id = id; }
 	public int getId() { return this.id; }
 	
-	public void setLogo(int logo) { this.logo = logo; }
-	public int getLogo() { return this.logo; }
+	public void setLogo(String logo) { this.logo = logo; }
+	public String getLogo() { return this.logo; }
 	
 	public void setName(String name) { this.name = name; }
 	public String getName() { return this.name; }

@@ -16,20 +16,49 @@
 		android:layout_width="fill_parent"
 		android:paddingBottom="9sp"
 		android:layout_alignParentTop="true" />
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<ImageView android:id="@+id/companylogo"
+			android:layout_alignParentLeft="true"
+			android:layout_height="50sp"
+			android:layout_width="50sp"
+			android:gravity="left|center_vertical" 
+			android:scaleType="fitXY" />
 
-	<TextView android:id="@+id/companyname"
-		android:textSize="22sp"
+		<TextView android:id="@+id/companyname"
+			android:textSize="22sp"
+			android:textStyle="bold"
+			android:textColor="@color/white"
+			android:layout_alignParentRight="true"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:gravity="left|center_vertical" 
+			android:paddingLeft="5sp"
+			android:paddingBottom="9sp"  />
+	</LinearLayout>
+	
+	<TextView
+		android:text="Område"
+		android:textSize="18sp"
 		android:textStyle="bold"
 		android:textColor="@color/white"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:gravity="left|center_vertical" 
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
+		android:layout_width="fill_parent" />
 	
 	<Spinner android:id="@+id/spnArea"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
+		
+	<TextView
+		android:text="Biljettyp"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		android:textColor="@color/white"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent" />
 		
 	<Spinner android:id="@+id/spnType"
 		android:layout_width="fill_parent"

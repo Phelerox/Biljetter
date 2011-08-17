@@ -5,13 +5,13 @@
 	android:stretchColumns="1">
 	<TableRow>
 		<ImageView android:id="@+id/companylogo"
-			android:src="@drawable/logo_empty"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/>
+			android:layout_height="50sp"
+			android:layout_width="50sp"
+			android:scaleType="fitXY" />
 		<TextView
 			android:id="@+id/companyname"
-			android:layout_width="wrap_content"
 			android:layout_height="fill_parent"
+			android:layout_width="wrap_content"
 			android:text=""
 			android:textSize="20sp"
 			android:textColor="@color/white"

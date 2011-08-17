@@ -9,6 +9,7 @@ import java.util.*;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
 import android.os.*;
 import android.util.*;
 import android.view.*;
@@ -38,11 +39,18 @@ public class OrderOptions extends Activity implements OnClickListener
 		this.transportCompany = (TransportCompany)intent.getParcelableExtra("transportcompany");
 
 		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);
+		ImageView imgCompanyLogo = (ImageView)findViewById(R.id.companylogo);
 
 		txtCompanyname.setText(transportCompany.getName());
-		if (transportCompany.getLogo() > 0) {
-			txtCompanyname.setCompoundDrawablePadding(15);
-			txtCompanyname.setCompoundDrawablesWithIntrinsicBounds(transportCompany.getLogo(), 0, 0, 0);
+		if (transportCompany.getLogo() != null) {
+			try {
+				Bitmap bMap = BitmapFactory.decodeStream(getAssets().open("logos/"+transportCompany.getLogo()));
+				imgCompanyLogo.setImageBitmap(bMap);
+				
+			} catch (Exception e) { e.printStackTrace(); }
+		}
+		else {
+			imgCompanyLogo.setVisibility(ImageView.GONE);
 		}
 
 		Spinner spnArea = (Spinner)findViewById(R.id.spnArea);

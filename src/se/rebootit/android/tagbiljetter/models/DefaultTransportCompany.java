@@ -25,7 +25,7 @@ public class DefaultTransportCompany extends TransportCompany implements Parcela
 	
 	private DefaultTransportCompany(Parcel in) {
 		this.id = in.readInt();
-		this.logo = in.readInt();
+		this.logo = in.readString();
 		this.name = in.readString();
 		this.phonenumber = in.readString();
 		in.readTypedList(areas, TransportArea.CREATOR);
@@ -34,7 +34,7 @@ public class DefaultTransportCompany extends TransportCompany implements Parcela
 	
 	public void writeToParcel(Parcel out, int flags) {
 		out.writeInt(this.id);
-		out.writeInt(this.logo);
+		out.writeString(this.logo);
 		out.writeString(this.name);
 		out.writeString(this.phonenumber);
 		out.writeTypedList(this.areas);

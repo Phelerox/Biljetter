@@ -10,6 +10,7 @@ import java.util.*;
 import android.app.*;
 import android.content.*;
 import android.content.SharedPreferences.*;
+import android.graphics.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
@@ -54,8 +55,12 @@ public class OrderCompanyListAdapter extends BaseAdapter
 		{
 			ImageView imgLogo = (ImageView)itemLayout.findViewById(R.id.companylogo);
 			TextView txtName = (TextView)itemLayout.findViewById(R.id.companyname);
-			if (transportCompany.getLogo() > 0) {
-				imgLogo.setImageResource(transportCompany.getLogo());
+			if (transportCompany.getLogo() != null) {
+				try {
+					Bitmap bMap = BitmapFactory.decodeStream(this.context.getAssets().open("logos/"+transportCompany.getLogo()));
+					imgLogo.setImageBitmap(bMap);
+					
+				} catch (Exception e) { e.printStackTrace(); }
 			}
 			txtName.setText(transportCompany.getName());
 			

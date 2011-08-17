@@ -140,6 +140,12 @@ public class DataParser
 			mapCompanies.put(transportCompany.getId(), transportCompany);
 		}
 		
+		Collections.sort(this.lstCompanies, new Comparator<TransportCompany>() {
+			public int compare(TransportCompany p1, TransportCompany p2) {
+				return p1.getName().compareTo(p2.getName());
+				}
+			});
+		
 		return this.lstCompanies;
 	}
 	
@@ -192,6 +198,7 @@ public class DataParser
 				this.currentCompany.setId(Integer.parseInt(attributes.getValue("id")));
 				this.currentCompany.setName(attributes.getValue("name"));
 				this.currentCompany.setPhoneNumber(attributes.getValue("phonenumber"));
+				this.currentCompany.setLogo(attributes.getValue("logo"));
 			}
 			else if (localName.equalsIgnoreCase("area")) {
 				String areaCode = attributes.getValue("code");
