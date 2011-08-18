@@ -15,6 +15,7 @@ import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+import android.telephony.gsm.*;
 
 import se.rebootit.android.tagbiljetter.models.*;
 
@@ -28,6 +29,9 @@ public class OrderOptions extends Activity implements OnClickListener
 
 	List<TransportArea> areas;
 	List<TicketType> types;
+	
+	String number;
+	String message;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -83,9 +87,43 @@ public class OrderOptions extends Activity implements OnClickListener
 			case R.id.btnSend:
 				TransportArea area = areas.get(((Spinner)findViewById(R.id.spnArea)).getSelectedItemPosition());
 				TicketType type = types.get(((Spinner)findViewById(R.id.spnType)).getSelectedItemPosition());
-			
-				Toast.makeText(this, "Skickar "+transportCompany.getMessage(area, type)+" till "+transportCompany.getPhoneNumber(), Toast.LENGTH_SHORT).show();
+
+				this.number = transportCompany.getPhoneNumber();
+				this.message = transportCompany.getMessage(area, type);
+				
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle("Bekräfta köp");
+				builder.setMessage("Detta kommer skicka \""+message+"\" till "+number+".");
+				builder.setPositiveButton("Ja", dialogClickListener);
+				builder.setNegativeButton("Nej", dialogClickListener);
+				builder.setIcon(android.R.drawable.ic_dialog_alert);
+				builder.show();
+				
 				break;
 		}
 	}
+	
+	
+	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+	{
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			switch (which) {
+				case DialogInterface.BUTTON_POSITIVE:
+					Toast.makeText(Biljetter.getContext(), "Skickar beställning!", Toast.LENGTH_LONG).show();
+					
+					SmsManager sm = SmsManager.getDefault();
+					sm.sendTextMessage(number, null, message, null, null);
+					
+					finish();
+					
+					break;
+
+				case DialogInterface.BUTTON_NEGATIVE:
+					Toast.makeText(Biljetter.getContext(), "Beställning avbruten!", Toast.LENGTH_SHORT).show();
+					break;
+			}
+		}
+	};
 }
