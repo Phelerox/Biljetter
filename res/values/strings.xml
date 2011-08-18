@@ -34,4 +34,10 @@
     
     <string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
     <string name="SmsReceiver_description">För resa %date%</string>
+    
+    <string name="Order_header">Tillgängliga operatörer</string>
+    <string name="OrderOptions_header">Biljettalternativ</string>
+    <string name="OrderOptions_area">Område</string>
+    <string name="OrderOptions_type">Biljettyp</string>
+    <string name="OrderOptions_send">Skicka beställning</string>
 </resources>
