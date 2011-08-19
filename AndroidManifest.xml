@@ -11,17 +11,9 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".TicketView" />
-		<activity android:name=".Order" android:label="Beställ biljett" android:taskAffinity="se.rebootit.android.tagbiljetter.Order">
-<!--
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
--->
-		</activity>
+		<activity android:name=".Order" android:label="Beställ biljett" />
 		<activity android:name=".OrderOptions" />
 		<activity android:name=".About" />
-		<activity android:name=".Settings" />
 		<receiver android:name=".SmsReceiver">
 			<intent-filter android:priority="10000"> 
 				<action android:name="android.provider.Telephony.SMS_RECEIVED" /> 
