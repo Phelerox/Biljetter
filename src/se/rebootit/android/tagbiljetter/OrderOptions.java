@@ -116,6 +116,8 @@ public class OrderOptions extends Activity implements OnClickListener
 					SmsManager sm = SmsManager.getDefault();
 					sm.sendTextMessage(number, null, message, null, null);
 					
+					setResult(RESULT_OK, getIntent());
+				
 					finish();
 					
 					break;

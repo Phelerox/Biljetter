@@ -46,8 +46,21 @@ public class Order extends Activity
 
 				Intent intent = new Intent(Order.this, OrderOptions.class);
 				intent.putExtra("transportcompany", (Parcelable)transportCompany);
-				startActivity(intent);
+				startActivityForResult(intent, 0);
 			}
 		});
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		switch(requestCode)
+		{
+			case 0:
+				if (resultCode == RESULT_OK) {
+					finish();
+				}
+				break;
+		}
 	}
 }
