@@ -44,31 +44,6 @@ public class TicketList extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
 		
-		
-/*
- 		// Skapa ett nytt sms
-		ContentValues values = new ContentValues();
-		values.put( "address", "721505461" );
-		values.put( "date", System.currentTimeMillis() );
-		values.put( "read", 0 );
-		values.put( "status", 1 );
-		values.put( "type", 1 );
-		values.put( "seen", 0 );
-		values.put( "body", "R-A 08:04 13+'643732949'+\n+'475926302'+\n+'922407994'+\nSL biljett giltig till 08:04 2011-07-21\nRED PRIS 18 kr ink 6% moms\n0649G211034HL20K1\nhttp://mobil.sl.se" );
-
-		// Push row into the SMS table
-		ContentResolver contentResolver = Biljetter.getContext().getContentResolver();
-		contentResolver.insert( Uri.parse( "content://sms" ), values );
-		
-		finish();
-*/
-
-/*
-		Intent intent = new Intent(this, Order.class);
-		startActivity(intent);
-		finish();
-*/
-		
 		// Load the previous list of tickets
 		loadState();
 		

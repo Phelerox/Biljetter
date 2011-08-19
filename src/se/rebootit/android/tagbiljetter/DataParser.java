@@ -42,24 +42,19 @@ public class DataParser
 		}
 		this.lstTickets.clear();
 
-		long lastmessage = sharedPreferences.getLong("lastmessage", 0);
-		long lastmessagetime = 0;
+		Cursor cursor = context.getContentResolver().query(Uri.parse("content://sms/inbox"), new String[] { "_id", "thread_id", "address", "person", "date", "body", "type" }, null, null, null);
 
-		Uri mSmsinboxQueryUri = Uri.parse("content://sms/inbox");
-		Cursor cursor = context.getContentResolver().query(
-		mSmsinboxQueryUri,
-		new String[] { "_id", "thread_id", "address", "person", "date", "body", "type" }, null, null, null);
-
-		String[] columns = new String[] { "address", "person", "date", "body", "type" };
 		int messageCount = cursor.getCount();
 		int messageScanned = 0;
-
+		long lastmessage = sharedPreferences.getLong("lastmessage", 0);
+		long lastmessagetime = 0;
+		
 		Log.i(Biljetter.LOG_TAG, "Scan for tickets started");
 		if (messageCount > 0)
 		{
 			while (cursor.moveToNext())
 			{
-				long timestamp = cursor.getLong(cursor.getColumnIndex(columns[2]));
+				long timestamp = cursor.getLong(cursor.getColumnIndex("date"));
 
 				if (lastmessagetime == 0) {
 					lastmessagetime = timestamp;
@@ -70,8 +65,8 @@ public class DataParser
 					break;
 				}
 
-				String phonenumber = cursor.getString(cursor.getColumnIndex(columns[0]));
-				String message = cursor.getString(cursor.getColumnIndex(columns[3]));
+				String phonenumber = cursor.getString(cursor.getColumnIndex("address"));
+				String message = cursor.getString(cursor.getColumnIndex("body"));
 
 				Ticket ticket = parseMessage(phonenumber, timestamp, message);
 				if (ticket != null) {
@@ -219,5 +214,42 @@ public class DataParser
 				this.currentCompany.setTicketFormat(ticketFormat);
 			}
 		}
+	}
+	
+	public boolean writeSMStoDatabase(String address, long timestamp, String body, int read)
+	{
+		ContentValues values = new ContentValues();
+		values.put("address", address);
+		values.put("date", timestamp);
+		values.put("read", read);
+		values.put("status", 1);
+		values.put("type", 1);
+		values.put("seen", read );
+		values.put("body", body);
+
+		ContentResolver contentResolver = Biljetter.getContext().getContentResolver();
+		contentResolver.insert(Uri.parse( "content://sms" ), values);
+		
+		// Check if the message was saved correctly
+		Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"), new String[] { "_id", "thread_id", "address", "person", "date", "body", "type" }, null, null, null);
+		while (cursor.moveToNext())
+		{
+			long msgTimestamp = cursor.getLong(cursor.getColumnIndex("date"));
+			String msgAddress = cursor.getString(cursor.getColumnIndex("address"));
+			String msgBody = cursor.getString(cursor.getColumnIndex("body"));
+
+			// It's in there! :D
+			if (timestamp == msgTimestamp && address.equals(msgAddress) && body.equals(msgBody)) {
+				return true;
+			}
+
+			// No need to scan the whole inbox.
+			if (timestamp >= msgTimestamp) {
+				break;
+			}
+		}
+		
+		// It was not...
+		return false;
 	}
 }
