@@ -20,6 +20,8 @@ import android.view.View.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
 
+import se.rebootit.android.tagbiljetter.models.*;
+
 /**
  * TicketList is the class that lists all the found tickets in the users SMS inbox.
  * 
@@ -29,7 +31,7 @@ import android.widget.AdapterView.*;
 public class TicketList extends Activity implements OnClickListener
 {
 	ArrayList<Ticket> lstTickets = new ArrayList<Ticket>();
-	ListAdapter adapter = new TicketListAdapter(this.lstTickets, this);
+	TicketListAdapter adapter = new TicketListAdapter(this.lstTickets, this);
 	
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 	DataParser dataParser = Biljetter.getDataParser();
@@ -81,17 +83,6 @@ public class TicketList extends Activity implements OnClickListener
 		{			
 			// Sort the tickets
 			Collections.sort(this.lstTickets);
-			
-			TicketListAdapter adapter = ((TicketListAdapter)((ListView)findViewById(R.id.ticketlist)).getAdapter());
-			
-/*
-			adapter.setProvider(TicketLoader.PROVIDER_RESPLUS, sharedPreferences.getBoolean("pref_show_RESPLUS", true));
-			adapter.setProvider(TicketLoader.PROVIDER_SJ, sharedPreferences.getBoolean("pref_show_SJ", true));
-			adapter.setProvider(TicketLoader.PROVIDER_SKANETRAFIKEN, sharedPreferences.getBoolean("pref_show_SKANETRAFIKEN", true));
-			adapter.setProvider(TicketLoader.PROVIDER_STOCKHOLM, sharedPreferences.getBoolean("pref_show_SL", true));
-			adapter.setProvider(TicketLoader.PROVIDER_VARMLANDSTRAFIKEN, sharedPreferences.getBoolean("pref_show_VARMLANDSTRAFIKEN", true));
-			adapter.setProvider(TicketLoader.PROVIDER_VASTTRAFIK, sharedPreferences.getBoolean("pref_show_VASTTRAFIK", true));
-*/
 
 			adapter.notifyDataSetChanged();
 			
@@ -157,27 +148,6 @@ public class TicketList extends Activity implements OnClickListener
 		};
 		t.start();
 	}
-
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		switch(requestCode)
-		{
-			case 0: // Settings
-				if (resultCode == RESULT_OK)
-				{
-					if (data.getBooleanExtra("clearcache", false)) {
-						this.lstTickets.clear();
-						Toast.makeText(this, getString(R.string.TicketList_cachecleared), Toast.LENGTH_LONG).show();
-						updateList();
-					}
-					if (data.getBooleanExtra("reload", false)) {
-						updateList();
-					}
-				}
-				break;
-		}
-	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -216,11 +186,6 @@ public class TicketList extends Activity implements OnClickListener
 			case R.id.order:
 				intent = new Intent(this, Order.class);
 				startActivity(intent);
-				return true;
-				
-			case R.id.settings:
-				intent = new Intent(this, Settings.class);
-				startActivityForResult(intent, 0);
 				return true;
 				
 			case R.id.donate:

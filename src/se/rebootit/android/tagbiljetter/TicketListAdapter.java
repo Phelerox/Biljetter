@@ -44,30 +44,16 @@ public class TicketListAdapter extends BaseAdapter
 
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		LinearLayout itemLayout;
 		Ticket ticket = lstTickets.get(position);
-
-/*
-		if (this.providers.containsKey(ticket.getProvider()) && this.providers.get(ticket.getProvider()))
-		{
-*/
-			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.ticketlistitem, parent, false);
-			
-			TextView txtType = (TextView)itemLayout.findViewById(R.id.type);
-			TextView txtDate = (TextView)itemLayout.findViewById(R.id.date);
-			txtType.setText(DataParser.getCompanyName(ticket.getProvider()));
-			txtDate.setText(ticket.getTicketTimestampFormatted());
-			
-			return itemLayout;
-/*
-		}
-		else
-		{
-			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.no_row, parent, false);
-			itemLayout.setVisibility(LinearLayout.GONE);
-			return itemLayout;
-		}
-*/
+		
+		LinearLayout itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.ticketlistitem, parent, false);
+		
+		TextView txtType = (TextView)itemLayout.findViewById(R.id.type);
+		TextView txtDate = (TextView)itemLayout.findViewById(R.id.date);
+		txtType.setText(DataParser.getCompanyName(ticket.getProvider()));
+		txtDate.setText(ticket.getTicketTimestampFormatted());
+		
+		return itemLayout;
 	}
 	
 	public void setProvider(int key, boolean value) {
