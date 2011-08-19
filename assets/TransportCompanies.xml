@@ -64,16 +64,16 @@
 		<type code="B" name="Barn" description="" />
 		<type code="D" name="Duo/Familj" description="" />
 
-		<area code="MA" name="Malmö" description="" />
-		<area code="LU" name="Lund" description="" />
-		<area code="KR" name="Kristianstad" description="" />
-		<area code="HE" name="Helsingborg" description="" />
-		<area code="LA" name="Landskrona" description="" />
-		<area code="HÄ" name="Hässleholm" description="" />
 		<area code="ES" name="Eslöv" description="" />
-		<area code="ÄN" name="Ängelholm" description="" />
+		<area code="HE" name="Helsingborg" description="" />
+		<area code="HÄ" name="Hässleholm" description="" />
+		<area code="KR" name="Kristianstad" description="" />
+		<area code="LA" name="Landskrona" description="" />
+		<area code="LU" name="Lund" description="" />
+		<area code="MA" name="Malmö" description="" />
 		<area code="TR" name="Trelleborg" description="" />
 		<area code="YS" name="Ystad" description="" />
+		<area code="ÄN" name="Ängelholm" description="" />
 
 		<ticket format=".*? SK giltig till (.*?) (.*?)\n.*?." />
 	</company>
