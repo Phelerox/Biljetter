@@ -63,15 +63,6 @@
 	<Spinner android:id="@+id/spnType"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
-
-	<CheckBox android:id="@+id/chkFavorite"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textSize="16sp"
-		android:textColor="@color/white"
-		android:text="Spara som favorit"
-		android:enabled="false"
-		android:checked="false" />
 		
 	<Button android:id="@+id/btnSend"
 		android:layout_width="fill_parent"
