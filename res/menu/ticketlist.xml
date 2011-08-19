@@ -9,9 +9,9 @@
 	<item android:id="@+id/order"
 		android:title="@string/TicketList_menu_order"
 		android:icon="@android:drawable/ic_menu_send" />
-	<item android:id="@+id/donate"
-		android:title="@string/TicketList_menu_donate"
-		android:icon="@android:drawable/ic_menu_share" />
+	<item android:id="@+id/about"
+		android:title="@string/TicketList_menu_about"
+		android:icon="@android:drawable/ic_menu_help" />
 	<item android:id="@+id/quit"
 		android:title="@string/TicketList_menu_quit"
 		android:icon="@android:drawable/ic_menu_close_clear_cancel" />

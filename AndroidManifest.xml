@@ -20,7 +20,7 @@
 -->
 		</activity>
 		<activity android:name=".OrderOptions" />
-		<activity android:name=".Donate" />
+		<activity android:name=".About" />
 		<activity android:name=".Settings" />
 		<receiver android:name=".SmsReceiver">
 			<intent-filter android:priority="10000"> 

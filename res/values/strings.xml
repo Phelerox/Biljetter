@@ -20,7 +20,7 @@
     <string name="TicketList_menu_findallsms">Hitta alla biljetter</string>
     <string name="TicketList_menu_order">Beställ biljett</string>
     <string name="TicketList_menu_settings">Inställningar</string>
-    <string name="TicketList_menu_donate">Stöd oss</string>
+    <string name="TicketList_menu_about">Om appen</string>
     <string name="TicketList_menu_quit">Avsluta</string>
     
     <string name="Settings_header">Inställningar</string>
@@ -28,9 +28,9 @@
     <string name="Settings_save">Spara</string>
     <string name="Settings_clearcache">Rensa cache</string>
     
-    <string name="Donate_header">Stöd oss</string>
-    <string name="Donate_description">Det skulle uppskattas jättemycket ifall ni vill donera några kronor för att visa er uppskattning av appen.\n\nTack på förhand! &lt;3</string>
-    <string name="Donate_btnFlattr">Donera genom Flattr</string>
+    <string name="About_header">Om appen</string>
+    <string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nOmnomnom!\n\nVill du hjälpa oss bygga ut appen finns vi på <a href="http://github.com/erifre/Biljetter">GitHub</a>.</string>
+    <string name="About_btnFlattr">Flattra appen</string>
     
     <string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
     <string name="SmsReceiver_description">För resa %date%</string>

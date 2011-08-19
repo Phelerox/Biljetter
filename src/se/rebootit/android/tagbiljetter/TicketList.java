@@ -188,8 +188,8 @@ public class TicketList extends Activity implements OnClickListener
 				startActivity(intent);
 				return true;
 				
-			case R.id.donate:
-				intent = new Intent(this, Donate.class);
+			case R.id.about:
+				intent = new Intent(this, About.class);
 				startActivity(intent);
 				return true;
 			

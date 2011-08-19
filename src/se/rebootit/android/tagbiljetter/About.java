@@ -11,6 +11,7 @@ import android.app.*;
 import android.content.*;
 import android.net.*;
 import android.os.*;
+import android.text.method.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -19,15 +20,18 @@ import android.widget.*;
  * 
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
-public class Donate extends Activity implements OnClickListener
+public class About extends Activity implements OnClickListener
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.donate);
+		setContentView(R.layout.about);
 		
 		((Button)findViewById(R.id.btnFlattr)).setOnClickListener(this);
+		
+		((TextView)findViewById(R.id.txtDescription)).setMovementMethod(LinkMovementMethod.getInstance());
+
 	}
 	
 	public void onClick(View v)
