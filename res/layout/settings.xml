@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:paddingLeft="4sp"
+	android:paddingRight="4sp">
+	
+	<TextView android:id="@+id/header"
+		android:text="@string/Settings_header"
+		android:textSize="25sp"
+		android:textStyle="bold"
+		android:textColor="@color/white"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:paddingBottom="9sp"
+		android:layout_alignParentTop="true" />
+		
+	<CheckBox android:id="@+id/chkSilence"
+		android:text="@string/Settings_silencesms"
+		android:textSize="17sp"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content" />
+		
+	<CheckBox android:id="@+id/chkNotification"
+		android:text="@string/Settings_shownotification"
+		android:textSize="17sp"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content" />
+		
+	<Button android:id="@+id/btnSave"
+		android:text="@string/Settings_save"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent" />
+</LinearLayout>
+

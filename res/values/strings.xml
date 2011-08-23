@@ -24,9 +24,9 @@
     <string name="TicketList_menu_quit">Avsluta</string>
     
     <string name="Settings_header">Inställningar</string>
-    <string name="Settings_showticketsfrom">Visa biljetter från</string>
+    <string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
+    <string name="Settings_shownotification">Visa ikon i statusfältet \nvid ny biljett.</string>
     <string name="Settings_save">Spara</string>
-    <string name="Settings_clearcache">Rensa cache</string>
     
     <string name="About_header">Om appen</string>
     <string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nOmnomnom!\n\nVill du hjälpa oss bygga ut appen finns vi på <a href="http://github.com/erifre/Biljetter">GitHub</a>.</string>
