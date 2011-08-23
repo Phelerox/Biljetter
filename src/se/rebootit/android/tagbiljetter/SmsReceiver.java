@@ -62,7 +62,11 @@ public class SmsReceiver extends BroadcastReceiver
 
 						PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 						notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-						mNotificationManager.notify(ticket.hashCode(), notification);
+						notification.defaults |= Notification.DEFAULT_SOUND;
+						notification.defaults |= Notification.DEFAULT_VIBRATE;
+						try {
+							mNotificationManager.notify(ticket.hashCode(), notification);
+						} catch (Exception e) {  }
 					}
 
 					// Should we try so silence the sms?
