@@ -28,6 +28,7 @@ public class About extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about);
 		
+		((Button)findViewById(R.id.btnGithub)).setOnClickListener(this);
 		((Button)findViewById(R.id.btnFlattr)).setOnClickListener(this);
 		
 		// Make sure the links in the text is clickable
@@ -36,11 +37,17 @@ public class About extends Activity implements OnClickListener
 	
 	public void onClick(View v)
 	{
+		Intent browserIntent;
 		switch(v.getId())
 		{
+			case R.id.btnGithub:
+				browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/erifre/Biljetter"));
+				startActivity(browserIntent);
+				break;
+				
 			case R.id.btnFlattr:
 				// Open our flattr page in the web browser
-				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://flattr.com/thing/371293"));
+				browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://flattr.com/thing/371293"));
 				startActivity(browserIntent);
 				break;
 		}
