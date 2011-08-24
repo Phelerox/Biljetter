@@ -13,10 +13,8 @@
 	<string name="TicketList_notickets">Inga biljetter laddade.</string>
 	<string name="TicketList_findsms">Hitta biljetter</string>
 	<string name="TicketList_order">Beställ en biljett</string>
-
 	<string name="TicketList_ticketsloaded">Biljetter laddade!</string>
 	<string name="TicketList_searchingfortickets">Söker efter biljetter...</string>
-	<string name="TicketList_cachecleared">Cachen rensad!</string>
 
 	<string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>
 	<string name="TicketList_menu_findallsms">Hitta alla biljetter</string>
@@ -24,6 +22,10 @@
 	<string name="TicketList_menu_settings">Inställningar</string>
 	<string name="TicketList_menu_about">Om Biljetter</string>
 	<string name="TicketList_menu_quit">Avsluta</string>
+	
+	<string name="Wizard_header">Välkommen!</string>
+	<string name="Wizard_description">Du har precis installerat en app som kommer hjälpa dig att organisera ditt resande! Genom att hålla koll på dina sms-biljetter har du aldrig problem med att hitta rätt sms!\n\nDet finns även stöd för att beställa nya biljetter från flera olika företag.\nAllt med bara några tryck!</string>
+	<string name="Wizard_btnClose">Starta</string>
 
 	<string name="Settings_header">Inställningar</string>
 	<string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
