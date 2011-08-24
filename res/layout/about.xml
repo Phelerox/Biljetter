@@ -32,8 +32,8 @@
 				android:linksClickable="true" />
 				
 			<Button android:id="@+id/btnGithub"
+				style="?button"
 				android:text="@string/About_btnGithub"
-				android:textSize="17sp"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:drawableLeft="@drawable/blacktocat"
@@ -41,8 +41,8 @@
 				android:gravity="left|center_vertical" />
 				
 			<Button android:id="@+id/btnFlattr"
+				style="?button"
 				android:text="@string/About_btnFlattr"
-				android:textSize="17sp"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:drawableLeft="@drawable/donate_flattr"
