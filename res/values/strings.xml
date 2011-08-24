@@ -14,6 +14,7 @@
     <string name="TicketList_order">Beställ en biljett</string>
     
     <string name="TicketList_ticketsloaded">Biljetter laddade!</string>
+    <string name="TicketList_searchingfortickets">Söker efter biljetter...</string>
     <string name="TicketList_cachecleared">Cachen rensad!</string>
     
     <string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>

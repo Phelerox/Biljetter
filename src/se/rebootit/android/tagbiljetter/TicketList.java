@@ -124,12 +124,20 @@ public class TicketList extends Activity implements OnClickListener
 		scanRunning = true;
 				
 		final Handler mHandler = new Handler();
+		final ProgressDialog dialog = new ProgressDialog(this);
+		if (notify) {
+			dialog.setMessage(getString(R.string.TicketList_searchingfortickets));
+			dialog.setIndeterminate(true);
+			dialog.setCancelable(false);
+			dialog.show();
+		}
 
 		final Runnable mUpdateResults = new Runnable() {
 			public void run() {
 				updateList();
 				
 				if (notify) {
+					dialog.dismiss();
 					Toast.makeText(TicketList.this, getString(R.string.TicketList_ticketsloaded), Toast.LENGTH_LONG).show();
 				}
 			}
