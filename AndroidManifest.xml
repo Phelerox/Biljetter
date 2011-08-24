@@ -11,6 +11,7 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".TicketView" />
+		<activity android:name=".Wizard" />
 		<activity android:name=".Settings" />
 		<activity android:name=".Order" android:label="Beställ biljett" />
 		<activity android:name=".OrderOptions" />

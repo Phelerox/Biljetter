@@ -53,6 +53,16 @@ public class TicketList extends Activity implements OnClickListener
 		mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST");
 
+		// If this is the first run the application is run, show the Wizard.
+		if (sharedPreferences.getBoolean("firstrun", true)) {
+			Intent intent = new Intent(this, Wizard.class);
+			startActivity(intent);
+			
+			Editor e = sharedPreferences.edit();
+			e.putBoolean("firstrun", false);
+			e.commit();
+		}
+
 		((Button)findViewById(R.id.btnScan)).setOnClickListener(this);
 		((Button)findViewById(R.id.btnOrder)).setOnClickListener(this);
 		
@@ -300,7 +310,6 @@ public class TicketList extends Activity implements OnClickListener
 			}
 			catch (Exception e) { }
 		}
-		
 		
 		if (sharedPreferences.getBoolean("rescan", false)) {
 			loadTickets(false, false);
