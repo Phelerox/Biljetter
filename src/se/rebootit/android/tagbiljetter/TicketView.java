@@ -37,7 +37,6 @@ public class TicketView extends Activity
 			((TextView)findViewById(R.id.validto)).setText(ticket.getTicketTimestampFormatted());
 		}
 
-
 		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
 	}

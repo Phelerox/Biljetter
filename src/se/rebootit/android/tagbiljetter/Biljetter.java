@@ -21,14 +21,17 @@ public class Biljetter extends Application
 		this.context = this;
 	}
 	
+	// Provides an easy way of getting the context everythere in the application
 	public static Context getContext() {
 		return context;
 	}
 	
+	// Provides an easy way of getting SharedPreferences everythere in the application
 	public static SharedPreferences getSharedPreferences() {
 		return context.getSharedPreferences("Biljetter", Context.MODE_WORLD_READABLE);
 	}
 	
+	// Provides an easy way of getting the DataParser everythere in the application
 	public static DataParser getDataParser() {
 		if (dataParser == null) {
 			dataParser = new DataParser();

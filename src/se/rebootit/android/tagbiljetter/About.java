@@ -30,8 +30,8 @@ public class About extends Activity implements OnClickListener
 		
 		((Button)findViewById(R.id.btnFlattr)).setOnClickListener(this);
 		
+		// Make sure the links in the text is clickable
 		((TextView)findViewById(R.id.txtDescription)).setMovementMethod(LinkMovementMethod.getInstance());
-
 	}
 	
 	public void onClick(View v)
@@ -39,6 +39,7 @@ public class About extends Activity implements OnClickListener
 		switch(v.getId())
 		{
 			case R.id.btnFlattr:
+				// Open our flattr page in the web browser
 				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://flattr.com/thing/371293"));
 				startActivity(browserIntent);
 				break;

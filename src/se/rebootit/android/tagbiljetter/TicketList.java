@@ -56,6 +56,7 @@ public class TicketList extends Activity implements OnClickListener
 		((Button)findViewById(R.id.btnScan)).setOnClickListener(this);
 		((Button)findViewById(R.id.btnOrder)).setOnClickListener(this);
 		
+		// Create the list with all the tickets and make them clickable
 		ListView list = (ListView)findViewById(R.id.ticketlist);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new OnItemClickListener()
@@ -63,6 +64,7 @@ public class TicketList extends Activity implements OnClickListener
 			public void onItemClick(AdapterView<?> info, View v, int position, long id) {
 				Ticket ticket = lstTickets.get(position);
 
+				// Show TicketView
 				Intent intent = new Intent(TicketList.this, TicketView.class);
 				intent.putExtra("ticket", (Parcelable)ticket);
 				startActivity(intent);
@@ -81,7 +83,7 @@ public class TicketList extends Activity implements OnClickListener
 	{
 		if (this.lstTickets.size() > 0)
 		{			
-			// Sort the tickets
+			// Make sure all the tickets are sorted by date
 			Collections.sort(this.lstTickets);
 
 			adapter.notifyDataSetChanged();
@@ -116,6 +118,11 @@ public class TicketList extends Activity implements OnClickListener
 		loadTickets(clearCache, false);
 	}
 
+	/**
+	 * Scan for new tickets
+	 * @param clearCache	Clear previous cache and scan the whole inbox
+	 * @param notify		Tell the user that a scan is ongoing
+	 */
 	private void loadTickets(final boolean clearCache, final boolean notify)
 	{
 		if (scanRunning) {
@@ -238,10 +245,12 @@ public class TicketList extends Activity implements OnClickListener
 	@Override
 	public void finish()
 	{
+		// Make sure the list of tickets is saved before finishing!
 		saveState();
 		super.finish();
 	}
 	
+	// Save the list of tickets so we do not need to rescan every start
 	private void saveState()
 	{
 		final File cache_dir = this.getCacheDir(); 
@@ -272,7 +281,8 @@ public class TicketList extends Activity implements OnClickListener
 		}
 	}
 
-	public void loadState()
+	// Load the list of tickets previous saved
+	private void loadState()
 	{		
 		final File cache_dir = this.getCacheDir(); 
 		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
@@ -316,5 +326,4 @@ public class TicketList extends Activity implements OnClickListener
 			loadTickets(false);
 		}
 	};
-
 }
