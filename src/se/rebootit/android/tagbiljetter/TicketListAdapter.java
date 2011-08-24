@@ -53,6 +53,11 @@ public class TicketListAdapter extends BaseAdapter
 		txtType.setText(DataParser.getCompanyName(ticket.getProvider()));
 		txtDate.setText(ticket.getTicketTimestampFormatted());
 		
+		// Give even rows a background color
+		if (position % 2 == 1) {
+			itemLayout.setBackgroundColor(0x30555555);
+		}
+		
 		return itemLayout;
 	}
 	
