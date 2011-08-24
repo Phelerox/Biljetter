@@ -8,14 +8,10 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
+		style="?header"
 		android:text="@string/About_header"
-		android:textSize="25sp"
-		android:textStyle="bold"
-		android:textColor="@color/white"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
+		android:layout_width="fill_parent" />
 		
 	<ScrollView
 		android:layout_height="fill_parent"
@@ -36,8 +32,8 @@
 				android:linksClickable="true" />
 				
 			<Button android:id="@+id/btnGithub"
+				style="?button"
 				android:text="@string/About_btnGithub"
-				android:textSize="17sp"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:drawableLeft="@drawable/blacktocat"
@@ -45,8 +41,8 @@
 				android:gravity="left|center_vertical" />
 				
 			<Button android:id="@+id/btnFlattr"
+				style="?button"
 				android:text="@string/About_btnFlattr"
-				android:textSize="17sp"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:drawableLeft="@drawable/donate_flattr"

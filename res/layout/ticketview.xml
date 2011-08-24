@@ -8,14 +8,10 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
+		style="?header"
 		android:text="@string/TicketView_header"
-		android:textSize="25sp"
-		android:textStyle="bold"
-		android:textColor="@color/white"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
+		android:layout_width="fill_parent" />
 		
 	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_height="wrap_content" 
