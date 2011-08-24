@@ -33,8 +33,8 @@
 	<string name="Settings_save">Spara</string>
 
 	<string name="About_header">Om Biljetter</string>
-	<string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nAppen är släppt under GPL 3 och hela källkoden och support finns på Github.</string>
-	<string name="About_btnGithub">Oss på Github</string>
+	<string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nAppen är släppt under GPL 3 och hela källkoden och support finns på GitHub.</string>
+	<string name="About_btnGitHub">Oss på GitHub</string>
 	<string name="About_btnFlattr">Flattra appen</string>
 
 	<string name="SmsReceiver_newticket">Ny biljett mottagen!</string>

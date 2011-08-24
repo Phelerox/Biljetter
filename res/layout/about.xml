@@ -31,9 +31,9 @@
 				android:paddingBottom="9sp"
 				android:linksClickable="true" />
 				
-			<Button android:id="@+id/btnGithub"
+			<Button android:id="@+id/btnGitHub"
 				style="?button"
-				android:text="@string/About_btnGithub"
+				android:text="@string/About_btnGitHub"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:drawableLeft="@drawable/blacktocat"
