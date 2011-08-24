@@ -24,7 +24,7 @@
 	<string name="TicketList_menu_quit">Avsluta</string>
 	
 	<string name="Wizard_header">Kom igång</string>
-	<string name="Wizard_description">Välkommen till Biljetter! Den här appen scannar igenom dina sms som innehåller biljetter och presenterar de i en sorterad lista.\n\nDu kan även beställa biljetter utan att kunna koder och sms-nummer.</string>
+	<string name="Wizard_description">Välkommen till Biljetter!\n\nDen här appen scannar igenom dina sms, hittar de som innehåller biljetter, och presenterar dem i en sorterad lista.\n\nDu kan även beställa biljetter utan att kunna koder och sms-nummer.</string>
 	<string name="Wizard_btnClose">Starta</string>
 
 	<string name="Settings_header">Inställningar</string>
