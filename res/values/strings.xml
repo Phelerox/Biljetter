@@ -1,45 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Biljetter</string>
-    
-    <string name="TicketView_header">Visa biljett</string>
-    <string name="TicketView_received">Mottaget:</string>
-    <string name="TicketView_validto">Giltig till:</string>
-    <string name="TicketView_sender">Avsändare:</string>
-    <string name="TicketView_createnotification">Lägg i statusfältet</string>
-    <string name="TicketView_close">Stäng</string>
-    
-    <string name="TicketList_header">Mina biljetter</string>
-    <string name="TicketList_notickets">Inga biljetter laddade.</string>
-    <string name="TicketList_findsms">Hitta biljetter</string>
-    <string name="TicketList_order">Beställ en biljett</string>
-    
-    <string name="TicketList_ticketsloaded">Biljetter laddade!</string>
-    <string name="TicketList_searchingfortickets">Söker efter biljetter...</string>
-    <string name="TicketList_cachecleared">Cachen rensad!</string>
-    
-    <string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>
-    <string name="TicketList_menu_findallsms">Hitta alla biljetter</string>
-    <string name="TicketList_menu_order">Beställ biljett</string>
-    <string name="TicketList_menu_settings">Inställningar</string>
-    <string name="TicketList_menu_about">Om appen</string>
-    <string name="TicketList_menu_quit">Avsluta</string>
-    
-    <string name="Settings_header">Inställningar</string>
-    <string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
-    <string name="Settings_shownotification">Visa ikon i statusfältet \nvid ny biljett.</string>
-    <string name="Settings_save">Spara</string>
-    
-    <string name="About_header">Om Biljetter</string>
-    <string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nOmnomnom!\n\nVill du hjälpa oss bygga ut appen finns vi på <a href="http://github.com/erifre/Biljetter">GitHub</a>.</string>
-    <string name="About_btnFlattr">Flattra appen</string>
-    
-    <string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
-    <string name="SmsReceiver_description">För resa %date%</string>
-    
-    <string name="Order_header">Välj företag</string>
-    <string name="OrderOptions_header">Biljettalternativ</string>
-    <string name="OrderOptions_area">Område</string>
-    <string name="OrderOptions_type">Biljettyp</string>
-    <string name="OrderOptions_send">Skicka beställning</string>
+	<string name="app_name">Biljetter</string>
+
+	<string name="TicketView_header">Visa biljett</string>
+	<string name="TicketView_received">Mottaget:</string>
+	<string name="TicketView_validto">Giltig till:</string>
+	<string name="TicketView_sender">Avsändare:</string>
+	<string name="TicketView_createnotification">Lägg i statusfältet</string>
+	<string name="TicketView_close">Stäng</string>
+
+	<string name="TicketList_header">Mina biljetter</string>
+	<string name="TicketList_notickets">Inga biljetter laddade.</string>
+	<string name="TicketList_findsms">Hitta biljetter</string>
+	<string name="TicketList_order">Beställ en biljett</string>
+
+	<string name="TicketList_ticketsloaded">Biljetter laddade!</string>
+	<string name="TicketList_searchingfortickets">Söker efter biljetter...</string>
+	<string name="TicketList_cachecleared">Cachen rensad!</string>
+
+	<string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>
+	<string name="TicketList_menu_findallsms">Hitta alla biljetter</string>
+	<string name="TicketList_menu_order">Beställ biljett</string>
+	<string name="TicketList_menu_settings">Inställningar</string>
+	<string name="TicketList_menu_about">Om appen</string>
+	<string name="TicketList_menu_quit">Avsluta</string>
+
+	<string name="Settings_header">Inställningar</string>
+	<string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
+	<string name="Settings_shownotification">Visa ikon i statusfältet \nvid ny biljett.</string>
+	<string name="Settings_save">Spara</string>
+
+	<string name="About_header">Om Biljetter</string>
+	<string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nOmnomnom!\n\nVill du hjälpa oss bygga ut appen finns vi på <a href="http://github.com/erifre/Biljetter">GitHub</a>.</string>
+	<string name="About_btnFlattr">Flattra appen</string>
+
+	<string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
+	<string name="SmsReceiver_description">För resa %date%</string>
+
+	<string name="Order_header">Välj företag</string>
+	<string name="OrderOptions_header">Biljettalternativ</string>
+	<string name="OrderOptions_area">Område</string>
+	<string name="OrderOptions_type">Biljettyp</string>
+	<string name="OrderOptions_send">Skicka beställning</string>
 </resources>

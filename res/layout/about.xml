@@ -33,6 +33,6 @@
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
 		android:drawableLeft="@drawable/donate_flattr"
-        android:drawablePadding="15sp"
+		android:drawablePadding="15sp"
 		android:gravity="left|center_vertical" />
 </LinearLayout>

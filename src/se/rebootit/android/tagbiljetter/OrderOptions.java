@@ -39,7 +39,7 @@ public class OrderOptions extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.orderoptions);
 
-        Intent intent = getIntent();
+		Intent intent = getIntent();
 		this.transportCompany = (TransportCompany)intent.getParcelableExtra("transportcompany");
 
 		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);

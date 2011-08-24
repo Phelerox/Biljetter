@@ -37,7 +37,7 @@
 			android:layout_width="wrap_content"
 			android:gravity="left|center_vertical" 
 			android:paddingLeft="5sp"
-			android:paddingBottom="9sp"  />
+			android:paddingBottom="9sp" />
 	</LinearLayout>
 	
 	<TextView

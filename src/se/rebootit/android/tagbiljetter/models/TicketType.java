@@ -9,19 +9,19 @@ import android.os.*;
 
 public class TicketType implements Parcelable
 {
-    private String code;
-    private String name;
-    private String description;
-    
-    public TicketType() { }
-    
-    public TicketType(String code, String name, String description)
-    {
+	private String code;
+	private String name;
+	private String description;
+
+	public TicketType() { }
+
+	public TicketType(String code, String name, String description)
+	{
 		this.code = code;
 		this.name = name;
 		this.description = description;
 	}
-	
+
 	public void setCode(String code) { this.code = code; }
 	public String getCode() { return this.code; }
 	

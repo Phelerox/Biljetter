@@ -9,14 +9,14 @@ import android.os.*;
 
 public class TransportArea implements Parcelable
 {
-    private String code;
-    private String name;
-    private String description;
-    
-    public TransportArea() { }
-    
-    public TransportArea(String code, String name, String description)
-    {
+	private String code;
+	private String name;
+	private String description;
+
+	public TransportArea() { }
+
+	public TransportArea(String code, String name, String description)
+	{
 		this.code = code;
 		this.name = name;
 		this.description = description;

@@ -169,7 +169,7 @@ public class DataParser
 				if (localName.equalsIgnoreCase("company")){
 					this.companies.add(this.currentCompany);
 				}
-				builder.setLength(0);    
+				builder.setLength(0);
 			}
 		}
 

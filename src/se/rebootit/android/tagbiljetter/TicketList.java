@@ -247,9 +247,9 @@ public class TicketList extends Activity implements OnClickListener
 		final File cache_dir = this.getCacheDir(); 
 		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
 
-		FileOutputStream   fos  = null;
-		ObjectOutputStream oos  = null;
-		boolean            keep = true;
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		boolean keep = true;
 
 		try
 		{
@@ -264,8 +264,8 @@ public class TicketList extends Activity implements OnClickListener
 		}
 		finally {
 			try {
-				if (oos != null)   oos.close();
-				if (fos != null)   fos.close();
+				if (oos != null) oos.close();
+				if (fos != null) fos.close();
 				if (keep == false) suspend_f.delete();
 			}
 			catch (Exception e) { }
@@ -277,9 +277,9 @@ public class TicketList extends Activity implements OnClickListener
 		final File cache_dir = this.getCacheDir(); 
 		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
 
-		FileInputStream    fis  = null;
-		ObjectInputStream  ois  = null;
-		boolean            keep = true;
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		boolean keep = true;
 
 		try
 		{
@@ -294,8 +294,8 @@ public class TicketList extends Activity implements OnClickListener
 		}
 		finally {
 			try {
-				if (ois != null)   ois.close();
-				if (fis != null)   fis.close();
+				if (ois != null) ois.close();
+				if (fis != null) fis.close();
 				if (keep == false) suspend_f.delete();
 			}
 			catch (Exception e) { }
@@ -313,7 +313,7 @@ public class TicketList extends Activity implements OnClickListener
 	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			loadTickets(false);     
+			loadTickets(false);
 		}
 	};
 

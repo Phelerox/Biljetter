@@ -20,15 +20,15 @@ public class TicketView extends Activity
 {
 	Ticket ticket;
 	
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ticketview);
-        
-        Intent intent = getIntent();
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.ticketview);
+
+		Intent intent = getIntent();
 		this.ticket = intent.getParcelableExtra("ticket");
-		
+
 		((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
 
 		if (!"".equals(ticket.getTicketTimestampFormatted())) {
@@ -40,8 +40,8 @@ public class TicketView extends Activity
 
 		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
-    }
-    
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();

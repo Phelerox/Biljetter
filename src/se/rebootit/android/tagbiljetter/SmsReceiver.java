@@ -66,7 +66,7 @@ public class SmsReceiver extends BroadcastReceiver
 						notification.defaults |= Notification.DEFAULT_VIBRATE;
 						try {
 							mNotificationManager.notify(ticket.hashCode(), notification);
-						} catch (Exception e) {  }
+						} catch (Exception e) { }
 					}
 
 					// Should we try so silence the sms?

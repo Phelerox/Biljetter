@@ -5,7 +5,7 @@
 		android:icon="@android:drawable/ic_menu_search" />
 	<item android:id="@+id/scanAll"
 		android:title="@string/TicketList_menu_findallsms"
-		android:icon="@android:drawable/ic_menu_rotate"  />
+		android:icon="@android:drawable/ic_menu_rotate" />
 	<item android:id="@+id/order"
 		android:title="@string/TicketList_menu_order"
 		android:icon="@android:drawable/ic_menu_send" />
