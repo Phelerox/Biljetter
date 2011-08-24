@@ -30,14 +30,14 @@
     <string name="Settings_shownotification">Visa ikon i statusfältet \nvid ny biljett.</string>
     <string name="Settings_save">Spara</string>
     
-    <string name="About_header">Om appen</string>
+    <string name="About_header">Om Biljetter</string>
     <string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nOmnomnom!\n\nVill du hjälpa oss bygga ut appen finns vi på <a href="http://github.com/erifre/Biljetter">GitHub</a>.</string>
     <string name="About_btnFlattr">Flattra appen</string>
     
     <string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
     <string name="SmsReceiver_description">För resa %date%</string>
     
-    <string name="Order_header">Tillgängliga operatörer</string>
+    <string name="Order_header">Välj företag</string>
     <string name="OrderOptions_header">Biljettalternativ</string>
     <string name="OrderOptions_area">Område</string>
     <string name="OrderOptions_type">Biljettyp</string>
