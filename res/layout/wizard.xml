@@ -15,9 +15,7 @@
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
 		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true"
-		android:drawableRight="@drawable/icon"
-		android:drawablePadding="15sp" />
+		android:layout_alignParentTop="true" />
 		
 	<TextView android:id="@+id/txtDescription"
 		android:text="@string/Wizard_description"
@@ -29,8 +27,8 @@
 		android:paddingBottom="9sp" />
 		
 	<Button android:id="@+id/btnClose"
+		style="?button"
 		android:text="@string/Wizard_btnClose"
-		android:textSize="17sp"
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent" />
 </LinearLayout>
