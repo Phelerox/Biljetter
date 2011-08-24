@@ -4,6 +4,7 @@
     
     <string name="TicketView_header">Visa biljett</string>
     <string name="TicketView_received">Mottaget:</string>
+    <string name="TicketView_validto">Giltig till:</string>
     <string name="TicketView_sender">Avsändare:</string>
     <string name="TicketView_createnotification">Lägg i statusfältet</string>
     <string name="TicketView_close">Stäng</string>

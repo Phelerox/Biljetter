@@ -30,8 +30,13 @@ public class TicketView extends Activity
 		this.ticket = intent.getParcelableExtra("ticket");
 		
 		((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
-		((TextView)findViewById(R.id.sender)).setVisibility(TextView.VISIBLE);
-		((TextView)findViewById(R.id.senderHeader)).setVisibility(TextView.VISIBLE);
+
+		if (!"".equals(ticket.getTicketTimestampFormatted())) {
+			((TextView)findViewById(R.id.validtoHeader)).setVisibility(TextView.VISIBLE);
+			((TextView)findViewById(R.id.validto)).setVisibility(TextView.VISIBLE);
+			((TextView)findViewById(R.id.validto)).setText(ticket.getTicketTimestampFormatted());
+		}
+
 
 		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
