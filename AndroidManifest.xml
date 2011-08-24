@@ -4,18 +4,18 @@
 	android:versionCode="6"
 	android:versionName="1.3">
 	<application android:name="Biljetter" android:label="@string/app_name" android:icon="@drawable/icon" android:theme="@style/Theme.Black">
-		<activity android:name="TicketList" android:label="@string/app_name">
+		<activity android:name="TicketList" android:label="@string/app_name" android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".TicketView" />
-		<activity android:name=".Wizard" />
-		<activity android:name=".Settings" />
-		<activity android:name=".Order" android:label="Beställ biljett" />
-		<activity android:name=".OrderOptions" />
-		<activity android:name=".About" />
+		<activity android:name=".TicketView" android:screenOrientation="portrait" />
+		<activity android:name=".Wizard" android:screenOrientation="portrait" />
+		<activity android:name=".Settings" android:screenOrientation="portrait" />
+		<activity android:name=".Order" android:screenOrientation="portrait" />
+		<activity android:name=".OrderOptions" android:screenOrientation="portrait" />
+		<activity android:name=".About" android:screenOrientation="portrait" />
 		<receiver android:name=".SmsReceiver">
 			<intent-filter android:priority="10000"> 
 				<action android:name="android.provider.Telephony.SMS_RECEIVED" /> 
