@@ -15,9 +15,8 @@ import android.text.method.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+
 /**
- * Donate is the class that shows the Flattr button for this project
- * 
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
 public class Wizard extends Activity implements OnClickListener
