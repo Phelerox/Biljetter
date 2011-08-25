@@ -5,7 +5,8 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
 	android:paddingLeft="4sp"
-	android:paddingRight="4sp">
+	android:paddingRight="4sp"
+	android:keepScreenOn="true">
 	
 	<TextView android:id="@+id/header"
 		style="?header"
