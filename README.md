@@ -22,6 +22,9 @@ Stöd för följande företag:
 ## Utvecklare
 
 Erik Fredriksen <erik@fredriksen.se>
+
 Marco Baxemyr <baxemyr@gmail.com>
+
 Emil Hernvall <aderyn@gmail.com>
+
 Moa Liljedahl <moa.liljedahl@gmail.com>
