@@ -8,31 +8,46 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
+		style="?header"
 		android:text="@string/About_header"
-		android:textSize="25sp"
-		android:textStyle="bold"
-		android:textColor="@color/white"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
+		android:layout_width="fill_parent" />
 		
-	<TextView android:id="@+id/txtDescription"
-		android:text="@string/About_description"
-		android:textSize="20sp"
-		android:textColor="@color/white"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:layout_gravity="top|center_horizontal"
-		android:paddingBottom="9sp"
-		android:linksClickable="true" />
-		
-	<Button android:id="@+id/btnFlattr"
-		android:text="@string/About_btnFlattr"
-		android:textSize="17sp"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:drawableLeft="@drawable/donate_flattr"
-        android:drawablePadding="15sp"
-		android:gravity="left|center_vertical" />
+	<ScrollView
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+
+			<TextView android:id="@+id/txtDescription"
+				android:text="@string/About_description"
+				android:textSize="20sp"
+				android:textColor="@color/white"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:layout_gravity="top|center_horizontal"
+				android:paddingBottom="9sp"
+				android:linksClickable="true" />
+				
+			<Button android:id="@+id/btnGitHub"
+				style="?button"
+				android:text="@string/About_btnGitHub"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:drawableLeft="@drawable/blacktocat"
+				android:drawablePadding="15sp"
+				android:gravity="left|center_vertical" />
+				
+			<Button android:id="@+id/btnFlattr"
+				style="?button"
+				android:text="@string/About_btnFlattr"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:drawableLeft="@drawable/donate_flattr"
+				android:drawablePadding="15sp"
+				android:gravity="left|center_vertical" />
+		</LinearLayout>
+	</ScrollView>
 </LinearLayout>

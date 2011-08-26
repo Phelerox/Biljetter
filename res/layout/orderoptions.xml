@@ -8,14 +8,10 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
+		style="?header"
 		android:text="@string/OrderOptions_header"
-		android:textSize="25sp"
-		android:textStyle="bold"
-		android:textColor="@color/white"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
+		android:layout_width="fill_parent"/>
 	<LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal"
@@ -37,7 +33,7 @@
 			android:layout_width="wrap_content"
 			android:gravity="left|center_vertical" 
 			android:paddingLeft="5sp"
-			android:paddingBottom="9sp"  />
+			android:paddingBottom="9sp" />
 	</LinearLayout>
 	
 	<TextView
@@ -65,7 +61,8 @@
 		android:layout_height="wrap_content" />
 		
 	<Button android:id="@+id/btnSend"
+		style="?button"
+		android:text="@string/OrderOptions_send"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/OrderOptions_send" />
+		android:layout_height="wrap_content" />
 </LinearLayout>

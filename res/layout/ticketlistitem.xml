@@ -11,7 +11,8 @@
 			android:textColor="@color/white"
 			android:textSize="20sp"
 			android:paddingTop="6sp"
-			android:paddingBottom="6sp" />
+			android:paddingBottom="6sp"
+			android:paddingLeft="5sp" />
 		<TextView
 			android:id="@+id/date"
 			android:layout_height="wrap_content"
@@ -21,6 +22,7 @@
 			android:textSize="14sp"
 			android:gravity="right"
 			android:paddingTop="6sp"
-			android:paddingBottom="6sp" />
+			android:paddingBottom="6sp"
+			android:paddingRight="5sp" />
 	</TableRow>
 </TableLayout>

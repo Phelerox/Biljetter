@@ -46,22 +46,40 @@ public class SmsReceiver extends BroadcastReceiver
 				
 				if (ticket != null)
 				{
-					// Notification
-					NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+					// Show a notification
+					if (sharedPreferences.getBoolean("shownotification", true))
+					{
+						NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-					Notification notification = new Notification(R.drawable.icon, context.getString(R.string.SmsReceiver_newticket), System.currentTimeMillis());
+						Notification notification = new Notification(R.drawable.icon, context.getString(R.string.SmsReceiver_newticket), System.currentTimeMillis());
 
-					CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
-					CharSequence contentText = context.getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
-					Intent notificationIntent = new Intent(context, TicketView.class);
-					notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
-					notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					notificationIntent.putExtra("ticket", (Parcelable)ticket);
+						CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
+						CharSequence contentText = context.getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
+						Intent notificationIntent = new Intent(context, TicketView.class);
+						notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
+						notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						notificationIntent.putExtra("ticket", (Parcelable)ticket);
 
-					PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-					notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-					mNotificationManager.notify(ticket.hashCode(), notification);
+						PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+						notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+						notification.defaults |= Notification.DEFAULT_SOUND;
+						notification.defaults |= Notification.DEFAULT_VIBRATE;
+						try {
+							mNotificationManager.notify(ticket.hashCode(), notification);
+						} catch (Exception e) { }
+					}
 
+					// Should we try so silence the sms?
+					if (sharedPreferences.getBoolean("silencesms", false))
+					{
+						// Try to write the sms to the database
+						boolean successfulWrite = dataParser.writeSMStoDatabase(sms.getOriginatingAddress(), sms.getTimestampMillis(), sms.getMessageBody().toString(), 1);
+						if (successfulWrite) {
+							// Prevent the incoming sms from displaying a notification
+							this.abortBroadcast(); 
+						}
+					}
+					
 					// Send broadcast to TicketList telling it to update the tickets
 					context.sendBroadcast(new Intent("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST"));	
 
@@ -69,13 +87,6 @@ public class SmsReceiver extends BroadcastReceiver
 					Editor e = sharedPreferences.edit();
 					e.putBoolean("rescan", true);
 					e.commit();
-
-					// Try to write the sms to the database
-					boolean successfulWrite = dataParser.writeSMStoDatabase(sms.getOriginatingAddress(), sms.getTimestampMillis(), sms.getMessageBody().toString(), 1);
-					if (successfulWrite) {
-						// Prevent the incoming sms from displaying a notification
-						this.abortBroadcast(); 
-					}
 				}
 				else {
 					return;

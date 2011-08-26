@@ -115,7 +115,7 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 		}
 	}
 
-    public int compareTo(Ticket ticket) {
+	public int compareTo(Ticket ticket) {
 		if (((Ticket)ticket).getTimestamp() > getTimestamp()) {
 			return 1;
 		} else if (((Ticket)ticket).getTimestamp() < getTimestamp()) {
@@ -123,9 +123,8 @@ public class Ticket implements Parcelable, Serializable, Comparable<Ticket>
 		} else {
 			return 0;
 		}
-    }
+	}
 
-    
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Ticket))

@@ -10,13 +10,13 @@ import java.util.*;
 
 import android.os.*;
 
-public class TransportCompany_Varmlandstrafiken extends TransportCompany implements Parcelable
+public class TransportCompany_Jonkoping extends TransportCompany implements Parcelable
 {
 	String[] months = new String[] { "jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
 	
-	public TransportCompany_Varmlandstrafiken() { };
+	public TransportCompany_Jonkoping() { };
 	
-	public TransportCompany_Varmlandstrafiken(String name, String phonenumber) {
+	public TransportCompany_Jonkoping(String name, String phonenumber) {
 		super(name, phonenumber);
 	}
 	
@@ -37,7 +37,7 @@ public class TransportCompany_Varmlandstrafiken extends TransportCompany impleme
 		return 0;
 	}
 	
-	private TransportCompany_Varmlandstrafiken(Parcel in) {
+	private TransportCompany_Jonkoping(Parcel in) {
 		this.id = in.readInt();
 		this.logo = in.readString();
 		this.name = in.readString();
@@ -55,13 +55,13 @@ public class TransportCompany_Varmlandstrafiken extends TransportCompany impleme
 		out.writeTypedList(this.types);
 	}
 
-	public static final Parcelable.Creator<TransportCompany_Varmlandstrafiken> CREATOR = new Parcelable.Creator<TransportCompany_Varmlandstrafiken>() {
-		public TransportCompany_Varmlandstrafiken createFromParcel(Parcel in) {
-			return new TransportCompany_Varmlandstrafiken(in);
+	public static final Parcelable.Creator<TransportCompany_Jonkoping> CREATOR = new Parcelable.Creator<TransportCompany_Jonkoping>() {
+		public TransportCompany_Jonkoping createFromParcel(Parcel in) {
+			return new TransportCompany_Jonkoping(in);
 		}
 
-		public TransportCompany_Varmlandstrafiken[] newArray(int size) {
-			return new TransportCompany_Varmlandstrafiken[size];
+		public TransportCompany_Jonkoping[] newArray(int size) {
+			return new TransportCompany_Jonkoping[size];
 		}
 	};
 

@@ -20,23 +20,27 @@ public class TicketView extends Activity
 {
 	Ticket ticket;
 	
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ticketview);
-        
-        Intent intent = getIntent();
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.ticketview);
+
+		Intent intent = getIntent();
 		this.ticket = intent.getParcelableExtra("ticket");
-		
+
 		((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
-		((TextView)findViewById(R.id.sender)).setVisibility(TextView.VISIBLE);
-		((TextView)findViewById(R.id.senderHeader)).setVisibility(TextView.VISIBLE);
+
+		if (!"".equals(ticket.getTicketTimestampFormatted())) {
+			((TextView)findViewById(R.id.validtoHeader)).setVisibility(TextView.VISIBLE);
+			((TextView)findViewById(R.id.validto)).setVisibility(TextView.VISIBLE);
+			((TextView)findViewById(R.id.validto)).setText(ticket.getTicketTimestampFormatted());
+		}
 
 		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
-    }
-    
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();

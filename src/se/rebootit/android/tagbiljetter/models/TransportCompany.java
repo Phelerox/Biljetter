@@ -15,14 +15,14 @@ import se.rebootit.android.tagbiljetter.*;
 
 public abstract class TransportCompany
 {
-    protected int id;
-    protected String name;
-    protected String phonenumber;
-    protected String logo;
-    protected String ticketformat;
+	protected int id;
+	protected String name;
+	protected String phonenumber;
+	protected String logo;
+	protected String ticketformat;
 
-    protected List<TransportArea> areas = new ArrayList<TransportArea>();
-    protected List<TicketType> types = new ArrayList<TicketType>();
+	protected List<TransportArea> areas = new ArrayList<TransportArea>();
+	protected List<TicketType> types = new ArrayList<TicketType>();
 
 	public TransportCompany() { }
 
@@ -60,8 +60,8 @@ public abstract class TransportCompany
 		return output;
 	}
 	
-    public String getMessage(TransportArea area, TicketType type) { return null; }
-    public boolean checkMessage(String phonenumber, String message) { return false; }
+	public String getMessage(TransportArea area, TicketType type) { return null; }
+	public boolean checkMessage(String phonenumber, String message) { return false; }
 
 	public void addTransportArea(TransportArea area) { areas.add(area); }
 	public List<TransportArea> getTransportAreas() { return areas; }

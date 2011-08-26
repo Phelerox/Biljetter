@@ -33,6 +33,10 @@ public class DataParser
 	
 	static HashMap<Integer, TransportCompany> mapCompanies = new HashMap<Integer, TransportCompany>();
 
+	/**
+	 * Scan the phone inbox and look for tickets that we can import
+	 * @param clearCache	Clear the cache and scan the WHOLE inbox
+	 */
 	public ArrayList<Ticket> getTickets(boolean clearCache)
 	{
 		if (clearCache) {
@@ -85,10 +89,20 @@ public class DataParser
 		return this.lstTickets;
 	}
 	
+	/**
+	 * Returns the company name
+	 * @param companyid		The companys id number
+	 */
 	public static String getCompanyName(int companyid) {
 		return mapCompanies.get(companyid).getName();
 	}
 
+	/**
+	 * Parse the message and check if it's a valid ticket
+	 * @param phonenumber	From what number did the sms arrive from?
+	 * @param timestamp		Timestamp arrived
+	 * @param message		The message
+	 */
 	public Ticket parseMessage(String phonenumber, long timestamp, String message)
 	{
 		for (TransportCompany transportCompany : lstCompanies)
@@ -114,6 +128,9 @@ public class DataParser
 		return null;
 	}
 	
+	/**
+	 * Return the list of loaded companies
+	 */
 	public ArrayList<TransportCompany> getCompanies()
 	{
 		SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -169,7 +186,7 @@ public class DataParser
 				if (localName.equalsIgnoreCase("company")){
 					this.companies.add(this.currentCompany);
 				}
-				builder.setLength(0);    
+				builder.setLength(0);
 			}
 		}
 
@@ -216,6 +233,13 @@ public class DataParser
 		}
 	}
 	
+	/**
+	 * Write a message to the inbox database
+	 * @param address	From what phone number
+	 * @param timestamp	Time of arrival
+	 * @param body		Body of the message
+	 * @param read		Is the message read or not?
+	 */
 	public boolean writeSMStoDatabase(String address, long timestamp, String body, int read)
 	{
 		ContentValues values = new ContentValues();

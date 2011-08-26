@@ -26,6 +26,7 @@ public class OrderCompanyListAdapter extends BaseAdapter
 {
 	private List<TransportCompany> lstCompanies;
 	private Context context;
+	private int skipped = 0;
  
 	public OrderCompanyListAdapter(List<TransportCompany> lstCompanies, Context context) {
 		this.lstCompanies = lstCompanies;
@@ -64,10 +65,19 @@ public class OrderCompanyListAdapter extends BaseAdapter
 			}
 			txtName.setText(transportCompany.getName());
 			
+			// Make sure we count the skipped items
+			if (position == 0) { skipped = 0; }
+
+			// Give even rows a background color
+			if ((position-skipped) % 2 == 1) {
+				itemLayout.setBackgroundColor(0x30555555);
+			}
+			
 			return itemLayout;
 		}
 		else
 		{
+			skipped++;
 			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.no_row, parent, false);
 			itemLayout.setVisibility(LinearLayout.GONE);
 			return itemLayout;

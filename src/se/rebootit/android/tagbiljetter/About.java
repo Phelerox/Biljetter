@@ -15,9 +15,8 @@ import android.text.method.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+
 /**
- * Donate is the class that shows the Flattr button for this project
- * 
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
 public class About extends Activity implements OnClickListener
@@ -28,18 +27,26 @@ public class About extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about);
 		
+		((Button)findViewById(R.id.btnGitHub)).setOnClickListener(this);
 		((Button)findViewById(R.id.btnFlattr)).setOnClickListener(this);
 		
+		// Make sure the links in the text is clickable
 		((TextView)findViewById(R.id.txtDescription)).setMovementMethod(LinkMovementMethod.getInstance());
-
 	}
 	
 	public void onClick(View v)
 	{
+		Intent browserIntent;
 		switch(v.getId())
 		{
+			case R.id.btnGitHub:
+				browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/erifre/Biljetter"));
+				startActivity(browserIntent);
+				break;
+				
 			case R.id.btnFlattr:
-				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://flattr.com/thing/371293"));
+				// Open our flattr page in the web browser
+				browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://flattr.com/thing/371293"));
 				startActivity(browserIntent);
 				break;
 		}

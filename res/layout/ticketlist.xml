@@ -8,14 +8,10 @@
 	android:paddingRight="4sp">
 	
 	<TextView android:id="@+id/header"
+		style="?header"
 		android:text="@string/TicketList_header"
-		android:textSize="25sp"
-		android:textStyle="bold"
-		android:textColor="@color/white"
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
+		android:layout_width="fill_parent" />
 	<LinearLayout android:id="@+id/no_tickets"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -30,14 +26,14 @@
 			android:paddingBottom="20sp"
 			android:layout_alignParentTop="true" />
 		<Button android:id="@+id/btnScan"
+			style="?button"
 			android:text="@string/TicketList_findsms"
-			android:textSize="20sp"
 			android:layout_height="wrap_content"
 			android:layout_width="fill_parent"
 			android:layout_alignParentBottom="true"	/>
 		<Button android:id="@+id/btnOrder"
+			style="?button"
 			android:text="@string/TicketList_order"
-			android:textSize="20sp"
 			android:layout_height="wrap_content"
 			android:layout_width="fill_parent"
 			android:layout_alignParentBottom="true"	/>
