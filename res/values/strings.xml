@@ -10,10 +10,10 @@
 	<string name="TicketView_close">Stäng</string>
 
 	<string name="TicketList_header">Mina biljetter</string>
-	<string name="TicketList_notickets">Inga biljetter laddade.</string>
+	<string name="TicketList_notickets">Inga biljetter hittade.</string>
 	<string name="TicketList_findsms">Hitta biljetter</string>
 	<string name="TicketList_order">Beställ en biljett</string>
-	<string name="TicketList_ticketsloaded">Biljetter laddade!</string>
+	<string name="TicketList_ticketsloaded">Sökning efter biljetter klar!</string>
 	<string name="TicketList_searchingfortickets">Söker efter biljetter...</string>
 
 	<string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>
