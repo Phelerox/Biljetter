@@ -55,7 +55,7 @@ public class TicketListAdapter extends BaseAdapter
 		
 		// Give even rows a background color
 		if (position % 2 == 1) {
-			itemLayout.setBackgroundColor(0x30555555);
+			itemLayout.setBackgroundColor(0xaa555555);
 		}
 		
 		return itemLayout;
