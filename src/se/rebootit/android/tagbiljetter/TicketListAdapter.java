@@ -45,8 +45,8 @@ public class TicketListAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		Ticket ticket = lstTickets.get(position);
-		
-		LinearLayout itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.ticketlistitem, parent, false);
+
+		LinearLayout itemLayout = (LinearLayout)LayoutInflater.from(context).inflate(R.layout.ticketlist_listitem, parent, false);
 		
 		TextView txtType = (TextView)itemLayout.findViewById(R.id.type);
 		TextView txtDate = (TextView)itemLayout.findViewById(R.id.date);
@@ -55,7 +55,7 @@ public class TicketListAdapter extends BaseAdapter
 		
 		// Give even rows a background color
 		if (position % 2 == 1) {
-			itemLayout.setBackgroundColor(0xaa555555);
+			itemLayout.setBackgroundColor(0x30558cd0);
 		}
 		
 		return itemLayout;

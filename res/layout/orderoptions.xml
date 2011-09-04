@@ -12,8 +12,8 @@
 		android:text="@string/OrderOptions_header"
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"/>
+
 	<LinearLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
@@ -31,7 +31,7 @@
 			android:layout_alignParentRight="true"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:gravity="left|center_vertical" 
+			android:gravity="center_vertical|left"
 			android:paddingLeft="5sp"
 			android:paddingBottom="9sp" />
 	</LinearLayout>
