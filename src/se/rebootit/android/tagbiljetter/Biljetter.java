@@ -5,8 +5,11 @@
 
 package se.rebootit.android.tagbiljetter;
 
+import java.io.*;
+
 import android.app.*;
 import android.content.*;
+import android.database.sqlite.*;
 
 public class Biljetter extends Application
 {
@@ -15,6 +18,7 @@ public class Biljetter extends Application
 	
 	static Context context;
 	static DataParser dataParser;
+	static DataBaseHelper dbHelper;
 	
 	@Override
 	public void onCreate() {
@@ -38,5 +42,20 @@ public class Biljetter extends Application
 			dataParser.getCompanies();
 		}
 		return dataParser;
+	}
+
+	public static DataBaseHelper getDataBaseHelper()
+	{
+		if (dbHelper == null) {
+			try
+			{
+				dbHelper = new DataBaseHelper(context);
+				dbHelper.createDataBase();
+				dbHelper.openDataBase();
+			} catch (IOException ioe) {
+				throw new Error("Unable to create database");
+			}
+		}
+		return dbHelper;
 	}
 }

@@ -35,6 +35,7 @@ public class TicketList extends Activity implements OnClickListener
 	
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 	DataParser dataParser = Biljetter.getDataParser();
+	DataBaseHelper dbHelper = Biljetter.getDataBaseHelper();
 	
 	IntentFilter mIntentFilter;
 	
@@ -45,9 +46,6 @@ public class TicketList extends Activity implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
-		
-		// Load the previous list of tickets
-		loadState();
 		
 		// Listen for messages from SmsReceiver
 		mIntentFilter = new IntentFilter();
@@ -83,6 +81,10 @@ public class TicketList extends Activity implements OnClickListener
 			}
 		});
 		
+		// Convert old tickets to the new format
+		dataParser.convertFromSuspend();
+
+		// Load tickets and update the list
 		updateList();
 	}
 
@@ -91,8 +93,11 @@ public class TicketList extends Activity implements OnClickListener
 	 */
 	private void updateList()
 	{
+		this.lstTickets.clear();
+		this.lstTickets.addAll(dbHelper.getTickets());
+
 		if (this.lstTickets.size() > 0)
-		{			
+		{
 			// Make sure all the tickets are sorted by date
 			Collections.sort(this.lstTickets);
 
@@ -102,15 +107,15 @@ public class TicketList extends Activity implements OnClickListener
 		}
 		else {
 			((LinearLayout)findViewById(R.id.no_tickets)).setVisibility(LinearLayout.VISIBLE);
-		}		
+		}
 	}
-	
+
 	public void onClick(View v)
 	{
 		switch(v.getId())
 		{
 			case R.id.btnScan:
-				loadTickets(true, true);
+				scanForTickets(true, true);
 				break;
 				
 			case R.id.btnOrder:
@@ -119,13 +124,13 @@ public class TicketList extends Activity implements OnClickListener
 				break;
 		}
 	}
-	
-	private void loadTickets() {
-		loadTickets(false, false);
+
+	private void scanForTickets() {
+		scanForTickets(false, false);
 	}
 	
-	private void loadTickets(boolean clearCache) {
-		loadTickets(clearCache, false);
+	private void scanForTickets(boolean clearCache) {
+		scanForTickets(clearCache, false);
 	}
 
 	/**
@@ -133,7 +138,7 @@ public class TicketList extends Activity implements OnClickListener
 	 * @param clearCache	Clear previous cache and scan the whole inbox
 	 * @param notify		Tell the user that a scan is ongoing
 	 */
-	private void loadTickets(final boolean clearCache, final boolean notify)
+	private void scanForTickets(final boolean clearCache, final boolean notify)
 	{
 		if (scanRunning) {
 			return;
@@ -152,7 +157,7 @@ public class TicketList extends Activity implements OnClickListener
 		final Runnable mUpdateResults = new Runnable() {
 			public void run() {
 				updateList();
-				
+
 				if (notify) {
 					dialog.dismiss();
 					Toast.makeText(TicketList.this, getString(R.string.TicketList_ticketsloaded), Toast.LENGTH_LONG).show();
@@ -162,11 +167,8 @@ public class TicketList extends Activity implements OnClickListener
 
 		Thread t = new Thread() {
 			public void run() {
-				ArrayList<Ticket> tmpList = dataParser.getTickets(clearCache);
-				if (clearCache) {
-					lstTickets.clear();
-				}
-				lstTickets.addAll(tmpList);
+				dataParser.scanForTickets(clearCache);
+
 				mHandler.post(mUpdateResults);
 				scanRunning = false;
 			}
@@ -201,11 +203,11 @@ public class TicketList extends Activity implements OnClickListener
 		// Handle item selection
 		switch (item.getItemId()) {
 			case R.id.scan:
-				loadTickets(false, true);
+				scanForTickets(false, true);
 				return true;
 				
 			case R.id.scanAll:
-				loadTickets(true, true);
+				scanForTickets(true, true);
 				return true;
 				
 			case R.id.order:
@@ -251,88 +253,11 @@ public class TicketList extends Activity implements OnClickListener
 			updateList();
 		}
 	}
-	
-	@Override
-	public void finish()
-	{
-		// Make sure the list of tickets is saved before finishing!
-		saveState();
-		super.finish();
-	}
-	
-	// Save the list of tickets so we do not need to rescan every start
-	private void saveState()
-	{
-		final File cache_dir = this.getCacheDir(); 
-		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
 
-		FileOutputStream fos = null;
-		ObjectOutputStream oos = null;
-		boolean keep = true;
-
-		try
-		{
-			fos = new FileOutputStream(suspend_f);
-			oos = new ObjectOutputStream(fos);
-
-			oos.writeObject(this.lstTickets);
-		}
-		catch (Exception e) {
-			keep = false;
-			Log.e(Biljetter.LOG_TAG, "Failed to suspend");
-		}
-		finally {
-			try {
-				if (oos != null) oos.close();
-				if (fos != null) fos.close();
-				if (keep == false) suspend_f.delete();
-			}
-			catch (Exception e) { }
-		}
-	}
-
-	// Load the list of tickets previous saved
-	private void loadState()
-	{		
-		final File cache_dir = this.getCacheDir(); 
-		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
-
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
-		boolean keep = true;
-
-		try
-		{
-			fis = new FileInputStream(suspend_f);
-			ois = new ObjectInputStream(fis);
-
-			this.lstTickets.addAll((List)ois.readObject());
-		}
-		catch (Exception e) {
-			keep = false;
-			Log.e(Biljetter.LOG_TAG, "Failed to resume");
-		}
-		finally {
-			try {
-				if (ois != null) ois.close();
-				if (fis != null) fis.close();
-				if (keep == false) suspend_f.delete();
-			}
-			catch (Exception e) { }
-		}
-		
-		if (sharedPreferences.getBoolean("rescan", false)) {
-			loadTickets(false, false);
-			Editor e = sharedPreferences.edit();
-			e.putBoolean("rescan", false);
-			e.commit();
-		}
-	}
-	
 	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			loadTickets(false);
+			updateList();
 		}
 	};
 }
