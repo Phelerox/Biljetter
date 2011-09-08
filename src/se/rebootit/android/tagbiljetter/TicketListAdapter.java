@@ -53,6 +53,12 @@ public class TicketListAdapter extends BaseAdapter
 		txtType.setText(DataParser.getCompanyName(ticket.getProvider()));
 		txtDate.setText(ticket.getTicketTimestampFormatted());
 		
+		// Make the valid tickets have yellow text color
+		if (ticket.getTicketTimestamp() > System.currentTimeMillis()) {
+			txtType.setTextColor(android.graphics.Color.YELLOW);
+			txtDate.setTextColor(android.graphics.Color.YELLOW);
+		}
+
 		// Give even rows a background color
 		if (position % 2 == 1) {
 			itemLayout.setBackgroundColor(0x30558cd0);
