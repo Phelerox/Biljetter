@@ -6,17 +6,7 @@
 	android:layout_height="fill_parent"
 	android:paddingLeft="4sp"
 	android:paddingRight="4sp">
-	
-	<TextView android:id="@+id/header"
-		android:text="@string/Wizard_header"
-		android:textSize="25sp"
-		android:textStyle="bold"
-		android:textColor="@color/white"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:paddingBottom="9sp"
-		android:layout_alignParentTop="true" />
-		
+
 	<TextView android:id="@+id/txtDescription"
 		android:text="@string/Wizard_description"
 		android:textSize="20sp"
@@ -25,7 +15,7 @@
 		android:layout_width="fill_parent"
 		android:layout_gravity="top|center_horizontal"
 		android:paddingBottom="9sp" />
-		
+
 	<Button android:id="@+id/btnClose"
 		style="?button"
 		android:text="@string/Wizard_btnClose"

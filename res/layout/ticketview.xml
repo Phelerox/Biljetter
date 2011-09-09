@@ -7,13 +7,7 @@
 	android:paddingLeft="4sp"
 	android:paddingRight="4sp"
 	android:keepScreenOn="true">
-	
-	<TextView android:id="@+id/header"
-		style="?header"
-		android:text="@string/TicketView_header"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent" />
-		
+
 	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent"
@@ -69,7 +63,7 @@
 				android:visibility="gone" />
 		</TableRow>
 	</TableLayout>
-	
+
 	<ScrollView
 		android:paddingTop="5sp"
 		android:layout_height="fill_parent"

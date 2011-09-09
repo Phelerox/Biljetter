@@ -3,19 +3,19 @@
 	package="se.rebootit.android.tagbiljetter"
 	android:versionCode="8"
 	android:versionName="1.4">
-	<application android:name="Biljetter" android:label="@string/app_name" android:icon="@drawable/icon" android:theme="@style/Theme.Blue">
-		<activity android:name="TicketList" android:label="@string/app_name" android:screenOrientation="portrait">
-			<intent-filter>
+	<application android:name="Biljetter" android:icon="@drawable/icon" android:theme="@style/Theme.Blue">
+		<activity android:name="TicketList" android:label="@string/TicketList_header" android:screenOrientation="portrait">
+			<intent-filter android:label="@string/app_name">
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".TicketView" android:screenOrientation="portrait" />
-		<activity android:name=".Wizard" android:screenOrientation="portrait" />
-		<activity android:name=".Settings" android:screenOrientation="portrait" />
-		<activity android:name=".Order" android:screenOrientation="portrait" />
-		<activity android:name=".OrderOptions" android:screenOrientation="portrait" />
-		<activity android:name=".About" android:screenOrientation="portrait" />
+		<activity android:name=".TicketView" android:screenOrientation="portrait" android:label="@string/TicketView_header" />
+		<activity android:name=".Wizard" android:screenOrientation="portrait" android:label="@string/Wizard_header" />
+		<activity android:name=".Settings" android:screenOrientation="portrait" android:label="@string/Settings_header" />
+		<activity android:name=".Order" android:screenOrientation="portrait" android:label="@string/Order_header" />
+		<activity android:name=".OrderOptions" android:screenOrientation="portrait" android:label="@string/OrderOptions_header" />
+		<activity android:name=".About" android:screenOrientation="portrait" android:label="@string/About_header" />
 		<receiver android:name=".SmsReceiver">
 			<intent-filter android:priority="10000"> 
 				<action android:name="android.provider.Telephony.SMS_RECEIVED" /> 

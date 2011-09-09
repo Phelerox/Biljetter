@@ -6,13 +6,7 @@
 	android:layout_height="fill_parent"
 	android:paddingLeft="4sp"
 	android:paddingRight="4sp">
-	
-	<TextView android:id="@+id/header"
-		style="?header"
-		android:text="@string/About_header"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent" />
-		
+
 	<ScrollView
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent">
@@ -30,7 +24,7 @@
 				android:layout_gravity="top|center_horizontal"
 				android:paddingBottom="9sp"
 				android:linksClickable="true" />
-				
+
 			<Button android:id="@+id/btnGitHub"
 				style="?button"
 				android:text="@string/About_btnGitHub"
@@ -39,7 +33,7 @@
 				android:drawableLeft="@drawable/blacktocat"
 				android:drawablePadding="15sp"
 				android:gravity="left|center_vertical" />
-				
+
 			<Button android:id="@+id/btnFlattr"
 				style="?button"
 				android:text="@string/About_btnFlattr"

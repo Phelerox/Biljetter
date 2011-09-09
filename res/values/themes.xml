@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<attr name="header" format="reference" />
 	<attr name="button" format="reference" />
 	<attr name="checkbox" format="reference" />
 	
@@ -10,24 +9,9 @@
 
 	<style name="Theme.Blue">
 		<!-- hide the Window Title -->
-		<item name="android:windowNoTitle">true</item>
-		<item name="header">@style/blue_header</item>
+		<item name="android:windowBackground">@color/black</item>
 		<item name="button">@style/blue_button</item>
 		<item name="checkbox">@style/blue_checkbox</item>
-	</style>
-
-	<style name="blue_header">
-		<item name="android:background">#33547d</item>
-		<item name="android:textSize">24sp</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#ffffff</item>
-		<item name="android:shadowColor">#7F000000</item>
-		<item name="android:shadowDx">2</item>
-		<item name="android:shadowDy">-2</item>
-		<item name="android:shadowRadius">1.5</item>
-		<item name="android:gravity">left</item>
-		<item name="android:padding">2sp</item>
-		<item name="android:layout_alignParentTop">true</item>
 	</style>
 
 	<style name="blue_button">
