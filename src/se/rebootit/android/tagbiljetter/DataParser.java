@@ -76,7 +76,12 @@ public class DataParser
 				if (transportCompany != null)
 				{
 					int provider = transportCompany.getId();
-					long tickettime = transportCompany.getTicketTimestamp(message);
+					long tickettime;
+					if (transportCompany instanceof TransportCompany_SJ) {
+						tickettime = transportCompany.getTicketTimestamp(message, messagetime);
+					} else {
+						tickettime = transportCompany.getTicketTimestamp(message);
+					}
 
 					dbHelper.insertTicket(phonenumber, messagetime, message, provider, tickettime);
 				}

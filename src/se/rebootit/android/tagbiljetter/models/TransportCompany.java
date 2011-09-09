@@ -41,6 +41,10 @@ public abstract class TransportCompany
 		}
 		return 0;
 	}
+
+	public long getTicketTimestamp(String message, long messagetime) {
+		return getTicketTimestamp(message);
+	}
 	
 	public String[] getMessageParts(String message)
 	{
