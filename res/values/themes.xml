@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<attr name="header" format="reference" />
 	<attr name="button" format="reference" />
 	<attr name="checkbox" format="reference" />
 	
@@ -8,30 +7,21 @@
 		<item name="android:windowTitleSize">20dip</item>
 	</style>
 
-	<style name="Theme.Black">
+	<style name="Theme.Blue">
 		<!-- hide the Window Title -->
-		<item name="android:windowNoTitle">true</item>
-		<item name="header">@style/black_header</item>
-		<item name="button">@style/black_button</item>
-		<item name="checkbox">@style/black_checkbox</item>
+		<item name="android:windowBackground">@color/black</item>
+		<item name="button">@style/blue_button</item>
+		<item name="checkbox">@style/blue_checkbox</item>
 	</style>
 
-	<style name="black_header">
-		<item name="android:textSize">24sp</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:textColor">#ffffff</item>
-		<item name="android:gravity">left</item>
-		<item name="android:layout_alignParentTop">true</item>
-	</style>
-
-	<style name="black_button">
-		<item name="android:background">@drawable/black_button</item>
+	<style name="blue_button">
+		<item name="android:background">@drawable/blue_button</item>
 		<item name="android:layout_margin">3sp</item>
 		<item name="android:textSize">20sp</item>
 		<item name="android:textColor">#000000</item>
 	</style>
 	
-	<style name="black_checkbox">
+	<style name="blue_checkbox">
 		<item name="android:textSize">18sp</item>
 	</style>
 </resources>

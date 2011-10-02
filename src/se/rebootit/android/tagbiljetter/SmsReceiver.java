@@ -14,14 +14,13 @@ import android.telephony.*;
 import android.util.*;
 import android.widget.*;
 
-/**
- * 
- */
+import se.rebootit.android.tagbiljetter.models.*;
 
 public class SmsReceiver extends BroadcastReceiver 
 {
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 	DataParser dataParser = Biljetter.getDataParser();
+	DataBaseHelper dbHelper = Biljetter.getDataBaseHelper();
 
 	public void onReceive(Context context, Intent intent) 
 	{
@@ -40,15 +39,25 @@ public class SmsReceiver extends BroadcastReceiver
 			{
 				SmsMessage sms = SmsMessage.createFromPdu((byte[])smsExtra[i]);
 
-				String fromaddress = sms.getOriginatingAddress();
+				String phonenumber = sms.getOriginatingAddress();
+				long messagetime = sms.getTimestampMillis();
+				String message = sms.getMessageBody();
 
-				Ticket ticket = dataParser.parseMessage(fromaddress, sms.getTimestampMillis(), sms.getMessageBody());
-				
-				if (ticket != null)
+				TransportCompany transportCompany = dataParser.parseMessage(phonenumber, messagetime, message);
+				if (transportCompany != null)
 				{
+					int provider = transportCompany.getId();
+					long tickettime = transportCompany.getTicketTimestamp(message);
+
+					dbHelper.insertTicket(phonenumber, messagetime, message, provider, tickettime);
+
 					// Show a notification
 					if (sharedPreferences.getBoolean("shownotification", true))
 					{
+						Ticket ticket = new Ticket(phonenumber, messagetime);
+						ticket.setMessage(message);
+						ticket.setTicketTimestamp(tickettime);
+
 						NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 						Notification notification = new Notification(R.drawable.icon, context.getString(R.string.SmsReceiver_newticket), System.currentTimeMillis());

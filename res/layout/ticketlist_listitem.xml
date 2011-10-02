@@ -3,8 +3,7 @@
 	android:layout_height="wrap_content" 
 	android:layout_width="fill_parent">
 	<TableRow>
-		<TextView
-			android:id="@+id/type"
+		<TextView android:id="@+id/type"
 			android:layout_width="0px"
 			android:layout_weight="6"
 			android:layout_height="wrap_content"
@@ -13,8 +12,7 @@
 			android:paddingTop="6sp"
 			android:paddingBottom="6sp"
 			android:paddingLeft="5sp" />
-		<TextView
-			android:id="@+id/date"
+		<TextView android:id="@+id/date"
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="4"

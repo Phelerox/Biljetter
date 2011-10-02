@@ -14,6 +14,7 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
+import android.app.*;
 import android.content.*;
 import android.content.res.*;
 import android.content.SharedPreferences.*;
@@ -29,22 +30,22 @@ public class DataParser
 	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 
 	ArrayList<TransportCompany> lstCompanies = new ArrayList<TransportCompany>();
-	ArrayList<Ticket> lstTickets = new ArrayList<Ticket>();
-	
+
+	DataBaseHelper dbHelper = Biljetter.getDataBaseHelper();
+
 	static HashMap<Integer, TransportCompany> mapCompanies = new HashMap<Integer, TransportCompany>();
 
 	/**
 	 * Scan the phone inbox and look for tickets that we can import
 	 * @param clearCache	Clear the cache and scan the WHOLE inbox
 	 */
-	public ArrayList<Ticket> getTickets(boolean clearCache)
+	public void scanForTickets(boolean clearCache)
 	{
 		if (clearCache) {
 			Editor e = sharedPreferences.edit();
 			e.putLong("lastmessage", 0);
 			e.commit();
 		}
-		this.lstTickets.clear();
 
 		Cursor cursor = context.getContentResolver().query(Uri.parse("content://sms/inbox"), new String[] { "_id", "thread_id", "address", "person", "date", "body", "type" }, null, null, null);
 
@@ -58,13 +59,13 @@ public class DataParser
 		{
 			while (cursor.moveToNext())
 			{
-				long timestamp = cursor.getLong(cursor.getColumnIndex("date"));
+				long messagetime = cursor.getLong(cursor.getColumnIndex("date"));
 
 				if (lastmessagetime == 0) {
-					lastmessagetime = timestamp;
+					lastmessagetime = messagetime;
 				}
 
-				if (lastmessage >= timestamp) {
+				if (lastmessage >= messagetime) {
 					Log.i(Biljetter.LOG_TAG, "No scan needed!");
 					break;
 				}
@@ -72,9 +73,18 @@ public class DataParser
 				String phonenumber = cursor.getString(cursor.getColumnIndex("address"));
 				String message = cursor.getString(cursor.getColumnIndex("body"));
 
-				Ticket ticket = parseMessage(phonenumber, timestamp, message);
-				if (ticket != null) {
-					this.lstTickets.add(ticket);
+				TransportCompany transportCompany = parseMessage(phonenumber, messagetime, message);
+				if (transportCompany != null)
+				{
+					int provider = transportCompany.getId();
+					long tickettime;
+					if (transportCompany instanceof TransportCompany_SJ) {
+						tickettime = transportCompany.getTicketTimestamp(message, messagetime);
+					} else {
+						tickettime = transportCompany.getTicketTimestamp(message);
+					}
+
+					dbHelper.insertTicket(phonenumber, messagetime, message, provider, tickettime);
 				}
 
 				messageScanned++;
@@ -85,8 +95,6 @@ public class DataParser
 			e.commit();
 		}
 		Log.i(Biljetter.LOG_TAG, "Scan complete! "+messageScanned+" messages scanned!");
-
-		return this.lstTickets;
 	}
 	
 	/**
@@ -103,7 +111,7 @@ public class DataParser
 	 * @param timestamp		Timestamp arrived
 	 * @param message		The message
 	 */
-	public Ticket parseMessage(String phonenumber, long timestamp, String message)
+	public TransportCompany parseMessage(String phonenumber, long timestamp, String message)
 	{
 		for (TransportCompany transportCompany : lstCompanies)
 		{
@@ -115,12 +123,7 @@ public class DataParser
 				Matcher matcher = pattern.matcher(message);
 				
 				if (matcher.matches()) {
-					Ticket ticket = new Ticket(phonenumber, timestamp);
-					ticket.setMessage(message);
-					ticket.setProvider(transportCompany.getId());
-					ticket.setTicketTimestamp(transportCompany.getTicketTimestamp(message));
-					
-					return ticket;
+					return transportCompany;
 				}
 			}
 		}
@@ -275,5 +278,69 @@ public class DataParser
 		
 		// It was not...
 		return false;
+	}
+
+	// Load old tickets and convert them
+	public void convertFromSuspend()
+	{
+		final File cache_dir = Biljetter.getContext().getCacheDir();
+		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + Biljetter.SUSPEND_FILE);
+
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		boolean keep = true;
+
+		try
+		{
+			fis = new FileInputStream(suspend_f);
+			ois = new ObjectInputStream(fis);
+
+			List<Ticket> tickets = (List)ois.readObject();
+
+			for (Ticket ticket : tickets)
+			{
+				dbHelper.insertTicket(ticket.getAddress(), ticket.getTimestamp(), ticket.getMessage(), ticket.getProvider(), ticket.getTicketTimestamp());
+			}
+			keep = false;
+		}
+		catch (Exception e) {
+
+		}
+		finally {
+			try {
+				if (ois != null) ois.close();
+				if (fis != null) fis.close();
+				if (keep == false) suspend_f.delete();
+			}
+			catch (Exception e) { }
+		}
+	}
+
+	public static CharSequence readAsset(String asset, Activity activity)
+	{
+		BufferedReader in = null;
+
+		try
+		{
+			in = new BufferedReader(new InputStreamReader(activity.getAssets().open(asset)));
+
+			String line;
+			StringBuilder buffer = new StringBuilder();
+
+			while ((line = in.readLine()) != null) {
+				buffer.append(line).append('\n');
+			}
+
+			return buffer;
+		}
+		catch (IOException e) {
+			return "";
+		}
+		finally {
+			try {
+				in.close();
+			}
+			catch (Exception e) { }
+		}
 	}
 }

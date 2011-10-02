@@ -20,14 +20,14 @@ public class TransportCompany_SJ extends TransportCompany implements Parcelable
 		super(name, phonenumber);
 	}
 	
-	public long getTicketTimestamp(String message) {
+	public long getTicketTimestamp(String message, long messagetime) {
 		String[] data = getMessageParts(message);
 
 		if (data[0] != null && data[1] != null) {
 			try {
 				String[] parts = data[0].split(" ");
 
-				int year = 2011;
+				int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date(messagetime)));
 				int month = (java.util.Arrays.asList(this.months).indexOf(parts[1])+1);
 				int day = Integer.parseInt(parts[0]);
 

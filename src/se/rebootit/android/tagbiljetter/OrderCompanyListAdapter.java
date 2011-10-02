@@ -50,7 +50,7 @@ public class OrderCompanyListAdapter extends BaseAdapter
 		LinearLayout itemLayout;
 		TransportCompany transportCompany = lstCompanies.get(position);
 
-		itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.order_companylist, parent, false);
+		itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.order_listitem, parent, false);
 		
 		if (transportCompany.getTransportAreaCount() > 0 && transportCompany.getTicketTypeCount() > 0)
 		{
@@ -70,7 +70,7 @@ public class OrderCompanyListAdapter extends BaseAdapter
 
 			// Give even rows a background color
 			if ((position-skipped) % 2 == 1) {
-				itemLayout.setBackgroundColor(0x30555555);
+				itemLayout.setBackgroundColor(0x30558cd0);
 			}
 			
 			return itemLayout;
@@ -78,7 +78,7 @@ public class OrderCompanyListAdapter extends BaseAdapter
 		else
 		{
 			skipped++;
-			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.no_row, parent, false);
+			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.empty_row, parent, false);
 			itemLayout.setVisibility(LinearLayout.GONE);
 			return itemLayout;
 		}

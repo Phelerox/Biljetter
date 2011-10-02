@@ -6,25 +6,19 @@
 	android:orientation="vertical"
 	android:paddingLeft="4sp"
 	android:paddingRight="4sp">
-	
-	<TextView android:id="@+id/header"
-		style="?header"
-		android:text="@string/Settings_header"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent" />
-		
+
 	<CheckBox android:id="@+id/chkSilence"
 		style="?checkbox"
 		android:text="@string/Settings_silencesms"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
-		
+
 	<CheckBox android:id="@+id/chkNotification"
 		style="?checkbox"
 		android:text="@string/Settings_shownotification"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
-		
+
 	<Button android:id="@+id/btnSave"
 		style="?button"
 		android:text="@string/Settings_save"

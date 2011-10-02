@@ -6,12 +6,7 @@
 	android:orientation="vertical"
 	android:paddingLeft="4sp"
 	android:paddingRight="4sp">
-	
-	<TextView android:id="@+id/header"
-		style="?header"
-		android:text="@string/TicketList_header"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent" />
+
 	<LinearLayout android:id="@+id/no_tickets"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -40,7 +35,7 @@
 	</LinearLayout>
 
 	<ListView android:id="@+id/ticketlist"
-		android:layout_height="wrap_content"
+		android:layout_height="fill_parent"
 		android:layout_width="fill_parent"
 		android:layout_alignParentBottom="true"
 		android:textColor="#ffffff"
