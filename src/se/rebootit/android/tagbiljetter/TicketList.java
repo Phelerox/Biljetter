@@ -10,6 +10,7 @@ import java.io.*;
 
 import android.app.*;
 import android.content.*;
+import android.content.pm.*;
 import android.content.SharedPreferences.*;
 import android.util.*;
 import android.net.*;
@@ -46,24 +47,47 @@ public class TicketList extends Activity implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ticketlist);
-		
+
 		// Listen for messages from SmsReceiver
 		mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("se.rebootit.android.tagbiljett.TicketList.UPDATE_LIST");
 
-		// If this is the first run the application is run, show the Wizard.
-		if (sharedPreferences.getBoolean("firstrun", true)) {
-			Intent intent = new Intent(this, Wizard.class);
-			startActivity(intent);
-			
-			Editor e = sharedPreferences.edit();
-			e.putBoolean("firstrun", false);
-			e.commit();
-		}
+		// If this is the first time this version of the application is run? Then show the Wizard!
+		try {
+			PackageInfo pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			int versionNumber = pinfo.versionCode;
+
+			if (sharedPreferences.getInt("wizard", 0) < versionNumber)
+			{
+				final Dialog dialog = new Dialog(this);
+				dialog.setCancelable(true);
+				dialog.setContentView(R.layout.wizard);
+				dialog.setTitle(getString(R.string.Wizard_header));
+
+				TextView txtChangelog = (TextView)dialog.findViewById(R.id.txtChangelog);
+				txtChangelog.setText(dataParser.readAsset("changelog.txt", this).toString());
+
+				Button button = (Button)dialog.findViewById(R.id.btnClose);
+				button.setOnClickListener(new Button.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+					}
+				});
+
+				dialog.show();
+
+				scanForTickets(false, false);
+
+				Editor e = sharedPreferences.edit();
+				e.putInt("wizard", versionNumber);
+				e.commit();
+			}
+		} catch (Exception e) { }
 
 		((Button)findViewById(R.id.btnScan)).setOnClickListener(this);
 		((Button)findViewById(R.id.btnOrder)).setOnClickListener(this);
-		
+
 		// Create the list with all the tickets and make them clickable
 		ListView list = (ListView)findViewById(R.id.ticketlist);
 		list.setAdapter(adapter);
@@ -80,7 +104,7 @@ public class TicketList extends Activity implements OnClickListener
 				updateList();
 			}
 		});
-		
+
 		// Convert old tickets to the new format
 		dataParser.convertFromSuspend();
 

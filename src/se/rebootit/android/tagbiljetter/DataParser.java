@@ -14,6 +14,7 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
+import android.app.*;
 import android.content.*;
 import android.content.res.*;
 import android.content.SharedPreferences.*;
@@ -310,6 +311,34 @@ public class DataParser
 				if (ois != null) ois.close();
 				if (fis != null) fis.close();
 				if (keep == false) suspend_f.delete();
+			}
+			catch (Exception e) { }
+		}
+	}
+
+	public static CharSequence readAsset(String asset, Activity activity)
+	{
+		BufferedReader in = null;
+
+		try
+		{
+			in = new BufferedReader(new InputStreamReader(activity.getAssets().open(asset)));
+
+			String line;
+			StringBuilder buffer = new StringBuilder();
+
+			while ((line = in.readLine()) != null) {
+				buffer.append(line).append('\n');
+			}
+
+			return buffer;
+		}
+		catch (IOException e) {
+			return "";
+		}
+		finally {
+			try {
+				in.close();
 			}
 			catch (Exception e) { }
 		}

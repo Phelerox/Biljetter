@@ -1,0 +1,19 @@
+Ändringslogg:
+
+1.5 (2011-10-02)
+* Snyggat till layouten.
+* Giltiga biljetter har gul text.
+* Använder numera en SQLite-databas för biljetterna.
+* Fixade en bugg på SJ- och RESPLUS-biljetter.
+* Uppdaterat startguiden.
+
+1.4 (2011-08-26)
+* Lade till stöd för Upplands Lokaltrafik
+* Lade till stöd för Östgötatrafiken
+* Lade till stöd för X-trafik
+* Lade till stöd för Hallandstrafiken
+* Lade till stöd för Jönköpings länstrafik.
+* Skärmen är alltid på när man visar en biljett
+* Snyggat till hela appen
+* Lade till lite inställningar
+* Småförbättringar här och var

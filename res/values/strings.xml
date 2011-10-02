@@ -9,7 +9,7 @@
 	<string name="TicketView_createnotification">Lägg i statusfältet</string>
 	<string name="TicketView_close">Stäng</string>
 
-	<string name="TicketList_header">Mina biljetter</string>
+	<string name="TicketList_header">Biljetter</string>
 	<string name="TicketList_notickets">Inga biljetter hittade.</string>
 	<string name="TicketList_findsms">Hitta biljetter</string>
 	<string name="TicketList_order">Beställ en biljett</string>
@@ -23,9 +23,9 @@
 	<string name="TicketList_menu_about">Om Biljetter</string>
 	<string name="TicketList_menu_quit">Avsluta</string>
 	
-	<string name="Wizard_header">Välkommen!</string>
-	<string name="Wizard_description">Du har precis installerat en app som kommer hjälpa dig att organisera ditt resande! Genom att hålla koll på dina sms-biljetter har du aldrig problem med att hitta rätt sms!\n\nDet finns även stöd för att beställa nya biljetter från flera olika företag.\nAllt med bara några tryck!</string>
-	<string name="Wizard_btnClose">Starta</string>
+	<string name="Wizard_header">Biljetter</string>
+	<string name="Wizard_description">Den här appen kommer hjälpa ditt resande genom att hålla koll på dina inkommande sms-biljetter och göra det lätt att visa den för chaufförer och kontrollanter.\n\nI appen finns det även stöd för att beställa nya biljetter från flera olika reseföretag.\nAllt med bara några tryck!</string>
+	<string name="Wizard_btnClose">Stäng</string>
 
 	<string name="Settings_header">Inställningar</string>
 	<string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
@@ -36,6 +36,7 @@
 	<string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nAppen är släppt under GPL 3 och hela källkoden och support finns på GitHub.</string>
 	<string name="About_btnGitHub">Oss på GitHub</string>
 	<string name="About_btnFlattr">Flattra appen</string>
+	<string name="About_btnWizard">Guide och ändringslogg</string>
 
 	<string name="SmsReceiver_newticket">Ny biljett mottagen!</string>
 	<string name="SmsReceiver_description">För resa %date%</string>

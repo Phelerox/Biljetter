@@ -42,6 +42,15 @@
 				android:drawableLeft="@drawable/donate_flattr"
 				android:drawablePadding="15sp"
 				android:gravity="left|center_vertical" />
+
+			<Button android:id="@+id/btnWizard"
+				style="?button"
+				android:text="@string/About_btnWizard"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:drawableLeft="@drawable/changelog_icon"
+				android:drawablePadding="15sp"
+				android:gravity="left|center_vertical" />
 		</LinearLayout>
 	</ScrollView>
 </LinearLayout>
