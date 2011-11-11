@@ -102,7 +102,11 @@ public class DataParser
 	 * @param companyid		The companys id number
 	 */
 	public static String getCompanyName(int companyid) {
-		return mapCompanies.get(companyid).getName();
+		try {
+			return mapCompanies.get(companyid).getName();
+		}
+		catch (Exception e) { }
+		return "";
 	}
 
 	/**
