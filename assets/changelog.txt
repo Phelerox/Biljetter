@@ -1,5 +1,8 @@
 Ändringslogg:
 
+1.5.1 (2011-11-11)
+* Fixat en krash när man får ett sms.
+
 1.5 (2011-10-02)
 * Snyggat till layouten.
 * Giltiga biljetter har gul text.
