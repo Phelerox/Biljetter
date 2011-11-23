@@ -50,7 +50,7 @@ public class OrderOptions extends Activity implements OnClickListener
 			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
 			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			imgCompanyLogo.setImageResource(logo);
-			layoutHeader.setBackgroundResource(logobg);
+			layoutHeader.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
 		}
 		else {
 			imgCompanyLogo.setVisibility(ImageView.GONE);

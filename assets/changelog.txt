@@ -1,5 +1,16 @@
 Ändringslogg:
 
+1.5.3 (2011-11-23)
+* Lade till logotyper för SJ och ResPlus
+* Fixade till layouten när man visar en biljett.
+* Fixade funktionen för att visa en biljett i notifieringsfältet
+* Lade till en inställning ifall man ville ha skärmen konstant på eller inte när man visar en biljett.
+
+1.5.2 (2011-11-23)
+* Stöd för att beställa biljetter från Värmlandstrafiken
+* Bättre logotyper och bakgrunder
+* Fixade rätt kod för ungdomsbiljett för Jönköpings länstrafik
+
 1.5.1 (2011-11-11)
 * Fixat en krash när man får ett sms.
 

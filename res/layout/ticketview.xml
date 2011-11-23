@@ -3,8 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical"
-	android:keepScreenOn="true">
+	android:orientation="vertical">
 
 	<LinearLayout android:id="@+id/header"
 		android:orientation="horizontal"
@@ -26,76 +25,81 @@
 			android:paddingLeft="5sp" />
 	</LinearLayout>
 
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_height="wrap_content" 
-		android:layout_width="fill_parent"
-		android:stretchColumns="1"
-		android:paddingLeft="4sp"
-		android:paddingRight="4sp">
-		<TableRow>
-			<TextView android:id="@+id/senderHeader"
-				android:text="@string/TicketView_sender"
-				android:textSize="19sp"
-				android:textStyle="bold"
-				android:textColor="@color/white"
-				android:layout_height="wrap_content"
-				android:layout_width="fill_parent" />
-				
-			<TextView android:id="@+id/sender"
-				android:textSize="19sp"
-				android:textColor="@color/white"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:gravity="right" />
-		</TableRow>
-		<TableRow>
-			<TextView 
-				android:text="@string/TicketView_received"
-				android:textSize="19sp"
-				android:textStyle="bold"
-				android:textColor="@color/white"
-				android:layout_height="wrap_content"
-				android:layout_width="fill_parent" />
-				
-			<TextView android:id="@+id/received"
-				android:textSize="19sp"
-				android:textColor="@color/white"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:gravity="right" />
-		</TableRow>
-		<TableRow>
-			<TextView android:id="@+id/validtoHeader"
-				android:text="@string/TicketView_validto"
-				android:textSize="19sp"
-				android:textStyle="bold"
-				android:textColor="@color/white"
-				android:layout_height="wrap_content"
-				android:layout_width="fill_parent"
-				android:visibility="gone" />
-				
-			<TextView android:id="@+id/validto"
-				android:textSize="19sp"
-				android:textColor="@color/white"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:gravity="right"
-				android:visibility="gone" />
-		</TableRow>
-	</TableLayout>
 
-	<ScrollView
-		android:paddingTop="5sp"
-		android:paddingLeft="4sp"
-		android:paddingRight="4sp"
-		android:layout_height="fill_parent"
-		android:layout_width="fill_parent">
+<ScrollView
+	android:paddingTop="5sp"
+	android:paddingLeft="4sp"
+	android:paddingRight="4sp"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent"
+			android:stretchColumns="1">
+			<TableRow>
+				<TextView android:id="@+id/senderHeader"
+					android:text="@string/TicketView_sender"
+					android:textSize="19sp"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent" />
+
+				<TextView android:id="@+id/sender"
+					android:textSize="19sp"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="right" />
+			</TableRow>
+			<TableRow>
+				<TextView 
+					android:text="@string/TicketView_received"
+					android:textSize="19sp"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent" />
+
+				<TextView android:id="@+id/received"
+					android:textSize="19sp"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="right" />
+			</TableRow>
+			<TableRow>
+				<TextView android:id="@+id/validtoHeader"
+					android:text="@string/TicketView_validto"
+					android:textSize="19sp"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:visibility="gone" />
+
+				<TextView android:id="@+id/validto"
+					android:textSize="19sp"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="right"
+					android:visibility="gone" />
+			</TableRow>
+		</TableLayout>
+
 		<TextView android:id="@+id/message"
 			android:textSize="19sp"
 			android:textColor="@color/white"
 			android:layout_height="wrap_content"
 			android:layout_width="fill_parent"
 			android:layout_alignParentBottom="true" />
-	</ScrollView>
+	</LinearLayout>
+</ScrollView>
 </LinearLayout>
 

@@ -6,8 +6,8 @@
 	<string name="TicketView_received">Mottaget:</string>
 	<string name="TicketView_validto">Giltig till:</string>
 	<string name="TicketView_sender">Avsändare:</string>
-	<string name="TicketView_createnotification">Lägg i statusfältet</string>
-	<string name="TicketView_close">Stäng</string>
+	<string name="TicketView_notificationShow">Visa i statusfältet</string>
+	<string name="TicketView_notificationHide">Göm från statusfältet</string>
 
 	<string name="TicketList_header">Biljetter</string>
 	<string name="TicketList_notickets">Inga biljetter hittade.</string>
@@ -30,11 +30,12 @@
 	<string name="Settings_header">Inställningar</string>
 	<string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
 	<string name="Settings_shownotification">Visa ikon i statusfältet \nvid ny biljett.</string>
+	<string name="Settings_keepscreenon">Håll skärmen igång när en biljett visas.</string>
 	<string name="Settings_save">Spara</string>
 
 	<string name="About_header">Om Biljetter</string>
-	<string name="About_description">Det här är en app som hanterar dina smsbiljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nAppen är släppt under GPL 3 och hela källkoden och support finns på GitHub.</string>
-	<string name="About_btnGitHub">Oss på GitHub</string>
+	<string name="About_description">Det här är en app som hanterar dina sms-biljetter från både tåg- och bussbolag. Allt samlat på ett och samma ställe!\n\nAppen är släppt under GPL 3 och support och hela källkoden finns tillgängligt på GitHub.</string>
+	<string name="About_btnGitHub">Biljetter på GitHub</string>
 	<string name="About_btnFlattr">Flattra appen</string>
 	<string name="About_btnWizard">Guide och ändringslogg</string>
 

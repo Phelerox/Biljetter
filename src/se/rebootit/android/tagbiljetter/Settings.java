@@ -32,6 +32,7 @@ public class Settings extends Activity implements OnClickListener
 		
 		((CheckBox)findViewById(R.id.chkSilence)).setChecked(sharedPreferences.getBoolean("silencesms", false));
 		((CheckBox)findViewById(R.id.chkNotification)).setChecked(sharedPreferences.getBoolean("shownotification", true));
+		((CheckBox)findViewById(R.id.chkKeepScreenOn)).setChecked(sharedPreferences.getBoolean("keepscreenon", false));
 	}
 	
 	public void onClick(View v)
@@ -42,6 +43,7 @@ public class Settings extends Activity implements OnClickListener
 				Editor e = sharedPreferences.edit();
 				e.putBoolean("silencesms", ((CheckBox)findViewById(R.id.chkSilence)).isChecked());
 				e.putBoolean("shownotification", ((CheckBox)findViewById(R.id.chkNotification)).isChecked());
+				e.putBoolean("keepscreenon", ((CheckBox)findViewById(R.id.chkKeepScreenOn)).isChecked());
 				e.commit();
 
 				finish();

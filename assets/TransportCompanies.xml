@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TransportCompanies>
-	<company id="1" name="SJ" phonenumber="SJ Biljett" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ">
+	<company id="1" name="SJ" phonenumber="SJ Biljett" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ" logo="sj" headercolor="#000000">
 		<ticket format="(.*?) kl (.*?)\n.*?\nAvg\..*?\nAnk\..*?\nTåg:.*?\nPersonlig biljett giltig med ID\nBilj.*?" />
 	</company>
-	<company id="2" name="Resplus" phonenumber="RESPLUS" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ">
+	<company id="2" name="Resplus" phonenumber="RESPLUS" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ" logo="resplus" headercolor="#000000">
 		<ticket format="(.*?) kl (.*?)\n.*?\nAvg:.*?\nAnk:.*?\nSlutdest:.*?" />
 	</company>
 	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" logo="sl" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
