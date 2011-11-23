@@ -26,7 +26,6 @@ public class OrderCompanyListAdapter extends BaseAdapter
 {
 	private List<TransportCompany> lstCompanies;
 	private Context context;
-	private int skipped = 0;
  
 	public OrderCompanyListAdapter(List<TransportCompany> lstCompanies, Context context) {
 		this.lstCompanies = lstCompanies;
@@ -56,28 +55,19 @@ public class OrderCompanyListAdapter extends BaseAdapter
 		{
 			ImageView imgLogo = (ImageView)itemLayout.findViewById(R.id.companylogo);
 			TextView txtName = (TextView)itemLayout.findViewById(R.id.companyname);
-			if (transportCompany.getLogo() != null) {
-				try {
-					Bitmap bMap = BitmapFactory.decodeStream(this.context.getAssets().open("logos/"+transportCompany.getLogo()));
-					imgLogo.setImageBitmap(bMap);
-					
-				} catch (Exception e) { e.printStackTrace(); }
-			}
-			txtName.setText(transportCompany.getName());
 			
-			// Make sure we count the skipped items
-			if (position == 0) { skipped = 0; }
+			int logo = context.getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
+			int logobg = context.getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
+			imgLogo.setImageResource(logo);
+			itemLayout.setBackgroundResource(logobg);
 
-			// Give even rows a background color
-			if ((position-skipped) % 2 == 1) {
-				itemLayout.setBackgroundColor(0x30558cd0);
-			}
+			txtName.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+			txtName.setText(transportCompany.getName());
 			
 			return itemLayout;
 		}
 		else
 		{
-			skipped++;
 			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.empty_row, parent, false);
 			itemLayout.setVisibility(LinearLayout.GONE);
 			return itemLayout;

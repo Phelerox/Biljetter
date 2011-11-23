@@ -40,6 +40,7 @@ public class TransportCompany_Varmlandstrafiken extends TransportCompany impleme
 	private TransportCompany_Varmlandstrafiken(Parcel in) {
 		this.id = in.readInt();
 		this.logo = in.readString();
+		this.headercolor = in.readString();
 		this.name = in.readString();
 		this.phonenumber = in.readString();
 		in.readTypedList(areas, TransportArea.CREATOR);
@@ -49,6 +50,7 @@ public class TransportCompany_Varmlandstrafiken extends TransportCompany impleme
 	public void writeToParcel(Parcel out, int flags) {
 		out.writeInt(this.id);
 		out.writeString(this.logo);
+		out.writeString(this.headercolor);
 		out.writeString(this.name);
 		out.writeString(this.phonenumber);
 		out.writeTypedList(this.areas);
