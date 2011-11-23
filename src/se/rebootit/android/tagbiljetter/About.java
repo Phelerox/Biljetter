@@ -9,6 +9,7 @@ import java.util.*;
 
 import android.app.*;
 import android.content.*;
+import android.content.pm.*;
 import android.net.*;
 import android.os.*;
 import android.text.method.*;
@@ -33,6 +34,17 @@ public class About extends Activity implements OnClickListener
 		
 		// Make sure the links in the text is clickable
 		((TextView)findViewById(R.id.txtDescription)).setMovementMethod(LinkMovementMethod.getInstance());
+
+		try
+		{
+			// Add the version number
+			PackageInfo pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			int versionNumber = pinfo.versionCode;
+			String versionName = pinfo.versionName;
+
+			((TextView)findViewById(R.id.txtVersion)).setText(versionName+" (build "+versionNumber+")");
+		}
+		catch (Exception e) { }
 	}
 
 	public void onClick(View v)
