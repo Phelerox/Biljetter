@@ -52,7 +52,7 @@ public class TicketView extends Activity
 			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
 			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			imgCompanyLogo.setImageResource(logo);
-			layoutHeader.setBackgroundResource(logobg);
+			layoutHeader.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
 		}
 		else {
 			imgCompanyLogo.setVisibility(ImageView.GONE);

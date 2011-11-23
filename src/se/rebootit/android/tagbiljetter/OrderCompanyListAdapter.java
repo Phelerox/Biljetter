@@ -59,7 +59,7 @@ public class OrderCompanyListAdapter extends BaseAdapter
 			int logo = context.getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
 			int logobg = context.getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			imgLogo.setImageResource(logo);
-			itemLayout.setBackgroundResource(logobg);
+			itemLayout.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
 
 			txtName.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
 			txtName.setText(transportCompany.getName());
