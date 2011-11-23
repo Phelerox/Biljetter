@@ -90,30 +90,30 @@
 		<area code="S" name="Säffle" />
 	</company>
 	<company id="7" name="Upplands Lokaltrafik" phonenumber="72472" logo="upplandslokaltrafik.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Upplandslokaltrafik">
-		<type code="U" name="Ungdom" />
 		<type code="V" name="Vuxen" />
+		<type code="U" name="Ungdom" />
 		
 		<area code="U" name="Uppsala" />
 		
 		<ticket format=".*? UPPSALA Stadstrafik\. Giltig till (.*?) kl\. (.*?)\. Pris.*?" />
 	</company>
 	<company id="8" name="Östgötatrafiken" phonenumber="72365" logo="ostgotatrafiken.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Ostgotatrafiken">
-		<type code="U" name="Ungdom" description="" />
 		<type code="V" name="Vuxen" description="" />
+		<type code="U" name="Ungdom" description="" />
 		<type code="S" name="Senior" description="" />
 		
 		<area code="F" name="Finspång" description="" />
 		<area code="L" name="Linköping" description="" />
-		<area code="M" name="Motala" description="" />
 		<area code="MJ" name="Mjölby" description="" />
+		<area code="M" name="Motala" description="" />
 		<area code="N" name="Norrköping" description="" />
 		<area code="Å" name="Åtvidaberg" description="" />
 		
 		<ticket format=".*? Tätortstrafik\. Giltig till (.*?) kl\. (.*?)\. Pris:.*?" />
 	</company>
 	<company id="9" name="X-trafik" phonenumber="72696" logo="x-trafik.png">
-		<type code="U" name="Ungdom" description="20-25 år" />
 		<type code="V" name="Vuxen" description="" />
+		<type code="U" name="Ungdom" description="20-25 år" />
 		<type code="S" name="Skolungdom" description="7-19 år" />
 
 		<area code="B" name="Bollnäs" description="zon 46" />
@@ -121,23 +121,23 @@
 		<area code="H" name="Hudiksvall" description="" />
 		<area code="SA" name="Sandviken" description="zon 68" />
 		<area code="SÖ" name="Sönderhamn" description="zon 52" />
-		
+
 		<ticket format=".*? X-Trafik giltig till kl (.*?) (.*?)\n.*?." />
 	</company>
 	<company id="10" name="Hallandstrafiken" phonenumber="72433" logo="hallandstrafiken.png">
-		<area code="V" name="Varberg" description="" />
-		<area code="H" name="Halmstad" description="" />
-		<area code="F" name="Falkenberg" description="" />
-
-		<type code="B" name="Barn" description="" />
 		<type code="V" name="Vuxen" description="" />
+		<type code="B" name="Barn" description="" />
 		<type code="DF" name="Duo/Familj" description="" />
-		
+
+		<area code="F" name="Falkenberg" description="" />
+		<area code="H" name="Halmstad" description="" />
+		<area code="V" name="Varberg" description="" />
+
 		<ticket format=".*? giltig till (.*?) (.*?)\n.*?Stadstrafik.*?." />
 	</company>
 	<company id="11" name="Jönköpings länstrafik" phonenumber="72344" logo="jonkopingslanstrafik.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Jonkoping">
-		<type code="U" name="Ungdom" />
 		<type code="V" name="Vuxen" />
+		<type code="U" name="Ungdom" />
 		
 		<area code="J" name="Jönköping" />
 		
