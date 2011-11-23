@@ -136,9 +136,9 @@
 		<ticket format=".*? giltig till (.*?) (.*?)\n.*?Stadstrafik.*?." />
 	</company>
 	<company id="11" name="Jönköpings länstrafik" phonenumber="72344" logo="jonkopingslanstrafik" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Jonkoping">
-		<type code="V" name="Vuxen" />
-		<type code="U" name="Ungdom" />
-		
+		<type code="V" name="Vuxen" description="20 år och uppåt"/>
+		<type code="S" name="Ungdom" description="7-19 år" />
+
 		<area code="J" name="Jönköping" />
 		
 		<ticket format=".*?Giltig till kl (.*?), (.*?) (.*?) (.*?)\n.*?Tätortstrafik.*?." />
