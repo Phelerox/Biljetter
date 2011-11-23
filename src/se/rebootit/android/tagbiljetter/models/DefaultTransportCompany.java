@@ -16,13 +16,7 @@ public class DefaultTransportCompany extends TransportCompany implements Parcela
 	public DefaultTransportCompany(String name, String phonenumber) {
 		super(name, phonenumber);
 	}
-	
-	public String getMessage(TransportArea area, TicketType type) {
-		return area.getCode()+type.getCode();
-	}
 
-	public boolean checkMessage(String phonenumber, String message) { return false; }
-	
 	private DefaultTransportCompany(Parcel in) {
 		this.id = in.readInt();
 		this.logo = in.readString();

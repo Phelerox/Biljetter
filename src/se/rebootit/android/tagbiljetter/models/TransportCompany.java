@@ -46,7 +46,7 @@ public abstract class TransportCompany
 	public long getTicketTimestamp(String message, long messagetime) {
 		return getTicketTimestamp(message);
 	}
-	
+
 	public String[] getMessageParts(String message)
 	{
 		String expr = getTicketFormat();
@@ -64,8 +64,10 @@ public abstract class TransportCompany
 		
 		return output;
 	}
-	
-	public String getMessage(TransportArea area, TicketType type) { return null; }
+
+	public String getMessage(TransportArea area, TicketType type) {
+		return area.getCode()+type.getCode();
+	}
 	public boolean checkMessage(String phonenumber, String message) { return false; }
 
 	public void addTransportArea(TransportArea area) { areas.add(area); }
