@@ -4,14 +4,34 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
-	android:paddingLeft="4sp"
-	android:paddingRight="4sp"
 	android:keepScreenOn="true">
+
+	<LinearLayout android:id="@+id/header"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<ImageView android:id="@+id/companylogo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:scaleType="fitXY" />
+
+		<TextView android:id="@+id/companyname"
+			android:textSize="22sp"
+			android:textStyle="bold"
+			android:textColor="@color/white"
+			android:layout_alignParentRight="true"
+			android:layout_height="fill_parent"
+			android:layout_width="wrap_content"
+			android:gravity="center_vertical|left"
+			android:paddingLeft="5sp" />
+	</LinearLayout>
 
 	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent"
-		android:stretchColumns="1">
+		android:stretchColumns="1"
+		android:paddingLeft="4sp"
+		android:paddingRight="4sp">
 		<TableRow>
 			<TextView android:id="@+id/senderHeader"
 				android:text="@string/TicketView_sender"
@@ -66,6 +86,8 @@
 
 	<ScrollView
 		android:paddingTop="5sp"
+		android:paddingLeft="4sp"
+		android:paddingRight="4sp"
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent">
 		<TextView android:id="@+id/message"

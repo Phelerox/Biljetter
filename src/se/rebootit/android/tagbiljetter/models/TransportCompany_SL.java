@@ -26,6 +26,7 @@ public class TransportCompany_SL extends TransportCompany implements Parcelable
 	private TransportCompany_SL(Parcel in) {
 		this.id = in.readInt();
 		this.logo = in.readString();
+		this.headercolor = in.readString();
 		this.name = in.readString();
 		this.phonenumber = in.readString();
 		in.readTypedList(areas, TransportArea.CREATOR);
@@ -35,6 +36,7 @@ public class TransportCompany_SL extends TransportCompany implements Parcelable
 	public void writeToParcel(Parcel out, int flags) {
 		out.writeInt(this.id);
 		out.writeString(this.logo);
+		out.writeString(this.headercolor);
 		out.writeString(this.name);
 		out.writeString(this.phonenumber);
 		out.writeTypedList(this.areas);

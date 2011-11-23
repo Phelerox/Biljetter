@@ -7,18 +7,21 @@ package se.rebootit.android.tagbiljetter;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
 import android.os.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
 
+import se.rebootit.android.tagbiljetter.models.*;
+
 /**
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
- 
 public class TicketView extends Activity
 {
 	Ticket ticket;
+	DataParser dataParser = Biljetter.getDataParser();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -28,6 +31,26 @@ public class TicketView extends Activity
 
 		Intent intent = getIntent();
 		this.ticket = intent.getParcelableExtra("ticket");
+
+
+		LinearLayout layoutHeader = (LinearLayout)findViewById(R.id.header);
+		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);
+		ImageView imgCompanyLogo = (ImageView)findViewById(R.id.companylogo);
+
+		TransportCompany transportCompany = dataParser.getCompany(ticket.getProvider());
+
+		if (transportCompany.getLogo() != null) {
+			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
+			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
+			imgCompanyLogo.setImageResource(logo);
+			layoutHeader.setBackgroundResource(logobg);
+		}
+		else {
+			imgCompanyLogo.setVisibility(ImageView.GONE);
+		}
+
+		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+		txtCompanyname.setText(transportCompany.getName());
 
 		((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());
 

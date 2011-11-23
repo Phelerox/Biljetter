@@ -42,20 +42,22 @@ public class OrderOptions extends Activity implements OnClickListener
 		Intent intent = getIntent();
 		this.transportCompany = (TransportCompany)intent.getParcelableExtra("transportcompany");
 
+		LinearLayout layoutHeader = (LinearLayout)findViewById(R.id.header);
 		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);
 		ImageView imgCompanyLogo = (ImageView)findViewById(R.id.companylogo);
 
-		txtCompanyname.setText(transportCompany.getName());
 		if (transportCompany.getLogo() != null) {
-			try {
-				Bitmap bMap = BitmapFactory.decodeStream(getAssets().open("logos/"+transportCompany.getLogo()));
-				imgCompanyLogo.setImageBitmap(bMap);
-				
-			} catch (Exception e) { e.printStackTrace(); }
+			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
+			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
+			imgCompanyLogo.setImageResource(logo);
+			layoutHeader.setBackgroundResource(logobg);
 		}
 		else {
 			imgCompanyLogo.setVisibility(ImageView.GONE);
 		}
+
+		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+		txtCompanyname.setText(transportCompany.getName());
 
 		Spinner spnArea = (Spinner)findViewById(R.id.spnArea);
 		ArrayAdapter<CharSequence> adapterArea = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);

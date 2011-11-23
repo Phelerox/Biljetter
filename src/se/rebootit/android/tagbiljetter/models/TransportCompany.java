@@ -19,6 +19,7 @@ public abstract class TransportCompany
 	protected String name;
 	protected String phonenumber;
 	protected String logo;
+	protected String headercolor = "#ffffff";
 	protected String ticketformat;
 
 	protected List<TransportArea> areas = new ArrayList<TransportArea>();
@@ -80,6 +81,9 @@ public abstract class TransportCompany
 	
 	public void setLogo(String logo) { this.logo = logo; }
 	public String getLogo() { return this.logo; }
+
+	public void setHeaderColor(String headercolor) { this.headercolor = headercolor; }
+	public String getHeaderColor() { return this.headercolor; }
 	
 	public void setName(String name) { this.name = name; }
 	public String getName() { return this.name; }

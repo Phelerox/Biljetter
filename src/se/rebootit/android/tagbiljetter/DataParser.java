@@ -96,7 +96,19 @@ public class DataParser
 		}
 		Log.i(Biljetter.LOG_TAG, "Scan complete! "+messageScanned+" messages scanned!");
 	}
-	
+
+	/**
+	 * Returns the TransportCompany
+	 * @param companyid		The companys id number
+	 */
+	public static TransportCompany getCompany(int companyid) {
+		try {
+			return mapCompanies.get(companyid);
+		}
+		catch (Exception e) { }
+		return null;
+	}
+
 	/**
 	 * Returns the company name
 	 * @param companyid		The companys id number
@@ -218,6 +230,9 @@ public class DataParser
 				this.currentCompany.setName(attributes.getValue("name"));
 				this.currentCompany.setPhoneNumber(attributes.getValue("phonenumber"));
 				this.currentCompany.setLogo(attributes.getValue("logo"));
+				if (attributes.getValue("headercolor") != null) {
+					this.currentCompany.setHeaderColor(attributes.getValue("headercolor"));
+				}
 			}
 			else if (localName.equalsIgnoreCase("area")) {
 				String areaCode = attributes.getValue("code");

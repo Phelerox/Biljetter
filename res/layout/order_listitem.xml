@@ -3,22 +3,18 @@
 	android:layout_height="wrap_content" 
 	android:layout_width="fill_parent"
 	android:stretchColumns="1">
-	<TableRow>
+	<TableRow
+		android:padding="3sp">
 		<ImageView android:id="@+id/companylogo"
-			android:layout_height="50sp"
-			android:layout_width="50sp"
-			android:paddingTop="2sp"
-			android:paddingBottom="2sp"
 			android:scaleType="fitXY" />
 		<TextView
 			android:id="@+id/companyname"
 			android:layout_height="fill_parent"
 			android:layout_width="wrap_content"
-			android:textSize="20sp"
 			android:textColor="@color/white"
+			android:textSize="20sp"
+			android:textStyle="bold"
 			android:gravity="center_vertical|left"
-			android:paddingTop="6sp"
-			android:paddingBottom="6sp"
 			android:paddingLeft="6sp" />
 	</TableRow>
 </TableLayout>
