@@ -1,5 +1,10 @@
 Ändringslogg:
 
+1.5.2 (2011-11-23)
+* Stöd för att beställa biljetter från Värmlandstrafiken
+* Bättre logotyper och bakgrunder
+* Fixade rätt kod för ungdomsbiljett för Jönköpings länstrafik
+
 1.5.1 (2011-11-11)
 * Fixat en krash när man får ett sms.
 
