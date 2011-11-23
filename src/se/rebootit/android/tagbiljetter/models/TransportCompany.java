@@ -19,6 +19,7 @@ public abstract class TransportCompany
 	protected String name;
 	protected String phonenumber;
 	protected String logo;
+	protected String headercolor = "#ffffff";
 	protected String ticketformat;
 
 	protected List<TransportArea> areas = new ArrayList<TransportArea>();
@@ -45,7 +46,7 @@ public abstract class TransportCompany
 	public long getTicketTimestamp(String message, long messagetime) {
 		return getTicketTimestamp(message);
 	}
-	
+
 	public String[] getMessageParts(String message)
 	{
 		String expr = getTicketFormat();
@@ -63,8 +64,10 @@ public abstract class TransportCompany
 		
 		return output;
 	}
-	
-	public String getMessage(TransportArea area, TicketType type) { return null; }
+
+	public String getMessage(TransportArea area, TicketType type) {
+		return area.getCode()+type.getCode();
+	}
 	public boolean checkMessage(String phonenumber, String message) { return false; }
 
 	public void addTransportArea(TransportArea area) { areas.add(area); }
@@ -80,6 +83,9 @@ public abstract class TransportCompany
 	
 	public void setLogo(String logo) { this.logo = logo; }
 	public String getLogo() { return this.logo; }
+
+	public void setHeaderColor(String headercolor) { this.headercolor = headercolor; }
+	public String getHeaderColor() { return this.headercolor; }
 	
 	public void setName(String name) { this.name = name; }
 	public String getName() { return this.name; }

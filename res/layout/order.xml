@@ -3,15 +3,13 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical"
 	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:paddingLeft="4sp"
-	android:paddingRight="4sp">
+	android:layout_height="fill_parent">
 
 	<ListView android:id="@+id/companylist"
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent"
 		android:layout_alignParentBottom="true"
 		android:textColor="@color/white"
-		android:dividerHeight="0px"
-		android:divider="#FFFFFF" />
+		android:dividerHeight="1px"
+		android:divider="#000000" />
 </LinearLayout>

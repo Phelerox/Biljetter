@@ -6,7 +6,7 @@
 	<company id="2" name="Resplus" phonenumber="RESPLUS" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SJ">
 		<ticket format="(.*?) kl (.*?)\n.*?\nAvg:.*?\nAnk:.*?\nSlutdest:.*?" />
 	</company>
-	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" logo="sl.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
+	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" logo="sl" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
 		<type code="H" name="Hel" description="" />
 		<type code="R" name="Reducerad" description="" />
 		
@@ -20,7 +20,7 @@
 		
 		<ticket format=".*?\nSL biljett giltig till (.*?) (.*?)\n.*?kr ink 6% moms\n.*?" />
 	</company>
-	<company id="4" name="Västtrafik" phonenumber="72450" logo="vasttrafik.png">
+	<company id="4" name="Västtrafik" phonenumber="72450" logo="vasttrafik">
 		<type code="V" name="Vuxen" description="" />
 		<type code="S" name="Skolungdom" description="" />
 		<type code="VN" name="Vuxen (natt)" description="" />
@@ -59,7 +59,7 @@
 
 		<ticket format=".*? --VÄSTTRAFIK-- giltig till (.*?) (.*?)\n.*?." />
 	</company>
-	<company id="5" name="Skånetrafiken" phonenumber="72040" logo="skanetrafiken.png">
+	<company id="5" name="Skånetrafiken" phonenumber="72040" logo="skanetrafiken">
 		<type code="V" name="Vuxen" description="" />
 		<type code="B" name="Barn" description="" />
 		<type code="D" name="Duo/Familj" description="" />
@@ -77,34 +77,43 @@
 
 		<ticket format=".*? SK giltig till (.*?) (.*?)\n.*?." />
 	</company>
-	<company id="6" name="Värmlandstrafiken" phonenumber="72032" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Varmlandstrafiken">
+	<company id="6" name="Värmlandstrafiken" phonenumber="72032" logo="varmlandstrafik" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Varmlandstrafiken">
 		<ticket format=".*? Värmlandstrafik\nGiltig till kl (.*?), (.*?) (.*?) (.*?)\n.*?" />
-	</company>
-	<company id="7" name="Upplands Lokaltrafik" phonenumber="72472" logo="upplandslokaltrafik.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Upplandslokaltrafik">
-		<type code="U" name="Ungdom" />
+
 		<type code="V" name="Vuxen" />
-		
+		<type code="U" name="Ungdom" />
+		<type code="S" name="Skolungdom" />
+
+		<area code="A" name="Arvika" />
+		<area code="HK" name="Hammarö-Karlstad" />
+		<area code="KR" name="Kristinehamn" />
+		<area code="S" name="Säffle" />
+	</company>
+	<company id="7" name="Upplands Lokaltrafik" phonenumber="72472" logo="ul" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Upplandslokaltrafik">
+		<type code="V" name="Vuxen" />
+		<type code="U" name="Ungdom" />
+
 		<area code="U" name="Uppsala" />
-		
+
 		<ticket format=".*? UPPSALA Stadstrafik\. Giltig till (.*?) kl\. (.*?)\. Pris.*?" />
 	</company>
-	<company id="8" name="Östgötatrafiken" phonenumber="72365" logo="ostgotatrafiken.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Ostgotatrafiken">
-		<type code="U" name="Ungdom" description="" />
+	<company id="8" name="Östgötatrafiken" phonenumber="72365" logo="ostgotatrafiken" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Ostgotatrafiken">
 		<type code="V" name="Vuxen" description="" />
+		<type code="U" name="Ungdom" description="" />
 		<type code="S" name="Senior" description="" />
 		
 		<area code="F" name="Finspång" description="" />
 		<area code="L" name="Linköping" description="" />
-		<area code="M" name="Motala" description="" />
 		<area code="MJ" name="Mjölby" description="" />
+		<area code="M" name="Motala" description="" />
 		<area code="N" name="Norrköping" description="" />
 		<area code="Å" name="Åtvidaberg" description="" />
 		
 		<ticket format=".*? Tätortstrafik\. Giltig till (.*?) kl\. (.*?)\. Pris:.*?" />
 	</company>
-	<company id="9" name="X-trafik" phonenumber="72696" logo="x-trafik.png">
-		<type code="U" name="Ungdom" description="20-25 år" />
+	<company id="9" name="X-trafik" phonenumber="72696" logo="xtrafik" headercolor="#000000">
 		<type code="V" name="Vuxen" description="" />
+		<type code="U" name="Ungdom" description="20-25 år" />
 		<type code="S" name="Skolungdom" description="7-19 år" />
 
 		<area code="B" name="Bollnäs" description="zon 46" />
@@ -112,24 +121,24 @@
 		<area code="H" name="Hudiksvall" description="" />
 		<area code="SA" name="Sandviken" description="zon 68" />
 		<area code="SÖ" name="Sönderhamn" description="zon 52" />
-		
+
 		<ticket format=".*? X-Trafik giltig till kl (.*?) (.*?)\n.*?." />
 	</company>
-	<company id="10" name="Hallandstrafiken" phonenumber="72433" logo="hallandstrafiken.png">
-		<area code="V" name="Varberg" description="" />
-		<area code="H" name="Halmstad" description="" />
-		<area code="F" name="Falkenberg" description="" />
-
-		<type code="B" name="Barn" description="" />
+	<company id="10" name="Hallandstrafiken" phonenumber="72433" logo="hallandstrafiken" headercolor="#000000">
 		<type code="V" name="Vuxen" description="" />
+		<type code="B" name="Barn" description="" />
 		<type code="DF" name="Duo/Familj" description="" />
-		
+
+		<area code="F" name="Falkenberg" description="" />
+		<area code="H" name="Halmstad" description="" />
+		<area code="V" name="Varberg" description="" />
+
 		<ticket format=".*? giltig till (.*?) (.*?)\n.*?Stadstrafik.*?." />
 	</company>
-	<company id="11" name="Jönköpings länstrafik" phonenumber="72344" logo="jonkopingslanstrafik.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Jonkoping">
-		<type code="U" name="Ungdom" />
-		<type code="V" name="Vuxen" />
-		
+	<company id="11" name="Jönköpings länstrafik" phonenumber="72344" logo="jonkopingslanstrafik" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Jonkoping">
+		<type code="V" name="Vuxen" description="20 år och uppåt"/>
+		<type code="S" name="Ungdom" description="7-19 år" />
+
 		<area code="J" name="Jönköping" />
 		
 		<ticket format=".*?Giltig till kl (.*?), (.*?) (.*?) (.*?)\n.*?Tätortstrafik.*?." />
