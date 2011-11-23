@@ -7,6 +7,7 @@ package se.rebootit.android.tagbiljetter;
 
 import android.app.*;
 import android.content.*;
+import android.content.SharedPreferences.*;
 import android.graphics.*;
 import android.os.*;
 import android.util.*;
@@ -22,6 +23,7 @@ public class TicketView extends Activity
 {
 	Ticket ticket;
 	DataParser dataParser = Biljetter.getDataParser();
+	SharedPreferences sharedPreferences = Biljetter.getSharedPreferences();
 	boolean fromNotification = false;
 
 	NotificationManager mNotificationManager;
@@ -41,6 +43,11 @@ public class TicketView extends Activity
 		Intent intent = getIntent();
 		this.ticket = intent.getParcelableExtra("ticket");
 		this.fromNotification = intent.getBooleanExtra("fromNotification", false);
+
+		// Should we keep the Screen on?
+		if (sharedPreferences.getBoolean("keepscreenon", false)) {
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		}
 
 		LinearLayout layoutHeader = (LinearLayout)findViewById(R.id.header);
 		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);

@@ -19,6 +19,12 @@
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
 
+	<CheckBox android:id="@+id/chkKeepScreenOn"
+		style="?checkbox"
+		android:text="@string/Settings_keepscreenon"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content" />
+
 	<Button android:id="@+id/btnSave"
 		style="?button"
 		android:text="@string/Settings_save"
