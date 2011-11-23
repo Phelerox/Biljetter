@@ -6,8 +6,8 @@
 	<string name="TicketView_received">Mottaget:</string>
 	<string name="TicketView_validto">Giltig till:</string>
 	<string name="TicketView_sender">Avsändare:</string>
-	<string name="TicketView_createnotification">Lägg i statusfältet</string>
-	<string name="TicketView_close">Stäng</string>
+	<string name="TicketView_notificationShow">Visa i statusfältet</string>
+	<string name="TicketView_notificationHide">Göm från statusfältet</string>
 
 	<string name="TicketList_header">Biljetter</string>
 	<string name="TicketList_notickets">Inga biljetter hittade.</string>

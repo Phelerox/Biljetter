@@ -22,7 +22,16 @@ public class TicketView extends Activity
 {
 	Ticket ticket;
 	DataParser dataParser = Biljetter.getDataParser();
-	
+	boolean fromNotification = false;
+
+	NotificationManager mNotificationManager;
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		setIntent(intent);
+		super.onNewIntent(intent);
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -31,7 +40,7 @@ public class TicketView extends Activity
 
 		Intent intent = getIntent();
 		this.ticket = intent.getParcelableExtra("ticket");
-
+		this.fromNotification = intent.getBooleanExtra("fromNotification", false);
 
 		LinearLayout layoutHeader = (LinearLayout)findViewById(R.id.header);
 		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);
@@ -62,47 +71,68 @@ public class TicketView extends Activity
 
 		((TextView)findViewById(R.id.received)).setText(ticket.getTimestampFormatted());
 		((TextView)findViewById(R.id.message)).setText(ticket.getMessage());
+
+		mNotificationManager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.ticketview, menu);
-		
+
 		return true;
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent intent;
-		
-		// Handle item selection
-		switch (item.getItemId()) {
-			case R.id.createnotification:
-				NotificationManager mNotificationManager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
+	public boolean onPrepareOptionsMenu(Menu menu)
+	{
+		if (fromNotification) {
+			((MenuItem)menu.findItem(R.id.menuNotification)).setTitle(getString(R.string.TicketView_notificationHide));
+		}
+		else {
+			((MenuItem)menu.findItem(R.id.menuNotification)).setTitle(getString(R.string.TicketView_notificationShow));
+		}
 
-				Notification notification = new Notification(R.drawable.icon, null, System.currentTimeMillis());
+		return true;
+	}
 
-				CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
-				CharSequence contentText = getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
-				Intent notificationIntent = new Intent(this, TicketView.class);
-				notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
-				notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				notificationIntent.putExtra("ticket", (Parcelable)this.ticket);
-				
-				PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case R.id.menuNotification:
+				if (fromNotification)
+				{
+					mNotificationManager.cancel(ticket.hashCode());
+					fromNotification = false;
+				}
+				else
+				{
+					Notification notification = new Notification(R.drawable.icon, null, System.currentTimeMillis());
 
-				notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
+					CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
+					CharSequence contentText = getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
 
-				mNotificationManager.notify(ticket.hashCode(), notification);
-				
-				finish();
+					Intent notificationIntent = new Intent(this, TicketView.class);
+					notificationIntent.putExtra("ticket", (Parcelable)ticket);
+					notificationIntent.putExtra("fromNotification", true);
+					notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
+					notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					notificationIntent.setAction(this.getClass().getName() + System.currentTimeMillis());
+
+					PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+					notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
+					notification.flags = Notification.FLAG_ONGOING_EVENT;
+
+					mNotificationManager.notify(ticket.hashCode(), notification);
+
+					fromNotification = true;
+				}
 				return true;
-			
-			case R.id.close:
-				finish();
-				return true;
-			
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
