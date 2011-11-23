@@ -79,6 +79,15 @@
 	</company>
 	<company id="6" name="Värmlandstrafiken" phonenumber="72032" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Varmlandstrafiken">
 		<ticket format=".*? Värmlandstrafik\nGiltig till kl (.*?), (.*?) (.*?) (.*?)\n.*?" />
+
+		<type code="V" name="Vuxen" />
+		<type code="U" name="Ungdom" />
+		<type code="S" name="Skolungdom" />
+
+		<area code="A" name="Arvika" />
+		<area code="HK" name="Hammarö-Karlstad" />
+		<area code="KR" name="Kristinehamn" />
+		<area code="S" name="Säffle" />
 	</company>
 	<company id="7" name="Upplands Lokaltrafik" phonenumber="72472" logo="upplandslokaltrafik.png" type="se.rebootit.android.tagbiljetter.models.TransportCompany_Upplandslokaltrafik">
 		<type code="U" name="Ungdom" />
