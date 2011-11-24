@@ -33,7 +33,7 @@
 		<area code="GB" name="Göteborg-Borås" description="Gäller för resa mellan Göteborg och Borås." />
 		<area code="GP" name="Göteborg+" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda Väst, Härryda Mitt och Ale Södra." />
 		<area code="GPP" name="Göteborg++" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale och Kungälv." />
-		<area code="GPPP" name="Göteborg+++" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale, Kungälv, Alingsås, Bollebygd, Lilla Edet, Mark, Mölndal, Orust, Stenungsund och Tjörn.) Vissa båtlinjer kräver tillägg." />
+		<area code="GPPP" name="Göteborg+++" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale, Kungälv, Alingsås, Bollebygd, Lilla Edet, Mark, Mölndal, Orust, Stenungsund och Tjörn. Vissa båtlinjer kräver tillägg." />
 		<area code="GMP" name="Göteborg-Mölndal-Partille" description="" />
 		<area code="K" name="Kungsbacka tätort" description="" />
 		<area code="KU" name="Kungälv tätort" description="" />
