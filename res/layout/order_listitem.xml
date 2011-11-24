@@ -17,4 +17,11 @@
 			android:gravity="center_vertical|left"
 			android:paddingLeft="6sp" />
 	</TableRow>
+	<TableRow>
+		<View
+			android:background="#000000"
+			android:layout_width="fill_parent"
+			android:layout_height="1dip"
+			android:layout_span="2" />
+	</TableRow>
 </TableLayout>
