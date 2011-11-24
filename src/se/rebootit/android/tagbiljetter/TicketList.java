@@ -229,11 +229,7 @@ public class TicketList extends Activity implements OnClickListener
 			case R.id.scan:
 				scanForTickets(false, true);
 				return true;
-				
-			case R.id.scanAll:
-				scanForTickets(true, true);
-				return true;
-				
+
 			case R.id.order:
 				intent = new Intent(this, Order.class);
 				startActivity(intent);
@@ -247,10 +243,6 @@ public class TicketList extends Activity implements OnClickListener
 			case R.id.about:
 				intent = new Intent(this, About.class);
 				startActivity(intent);
-				return true;
-			
-			case R.id.quit:
-				finish();
 				return true;
 			
 			default:
