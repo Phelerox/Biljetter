@@ -8,7 +8,7 @@
 	</company>
 	<company id="3" name="Storstockholms Lokaltrafik" phonenumber="72150" logo="sl" headercolor="#000000" type="se.rebootit.android.tagbiljetter.models.TransportCompany_SL">
 		<type code="H" name="Hel" description="" />
-		<type code="R" name="Reducerad" description="" />
+		<type code="R" name="Reducerad" description="Under 20 år eller över 65 år." />
 		
 		<area code="A" name="Zon A" description="" />
 		<area code="B" name="Zon B" description="" />
@@ -21,19 +21,19 @@
 		<ticket format=".*?\nSL biljett giltig till (.*?) (.*?)\n.*?kr ink 6% moms\n.*?" />
 	</company>
 	<company id="4" name="Västtrafik" phonenumber="72450" logo="vasttrafik">
-		<type code="V" name="Vuxen" description="" />
-		<type code="S" name="Skolungdom" description="" />
-		<type code="VN" name="Vuxen (natt)" description="" />
-		<type code="SN" name="Skolungdom (natt)" description="" />
+		<type code="V" name="Vuxen" description="20 år och uppåt" />
+		<type code="S" name="Skolungdom" description="7-19 år" />
+		<type code="VN" name="Vuxen (natt)" description="20 år och uppåt" />
+		<type code="SN" name="Skolungdom (natt)" description="7-19 år" />
 
 		<area code="A" name="Alingsås tätort" description="" />
 		<area code="B" name="Borås tätort" description="" />
 		<area code="F" name="Falköping tätort" description="" />
 		<area code="G" name="Göteborg" description="" />
-		<area code="GB" name="Göteborg-Borås" description="(Gäller för resa mellan Göteborg och Borås.)" />
-		<area code="GP" name="Göteborg+" description="(Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda Väst, Härryda Mitt och Ale Södra.)" />
-		<area code="GPP" name="Göteborg++" description="(Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale och Kungälv.)" />
-		<area code="GPPP" name="Göteborg+++" description="(Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale, Kungälv, Alingsås, Bollebygd, Lilla Edet, Mark, Mölndal, Orust, Stenungsund och Tjörn.) Vissa båtlinjer kräver tillägg.)" />
+		<area code="GB" name="Göteborg-Borås" description="Gäller för resa mellan Göteborg och Borås." />
+		<area code="GP" name="Göteborg+" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda Väst, Härryda Mitt och Ale Södra." />
+		<area code="GPP" name="Göteborg++" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale och Kungälv." />
+		<area code="GPPP" name="Göteborg+++" description="Gäller i Göteborg, Mölndal, Partille, Öckerö, Härryda, Kungsbacka, Lerum, Ale, Kungälv, Alingsås, Bollebygd, Lilla Edet, Mark, Mölndal, Orust, Stenungsund och Tjörn.) Vissa båtlinjer kräver tillägg." />
 		<area code="GMP" name="Göteborg-Mölndal-Partille" description="" />
 		<area code="K" name="Kungsbacka tätort" description="" />
 		<area code="KU" name="Kungälv tätort" description="" />
@@ -41,7 +41,7 @@
 		<area code="LJ" name="Ljungskile tätort" description="" />
 		<area code="LY" name="Lysekil tätort" description="" />
 		<area code="MA" name="Mariestad tätort" description="" />
-		<area code="MF" name="Marstrandsfärjan" description="(Returresan ingår)" />
+		<area code="MF" name="Marstrandsfärjan" description="Returresan ingår" />
 		<area code="MK" name="Mark tätort" description="" />
 		<area code="MD" name="Munkedal tätort" description="" />
 		<area code="M" name="Mölndal" description="" />
@@ -52,7 +52,7 @@
 		<area code="ST" name="Strömstad tätort" description="" />
 		<area code="S" name="Skövde tätort" description="" />
 		<area code="T" name="Tanum tätort" description="" />
-		<area code="TV" name="Trollhättan och Vänersborg tätorter" description="(Tvåstad)" />
+		<area code="TV" name="Trollhättan och Vänersborg tätorter" description="Tvåstad" />
 		<area code="U" name="Uddevalla tätort" description="" />
 		<area code="UL" name="Ulricehamn tätort" description="" />
 		<area code="AM" name="Åmål tätort" description="" />
@@ -60,8 +60,8 @@
 		<ticket format=".*? --VÄSTTRAFIK-- giltig till (.*?) (.*?)\n.*?." />
 	</company>
 	<company id="5" name="Skånetrafiken" phonenumber="72040" logo="skanetrafiken">
-		<type code="V" name="Vuxen" description="" />
-		<type code="B" name="Barn" description="" />
+		<type code="V" name="Vuxen" description="20 år och uppåt" />
+		<type code="B" name="Barn" description="7-19 år" />
 		<type code="D" name="Duo/Familj" description="" />
 
 		<area code="ES" name="Eslöv" description="" />
@@ -112,15 +112,15 @@
 		<ticket format=".*? Tätortstrafik\. Giltig till (.*?) kl\. (.*?)\. Pris:.*?" />
 	</company>
 	<company id="9" name="X-trafik" phonenumber="72696" logo="xtrafik" headercolor="#000000">
-		<type code="V" name="Vuxen" description="" />
+		<type code="V" name="Vuxen" description="26 år och uppåt" />
 		<type code="U" name="Ungdom" description="20-25 år" />
 		<type code="S" name="Skolungdom" description="7-19 år" />
 
-		<area code="B" name="Bollnäs" description="zon 46" />
-		<area code="G" name="Gävle" description="zon 61" />
+		<area code="B" name="Bollnäs" description="" />
+		<area code="G" name="Gävle" description="" />
 		<area code="H" name="Hudiksvall" description="" />
-		<area code="SA" name="Sandviken" description="zon 68" />
-		<area code="SÖ" name="Sönderhamn" description="zon 52" />
+		<area code="SA" name="Sandviken" description="" />
+		<area code="SÖ" name="Sönderhamn" description="" />
 
 		<ticket format=".*? X-Trafik giltig till kl (.*?) (.*?)\n.*?." />
 	</company>
