@@ -1,5 +1,12 @@
 Ändringslogg:
 
+1.5.4 (2011-11-24)
+* Lade till beskrivningar för en del av biljetterna
+* Rensat upp i menyn
+* Fixat till inställningarna så det är lite snyggare
+* Appen kan nu köras i landskapsläge
+* Bugg fixad när man tog emot ny biljett är fixad
+
 1.5.3 (2011-11-23)
 * Lade till logotyper för SJ och ResPlus
 * Fixade till layouten när man visar en biljett.
