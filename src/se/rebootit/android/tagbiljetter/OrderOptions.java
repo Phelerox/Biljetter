@@ -97,7 +97,7 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 		{
 			case R.id.spnArea:
 				description = areas.get(pos).getDescription();
-				if ("".equals(description)) {
+				if ("".equals(description) || description == null) {
 					txtAreaDescription.setVisibility(TextView.GONE);
 				}
 				else {
@@ -108,7 +108,7 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 
 			case R.id.spnType:
 				description = types.get(pos).getDescription();
-				if ("".equals(description)) {
+				if ("".equals(description) || description == null) {
 					txtTypeDescription.setVisibility(TextView.GONE);
 				}
 				else {
