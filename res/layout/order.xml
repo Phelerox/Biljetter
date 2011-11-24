@@ -10,6 +10,6 @@
 		android:layout_width="fill_parent"
 		android:layout_alignParentBottom="true"
 		android:textColor="@color/white"
-		android:dividerHeight="1px"
+		android:dividerHeight="0px"
 		android:divider="#000000" />
 </LinearLayout>

@@ -68,7 +68,7 @@ public class OrderCompanyListAdapter extends BaseAdapter
 		}
 		else
 		{
-			itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.empty_row, parent, false);
+			itemLayout = new LinearLayout(Biljetter.getContext());
 			itemLayout.setVisibility(LinearLayout.GONE);
 			return itemLayout;
 		}

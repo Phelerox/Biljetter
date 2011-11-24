@@ -8,12 +8,12 @@
 	<LinearLayout android:id="@+id/header"
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
+		android:padding="3sp"
 		android:layout_height="wrap_content">
 		<ImageView android:id="@+id/companylogo"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:scaleType="fitXY" />
-
 		<TextView android:id="@+id/companyname"
 			android:textSize="22sp"
 			android:textStyle="bold"

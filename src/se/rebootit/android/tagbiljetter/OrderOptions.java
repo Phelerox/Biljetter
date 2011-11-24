@@ -15,6 +15,7 @@ import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+import android.widget.AdapterView.*;
 import android.telephony.gsm.*;
 
 import se.rebootit.android.tagbiljetter.models.*;
@@ -23,7 +24,7 @@ import se.rebootit.android.tagbiljetter.models.*;
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
  
-public class OrderOptions extends Activity implements OnClickListener
+public class OrderOptions extends Activity implements OnClickListener, OnItemSelectedListener
 {
 	TransportCompany transportCompany;
 
@@ -32,6 +33,8 @@ public class OrderOptions extends Activity implements OnClickListener
 	
 	String number;
 	String message;
+
+	TextView txtAreaDescription, txtTypeDescription;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -45,6 +48,8 @@ public class OrderOptions extends Activity implements OnClickListener
 		LinearLayout layoutHeader = (LinearLayout)findViewById(R.id.header);
 		TextView txtCompanyname = (TextView)findViewById(R.id.companyname);
 		ImageView imgCompanyLogo = (ImageView)findViewById(R.id.companylogo);
+		txtAreaDescription = (TextView)findViewById(R.id.txtAreaDescription);
+		txtTypeDescription = (TextView)findViewById(R.id.txtTypeDescription);
 
 		if (transportCompany.getLogo() != null) {
 			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
@@ -80,7 +85,43 @@ public class OrderOptions extends Activity implements OnClickListener
 		spnType.setAdapter(adapterType);
 
 		((Button)findViewById(R.id.btnSend)).setOnClickListener(this);
+
+		spnArea.setOnItemSelectedListener(this);
+		spnType.setOnItemSelectedListener(this);
 	}
+
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
+	{
+		String description;
+		switch (parent.getId())
+		{
+			case R.id.spnArea:
+				description = areas.get(pos).getDescription();
+				if ("".equals(description) || description == null) {
+					txtAreaDescription.setVisibility(TextView.GONE);
+				}
+				else {
+					txtAreaDescription.setText(description);
+					txtAreaDescription.setVisibility(TextView.VISIBLE);
+				}
+				break;
+
+			case R.id.spnType:
+				description = types.get(pos).getDescription();
+				if ("".equals(description) || description == null) {
+					txtTypeDescription.setVisibility(TextView.GONE);
+				}
+				else {
+					txtTypeDescription.setText(description);
+					txtTypeDescription.setVisibility(TextView.VISIBLE);
+				}
+				break;
+		}
+    }
+
+    public void onNothingSelected(AdapterView parent) {
+      // Do nothing.
+    }
 
 	public void onClick(View v)
 	{
@@ -105,7 +146,6 @@ public class OrderOptions extends Activity implements OnClickListener
 				break;
 		}
 	}
-	
 	
 	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
 	{
