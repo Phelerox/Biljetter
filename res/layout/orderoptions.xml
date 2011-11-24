@@ -43,6 +43,14 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" />
 
+		<TextView android:id="@+id/txtAreaDescription"
+			android:textColor="@color/white"
+			android:textSize="15sp"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:paddingLeft="6sp"
+			android:paddingRight="6sp" />
+
 		<TextView
 			android:text="@string/OrderOptions_type"
 			android:textSize="18sp"
@@ -54,6 +62,14 @@
 		<Spinner android:id="@+id/spnType"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" />
+
+		<TextView android:id="@+id/txtTypeDescription"
+			android:textColor="@color/white"
+			android:textSize="15sp"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:paddingLeft="6sp"
+			android:paddingRight="6sp" />
 
 		<Button android:id="@+id/btnSend"
 			style="?button"
