@@ -29,10 +29,10 @@
 
 	<string name="Settings_header">Inställningar</string>
 	<string name="Settings_header_incoming">Inkommande SMS</string>
-	<string name="Settings_shownotification">Visa ikon i statusfältet \nvid ny biljett.</string>
-	<string name="Settings_silencesms">Markera sms innehållande \nbiljetter som lästa.</string>
+	<string name="Settings_shownotification">Visa ikon i statusfältet vid ny biljett.</string>
+	<string name="Settings_silencesms">Markera sms innehållande biljetter som lästa.</string>
 	<string name="Settings_header_ticketview">Biljettvisning</string>
-	<string name="Settings_keepscreenon">Håll skärmen igång när \nen biljett visas.</string>
+	<string name="Settings_keepscreenon">Håll skärmen igång när en biljett visas.</string>
 	<string name="Settings_header_scan">Biljettsökning</string>
 	<string name="Settings_lastscan">Senaste biljett:</string>
 	<string name="Settings_never">Aldrig</string>
