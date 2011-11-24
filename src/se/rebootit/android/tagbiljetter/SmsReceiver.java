@@ -55,6 +55,7 @@ public class SmsReceiver extends BroadcastReceiver
 					if (sharedPreferences.getBoolean("shownotification", true))
 					{
 						Ticket ticket = new Ticket(phonenumber, messagetime);
+						ticket.setProvider(provider);
 						ticket.setMessage(message);
 						ticket.setTicketTimestamp(tickettime);
 
@@ -65,12 +66,15 @@ public class SmsReceiver extends BroadcastReceiver
 						CharSequence contentTitle = DataParser.getCompanyName(ticket.getProvider());
 						CharSequence contentText = context.getString(R.string.SmsReceiver_description).replace("%date%", ticket.getTicketTimestampFormatted());
 						Intent notificationIntent = new Intent(context, TicketView.class);
+						notificationIntent.putExtra("ticket", (Parcelable)ticket);
+						notificationIntent.putExtra("fromNotification", true);
 						notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
 						notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						notificationIntent.putExtra("ticket", (Parcelable)ticket);
 
-						PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+						PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
 						notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+						notification.flags = Notification.FLAG_ONGOING_EVENT;
 						notification.defaults |= Notification.DEFAULT_SOUND;
 						notification.defaults |= Notification.DEFAULT_VIBRATE;
 						try {
