@@ -136,10 +136,10 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 				
 				
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setTitle("Bekräfta köp");
-				builder.setMessage("Detta kommer skicka \""+message+"\" till "+number+".");
-				builder.setPositiveButton("Ja", dialogClickListener);
-				builder.setNegativeButton("Nej", dialogClickListener);
+				builder.setTitle(getString(R.string.OrderOptions_confirm));
+				builder.setMessage(getString(R.string.OrderOptions_confirmMessage).replace("%message%", message).replace("%number%", number));
+				builder.setPositiveButton(getString(R.string.OrderOptions_yes), dialogClickListener);
+				builder.setNegativeButton(getString(R.string.OrderOptions_no), dialogClickListener);
 				builder.setIcon(android.R.drawable.ic_dialog_alert);
 				builder.show();
 				
@@ -153,7 +153,7 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 		public void onClick(DialogInterface dialog, int which) {
 			switch (which) {
 				case DialogInterface.BUTTON_POSITIVE:
-					Toast.makeText(Biljetter.getContext(), "Skickar beställning!", Toast.LENGTH_LONG).show();
+					Toast.makeText(Biljetter.getContext(), getString(R.string.OrderOptions_sending), Toast.LENGTH_LONG).show();
 					
 					SmsManager sm = SmsManager.getDefault();
 					sm.sendTextMessage(number, null, message, null, null);
@@ -165,7 +165,7 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 					break;
 
 				case DialogInterface.BUTTON_NEGATIVE:
-					Toast.makeText(Biljetter.getContext(), "Beställning avbruten!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(Biljetter.getContext(), getString(R.string.OrderOptions_interrupted), Toast.LENGTH_SHORT).show();
 					break;
 			}
 		}

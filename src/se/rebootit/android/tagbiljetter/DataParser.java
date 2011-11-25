@@ -53,8 +53,7 @@ public class DataParser
 		int messageScanned = 0;
 		long lastmessage = sharedPreferences.getLong("lastmessage", 0);
 		long lastmessagetime = 0;
-		
-		Log.i(Biljetter.LOG_TAG, "Scan for tickets started");
+
 		if (messageCount > 0)
 		{
 			while (cursor.moveToNext())
@@ -66,7 +65,6 @@ public class DataParser
 				}
 
 				if (lastmessage >= messagetime) {
-					Log.i(Biljetter.LOG_TAG, "No scan needed!");
 					break;
 				}
 
@@ -94,7 +92,6 @@ public class DataParser
 			e.putLong("lastmessage", lastmessagetime);
 			e.commit();
 		}
-		Log.i(Biljetter.LOG_TAG, "Scan complete! "+messageScanned+" messages scanned!");
 	}
 
 	/**

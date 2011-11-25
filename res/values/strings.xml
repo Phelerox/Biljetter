@@ -52,4 +52,10 @@
 	<string name="OrderOptions_area">Område</string>
 	<string name="OrderOptions_type">Biljettyp</string>
 	<string name="OrderOptions_send">Skicka beställning</string>
+	<string name="OrderOptions_confirm">Bekräfta köp</string>
+	<string name="OrderOptions_confirmMessage">Detta kommer skicka \"%message%\" till %number%.</string>
+	<string name="OrderOptions_yes">Ja</string>
+	<string name="OrderOptions_no">Nej</string>
+	<string name="OrderOptions_sending">Skickar beställning!</string>
+	<string name="OrderOptions_interrupted">Beställningen avbruten!</string>
 </resources>
