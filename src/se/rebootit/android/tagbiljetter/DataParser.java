@@ -227,6 +227,7 @@ public class DataParser
 				this.currentCompany.setName(attributes.getValue("name"));
 				this.currentCompany.setPhoneNumber(attributes.getValue("phonenumber"));
 				this.currentCompany.setLogo(attributes.getValue("logo"));
+				this.currentCompany.setEmail(attributes.getValue("email"));
 				if (attributes.getValue("headercolor") != null) {
 					this.currentCompany.setHeaderColor(attributes.getValue("headercolor"));
 				}

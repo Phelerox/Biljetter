@@ -6,6 +6,9 @@
 	<item android:id="@+id/order"
 		android:title="@string/TicketList_menu_order"
 		android:icon="@android:drawable/ic_menu_send" />
+	<item android:id="@+id/contact"
+		android:title="@string/TicketList_menu_contact"
+		android:icon="@android:drawable/ic_menu_call" />
 	<item android:id="@+id/settings"
 		android:title="@string/TicketList_menu_settings"
 		android:icon="@android:drawable/ic_menu_preferences" />

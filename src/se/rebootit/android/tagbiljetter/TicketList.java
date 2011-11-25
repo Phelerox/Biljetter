@@ -22,6 +22,7 @@ import android.widget.*;
 import android.widget.AdapterView.*;
 
 import se.rebootit.android.tagbiljetter.models.*;
+import se.rebootit.android.tagbiljetter.contact.*;
 
 /**
  * TicketList is the class that lists all the found tickets in the users SMS inbox.
@@ -232,6 +233,11 @@ public class TicketList extends Activity implements OnClickListener
 
 			case R.id.order:
 				intent = new Intent(this, Order.class);
+				startActivity(intent);
+				return true;
+
+			case R.id.contact:
+				intent = new Intent(this, CompanyList.class);
 				startActivity(intent);
 				return true;
 				

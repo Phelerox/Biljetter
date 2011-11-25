@@ -15,6 +15,9 @@
 		<activity android:name=".Settings" android:label="@string/Settings_header" />
 		<activity android:name=".Order" android:label="@string/Order_header" />
 		<activity android:name=".OrderOptions" android:label="@string/OrderOptions_header" />
+		<activity android:name=".contact.CompanyList" android:label="@string/Contact_header" />
+		<activity android:name=".contact.Contact" android:label="@string/Contact_header" android:windowSoftInputMode="stateHidden" />
+		<activity android:name=".contact.ContactPreview" android:label="@string/ContactPreview_header" />
 		<activity android:name=".About" android:label="@string/About_header" />
 		<receiver android:name=".SmsReceiver">
 			<intent-filter android:priority="10000"> 

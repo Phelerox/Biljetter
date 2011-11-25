@@ -18,6 +18,7 @@ public abstract class TransportCompany
 	protected int id;
 	protected String name;
 	protected String phonenumber;
+	protected String email;
 	protected String logo;
 	protected String headercolor = "#ffffff";
 	protected String ticketformat;
@@ -86,13 +87,16 @@ public abstract class TransportCompany
 
 	public void setHeaderColor(String headercolor) { this.headercolor = headercolor; }
 	public String getHeaderColor() { return this.headercolor; }
-	
+
 	public void setName(String name) { this.name = name; }
 	public String getName() { return this.name; }
 	
 	public void setPhoneNumber(String phonenumber) { this.phonenumber = phonenumber; }
 	public String getPhoneNumber() { return this.phonenumber; }
-	
+
+	public void setEmail(String email) { this.email = email; }
+	public String getEmail() { return this.email; }
+
 	public void setTicketFormat(String ticketformat) { this.ticketformat = ticketformat; }
 	public String getTicketFormat() { return this.ticketformat; }
 }
