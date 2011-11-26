@@ -96,10 +96,16 @@ public class Contact extends Activity implements OnClickListener
 
 		switch (page)
 		{
+			case 0:
+				finish();
+				break;
+
 			case 1:
 
 				((LinearLayout)findViewById(R.id.part2)).setVisibility(LinearLayout.GONE);
 				((LinearLayout)findViewById(R.id.part1)).setVisibility(LinearLayout.VISIBLE);
+
+				((Button)findViewById(R.id.btnBack)).setVisibility(View.INVISIBLE);
 				break;
 
 			case 2:
@@ -120,6 +126,8 @@ public class Contact extends Activity implements OnClickListener
 				((LinearLayout)findViewById(R.id.part1)).setVisibility(LinearLayout.GONE);
 				((LinearLayout)findViewById(R.id.part2)).setVisibility(LinearLayout.VISIBLE);
 				((LinearLayout)findViewById(R.id.part3)).setVisibility(LinearLayout.GONE);
+
+				((Button)findViewById(R.id.btnBack)).setVisibility(View.VISIBLE);
 				break;
 
 			case 3:
@@ -149,6 +157,8 @@ public class Contact extends Activity implements OnClickListener
 				intent.putExtra(Intent.EXTRA_TEXT, strEmail);
 
 				startActivity(Intent.createChooser(intent, "Välj mejlklient"));
+
+				page--;
 				break;
 
 			default:
@@ -172,17 +182,14 @@ public class Contact extends Activity implements OnClickListener
 	}
 
 	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		switch(requestCode)
-		{
-			case 0:
-				if (resultCode == RESULT_OK) {
-					finish();
-				}
-				break;
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			page(page-1);
+			return true;
 		}
+		return super.onKeyDown(keyCode, event);
 	}
+
 	
 	public String formatTimeAndDate(int input) {
 		return (input > 9 ? input : "0"+input).toString();
