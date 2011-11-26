@@ -15,8 +15,6 @@ import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-import android.widget.AdapterView.*;
-import android.telephony.gsm.*;
 
 import se.rebootit.android.tagbiljetter.*;
 import se.rebootit.android.tagbiljetter.models.*;
@@ -29,12 +27,17 @@ public class Contact extends Activity implements OnClickListener
 	TransportCompany transportCompany;
 	
 	List<Reason> lstReasons = new ArrayList<Reason>();
+	Reason reason;
 	
 	Spinner spnReason;
 	TimePicker timePicker;
 	DatePicker datePicker;
-	
+	TextView txtPreview;
 	EditText txtCity, txtLine;
+
+	String strEmail;
+
+	int page = 1;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -62,19 +65,15 @@ public class Contact extends Activity implements OnClickListener
 		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
 		txtCompanyname.setText(transportCompany.getName());
 
-		txtCity = ((EditText)findViewById(R.id.txtCity));
-		txtLine = ((EditText)findViewById(R.id.txtLine));
-		datePicker = ((DatePicker)findViewById(R.id.datePicker));
-		timePicker = ((TimePicker)findViewById(R.id.timePicker));
+		txtCity = (EditText)findViewById(R.id.txtCity);
+		txtLine = (EditText)findViewById(R.id.txtLine);
+		datePicker = (DatePicker)findViewById(R.id.datePicker);
+		timePicker = (TimePicker)findViewById(R.id.timePicker);
+		txtPreview = (TextView)findViewById(R.id.txtPreview);
 		
 		timePicker.setIs24HourView(true);
-		
-/*
-		lstReasons.add(new Reason("Försenat fordon"));
-		lstReasons.add(new Reason("Trasigt fordon"));
-		lstReasons.add(new Reason("Beröm"));
-*/
-		lstReasons.add(new Reason("Otrevlig personal", "Hej!\n\nPå linje %line% i %city% med avgångstid %date% kl. %time% blev jag otrevligt bemött av er personal. Jag hoppas att ni kan framföra detta berörd part.\n\nMed vänliga hälsningar"));
+
+		lstReasons.add(new Reason("Otrevlig personal", "Hej!\n\nPå linje %line% i %city% med avgångstid %date% kl. %time% blev jag otrevligt bemött av er personal. Jag hoppas att ni kan framföra detta till berörd part.\n\nMed vänliga hälsningar"));
 
 
 		spnReason = (Spinner)findViewById(R.id.spnReason);
@@ -86,28 +85,88 @@ public class Contact extends Activity implements OnClickListener
 		}
 		spnReason.setAdapter(adapterReason);
 
-		((Button)findViewById(R.id.btnPreview)).setOnClickListener(this);
+		((Button)findViewById(R.id.btnBack)).setOnClickListener(this);
+		((Button)findViewById(R.id.btnNext)).setOnClickListener(this);
+	}
+
+	public void page(int newpage)
+	{
+		int oldpage = page;
+		page = newpage;
+
+		switch (page)
+		{
+			case 1:
+
+				((LinearLayout)findViewById(R.id.part2)).setVisibility(LinearLayout.GONE);
+				((LinearLayout)findViewById(R.id.part1)).setVisibility(LinearLayout.VISIBLE);
+				break;
+
+			case 2:
+				reason = lstReasons.get(spnReason.getSelectedItemPosition());
+
+				if ("".equals(txtCity.getText().toString().trim())) {
+					Toast.makeText(this, "Du måste fylla i stad!", Toast.LENGTH_LONG).show();
+					return;
+				}
+				reason.setCity(txtCity.getText().toString().trim());
+
+				if ("".equals(txtLine.getText().toString().trim())) {
+					Toast.makeText(this, "Du måste fylla i vilken linje!", Toast.LENGTH_LONG).show();
+					return;
+				}
+				reason.setLine(txtLine.getText().toString().trim());
+
+				((LinearLayout)findViewById(R.id.part1)).setVisibility(LinearLayout.GONE);
+				((LinearLayout)findViewById(R.id.part2)).setVisibility(LinearLayout.VISIBLE);
+				((LinearLayout)findViewById(R.id.part3)).setVisibility(LinearLayout.GONE);
+				break;
+
+			case 3:
+				String date = datePicker.getYear()+"-"+formatTimeAndDate(datePicker.getMonth())+"-"+formatTimeAndDate(datePicker.getDayOfMonth());
+				String time = formatTimeAndDate(timePicker.getCurrentHour())+":"+formatTimeAndDate(timePicker.getCurrentMinute());
+
+				reason.setDeparture(date, time);
+
+				strEmail = reason.getContent();
+				strEmail = strEmail.replaceAll("%city%", reason.getCity());
+				strEmail = strEmail.replaceAll("%line%", reason.getLine());
+				strEmail = strEmail.replaceAll("%date%", reason.getDepartureDate());
+				strEmail = strEmail.replaceAll("%time%", reason.getDepartureTime());
+				strEmail+= "\n\n----------------\nSkickat via Biljetter\nAndroidappen som hjälper dig i resandet.";
+
+				txtPreview.setText(strEmail);
+
+				((LinearLayout)findViewById(R.id.part2)).setVisibility(LinearLayout.GONE);
+				((LinearLayout)findViewById(R.id.part3)).setVisibility(LinearLayout.VISIBLE);
+				break;
+
+			case 4:
+				Intent intent = new Intent(Intent.ACTION_SEND);
+				intent.setType("message/rfc822");
+				intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"Erik <erik@fredriksen.se>"});
+				intent.putExtra(Intent.EXTRA_SUBJECT, reason.getTitle());
+				intent.putExtra(Intent.EXTRA_TEXT, strEmail);
+
+				startActivity(Intent.createChooser(intent, "Välj mejlklient"));
+				break;
+
+			default:
+				page = oldpage;
+
+		}
 	}
 
 	public void onClick(View v)
 	{
 		switch (v.getId())
 		{
-			case R.id.btnPreview:
-				Reason reason = lstReasons.get(spnReason.getSelectedItemPosition());
+			case R.id.btnNext:
+				page(page+1);
+				break;
 
-				String date = datePicker.getYear()+"-"+formatTimeAndDate(datePicker.getMonth())+"-"+formatTimeAndDate(datePicker.getDayOfMonth());
-				String time = formatTimeAndDate(timePicker.getCurrentHour())+":"+formatTimeAndDate(timePicker.getCurrentMinute());
-
-				reason.setCity(txtCity.getText().toString().trim());
-				reason.setLine(txtLine.getText().toString().trim());
-				reason.setDeparture(date, time);
-
-				Intent intent = new Intent(this, ContactPreview.class);
-				intent.putExtra("company", (Parcelable)transportCompany);
-				intent.putExtra("reason", (Parcelable)reason);
-				startActivityForResult(intent, 0);
-
+			case R.id.btnBack:
+				page(page-1);
 				break;
 		}
 	}

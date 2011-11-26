@@ -31,10 +31,8 @@
 	<string name="Contact_city">Stad</string>
 	<string name="Contact_line">Linje</string>
 	<string name="Contact_departure">Avgångstid</string>
-	<string name="Contact_preview">Förhandsgranska</string>
-
-	<string name="ContactPreview_header">Förhandsgranska</string>
-	<string name="ContactPreview_send">Skicka</string>
+	<string name="Contact_back">Bakåt</string>
+	<string name="Contact_next">Nästa</string>
 
 	<string name="Settings_header">Inställningar</string>
 	<string name="Settings_header_incoming">Inkommande SMS</string>
