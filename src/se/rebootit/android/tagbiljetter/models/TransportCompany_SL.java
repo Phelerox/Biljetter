@@ -23,8 +23,6 @@ public class TransportCompany_SL extends TransportCompany
 		return type.getCode()+area.getCode();
 	}
 
-	public boolean checkMessage(String phonenumber, String message) { return false; }
-
 	public static final Parcelable.Creator<TransportCompany_SL> CREATOR = new Parcelable.Creator<TransportCompany_SL>()
 	{
 		public TransportCompany_SL createFromParcel(Parcel in) {
