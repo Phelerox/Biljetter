@@ -51,17 +51,13 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 		txtAreaDescription = (TextView)findViewById(R.id.txtAreaDescription);
 		txtTypeDescription = (TextView)findViewById(R.id.txtTypeDescription);
 
-		if (transportCompany.getLogo() != null) {
-			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
-			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
-			imgCompanyLogo.setImageResource(logo);
-			layoutHeader.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
-		}
-		else {
-			imgCompanyLogo.setVisibility(ImageView.GONE);
-		}
+		int logo = Biljetter.getContext().getResources().getIdentifier((transportCompany.getLogo() != null ? transportCompany.getLogo() : "nologo"), "drawable","se.rebootit.android.tagbiljetter");
+		imgCompanyLogo.setImageResource(logo);
 
-		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+		int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
+		layoutHeader.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
+
+		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getTextColor()));
 		txtCompanyname.setText(transportCompany.getName());
 
 		Spinner spnArea = (Spinner)findViewById(R.id.spnArea);

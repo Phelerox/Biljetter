@@ -54,15 +54,16 @@ public class Contact extends Activity implements OnClickListener
 
 		if (transportCompany.getLogo() != null) {
 			int logo = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
-			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			imgCompanyLogo.setImageResource(logo);
+
+			int logobg = Biljetter.getContext().getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			layoutHeader.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
 		}
 		else {
 			imgCompanyLogo.setVisibility(ImageView.GONE);
 		}
 
-		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getTextColor()));
 		txtCompanyname.setText(transportCompany.getName());
 
 		txtCity = (EditText)findViewById(R.id.txtCity);
@@ -74,7 +75,6 @@ public class Contact extends Activity implements OnClickListener
 		timePicker.setIs24HourView(true);
 
 		lstReasons.add(new Reason("Otrevlig personal", "Hej!\n\nPå linje %line% i %city% med avgångstid %date% kl. %time% blev jag otrevligt bemött av er personal. Jag hoppas att ni kan framföra detta till berörd part.\n\nMed vänliga hälsningar"));
-
 
 		spnReason = (Spinner)findViewById(R.id.spnReason);
 		ArrayAdapter<CharSequence> adapterReason = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);

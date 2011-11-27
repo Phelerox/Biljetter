@@ -65,7 +65,7 @@ public class TicketView extends Activity
 			imgCompanyLogo.setVisibility(ImageView.GONE);
 		}
 
-		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+		txtCompanyname.setTextColor(Color.parseColor(transportCompany.getTextColor()));
 		txtCompanyname.setText(transportCompany.getName());
 
 		((TextView)findViewById(R.id.sender)).setText(ticket.getAddress());

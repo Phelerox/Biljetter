@@ -228,8 +228,8 @@ public class DataParser
 				this.currentCompany.setPhoneNumber(attributes.getValue("phonenumber"));
 				this.currentCompany.setLogo(attributes.getValue("logo"));
 				this.currentCompany.setEmail(attributes.getValue("email"));
-				if (attributes.getValue("headercolor") != null) {
-					this.currentCompany.setHeaderColor(attributes.getValue("headercolor"));
+				if (attributes.getValue("textcolor") != null) {
+					this.currentCompany.setTextColor(attributes.getValue("textcolor"));
 				}
 			}
 			else if (localName.equalsIgnoreCase("area")) {

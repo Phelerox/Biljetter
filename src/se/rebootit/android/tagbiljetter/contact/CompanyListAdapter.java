@@ -57,12 +57,13 @@ public class CompanyListAdapter extends BaseAdapter
 			ImageView imgLogo = (ImageView)itemLayout.findViewById(R.id.companylogo);
 			TextView txtName = (TextView)itemLayout.findViewById(R.id.companyname);
 
-			int logo = context.getResources().getIdentifier(transportCompany.getLogo(), "drawable","se.rebootit.android.tagbiljetter");
-			int logobg = context.getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
+			int logo = context.getResources().getIdentifier((transportCompany.getLogo() != null ? transportCompany.getLogo() : "nologo"), "drawable","se.rebootit.android.tagbiljetter");
 			imgLogo.setImageResource(logo);
+
+			int logobg = context.getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			itemLayout.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
 
-			txtName.setTextColor(Color.parseColor(transportCompany.getHeaderColor()));
+			txtName.setTextColor(Color.parseColor(transportCompany.getTextColor()));
 			txtName.setText(transportCompany.getName());
 
 			return itemLayout;
