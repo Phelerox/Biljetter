@@ -2,11 +2,13 @@
  * This file is licensed under the GNU General Public License Version 3
  * For more information, please visit http://www.gnu.org/licenses/gpl.txt
  */
-
 package se.rebootit.android.tagbiljetter.models;
 
 import android.os.*;
 
+/**
+ * @author Erik Fredriksen <erik@fredriksen.se>
+ */
 public class TicketType implements Parcelable
 {
 	private String code;
@@ -24,19 +26,19 @@ public class TicketType implements Parcelable
 
 	public void setCode(String code) { this.code = code; }
 	public String getCode() { return this.code; }
-	
+
 	public void setName(String name) { this.name = name; }
 	public String getName() { return this.name; }
-	
+
 	public void setDescription(String description) { this.description = description; }
 	public String getDescription() { return this.description; }
-	
+
 	private TicketType(Parcel in) {
 		this.code = in.readString();
 		this.name = in.readString();
 		this.description = in.readString();
 	}
-	
+
 	public void writeToParcel(Parcel out, int flags) {
 		out.writeString(this.code);
 		out.writeString(this.name);

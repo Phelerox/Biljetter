@@ -5,21 +5,23 @@
 
 package se.rebootit.android.tagbiljetter.models;
 
-import java.text.*;
-import java.util.*;
-
 import android.os.*;
 
-public class TransportCompany_Jonkoping extends TransportCompany implements Parcelable
+import java.text.*;
+import java.util.*;
+/**
+ * @author Erik Fredriksen <erik@fredriksen.se>
+ */
+public class TransportCompany_Jonkoping extends TransportCompany
 {
 	String[] months = new String[] { "jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
-	
+
 	public TransportCompany_Jonkoping() { };
-	
+
 	public TransportCompany_Jonkoping(String name, String phonenumber) {
 		super(name, phonenumber);
 	}
-	
+
 	public long getTicketTimestamp(String message) {
 		String[] data = getMessageParts(message);
 
@@ -30,34 +32,15 @@ public class TransportCompany_Jonkoping extends TransportCompany implements Parc
 				int day = Integer.parseInt(data[1]);
 
 				String date = year+"-"+(month < 10 ? "0"+month : month)+"-"+(day < 10 ? "0"+day : day);
-				
+
 				return new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(year+"-"+month+"-"+day+" "+data[0]).getTime();
 			} catch (Exception e) { e.printStackTrace(); }
 		}
 		return 0;
 	}
-	
-	private TransportCompany_Jonkoping(Parcel in) {
-		this.id = in.readInt();
-		this.logo = in.readString();
-		this.headercolor = in.readString();
-		this.name = in.readString();
-		this.phonenumber = in.readString();
-		in.readTypedList(areas, TransportArea.CREATOR);
-		in.readTypedList(types, TicketType.CREATOR);
-	}
-	
-	public void writeToParcel(Parcel out, int flags) {
-		out.writeInt(this.id);
-		out.writeString(this.logo);
-		out.writeString(this.headercolor);
-		out.writeString(this.name);
-		out.writeString(this.phonenumber);
-		out.writeTypedList(this.areas);
-		out.writeTypedList(this.types);
-	}
 
-	public static final Parcelable.Creator<TransportCompany_Jonkoping> CREATOR = new Parcelable.Creator<TransportCompany_Jonkoping>() {
+	public static final Parcelable.Creator<TransportCompany_Jonkoping> CREATOR = new Parcelable.Creator<TransportCompany_Jonkoping>()
+	{
 		public TransportCompany_Jonkoping createFromParcel(Parcel in) {
 			return new TransportCompany_Jonkoping(in);
 		}
@@ -67,7 +50,15 @@ public class TransportCompany_Jonkoping extends TransportCompany implements Parc
 		}
 	};
 
-	public int describeContents() {
-		return 0;
-	}
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        super.writeToParcel(out, flags);
+    }
+
+    private TransportCompany_Jonkoping(Parcel in) {
+        super(in);
+    }
 }
