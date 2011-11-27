@@ -2,7 +2,8 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="wrap_content" 
 	android:layout_width="fill_parent"
-	android:stretchColumns="1">
+	android:stretchColumns="1"
+	android:background="@drawable/header_background">
 	<TableRow
 		android:padding="3sp">
 		<ImageView android:id="@+id/companylogo"
@@ -11,7 +12,7 @@
 			android:id="@+id/companyname"
 			android:layout_height="fill_parent"
 			android:layout_width="wrap_content"
-			android:textColor="@color/white"
+			android:textColor="@color/black"
 			android:textSize="20sp"
 			android:textStyle="bold"
 			android:gravity="center_vertical|left"

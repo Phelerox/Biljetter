@@ -9,6 +9,7 @@
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:background="@drawable/header_background"
 		android:padding="3sp">
 		<ImageView android:id="@+id/companylogo"
 			android:layout_height="wrap_content"
@@ -17,7 +18,7 @@
 		<TextView android:id="@+id/companyname"
 			android:textSize="22sp"
 			android:textStyle="bold"
-			android:textColor="@color/white"
+			android:textColor="@color/black"
 			android:layout_alignParentRight="true"
 			android:layout_height="fill_parent"
 			android:layout_width="wrap_content"
