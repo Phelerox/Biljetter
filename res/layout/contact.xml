@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<LinearLayout android:id="@+id/header"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="3sp"
+        android:layout_alignParentTop="true">
+		<ImageView android:id="@+id/companylogo"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:scaleType="fitXY" />
+		<TextView android:id="@+id/companyname"
+			android:textSize="22sp"
+			android:textStyle="bold"
+			android:textColor="@color/white"
+			android:layout_alignParentRight="true"
+			android:layout_height="fill_parent"
+			android:layout_width="wrap_content"
+			android:gravity="center_vertical|left"
+			android:paddingLeft="5sp" />
+	</LinearLayout>
+
+	<ScrollView
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+        android:layout_above="@+id/navigation"
+        android:layout_below="@id/header">
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			<LinearLayout android:id="@+id/part1"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="4sp"
+				android:paddingRight="4sp">
+				<TextView
+					android:text="@string/Contact_reason"
+					android:textSize="18sp"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent" />
+
+				<Spinner android:id="@+id/spnReason"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" />
+
+				<TextView
+					android:text="@string/Contact_city"
+					android:textColor="@color/white"
+					android:textSize="18sp"
+					android:textStyle="bold"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent" />
+
+				<EditText android:id="@+id/txtCity"
+					android:text="Trollhättan"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" />
+					
+				<TextView
+					android:text="@string/Contact_line"
+					android:textColor="@color/white"
+					android:textSize="18sp"
+					android:textStyle="bold"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent" />
+
+				<EditText android:id="@+id/txtLine"
+					android:text="24"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:inputType="number" />
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/part2"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="4sp"
+				android:paddingRight="4sp"
+				android:visibility="gone">
+				<TextView
+					android:text="@string/Contact_departure"
+					android:textSize="18sp"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent" />
+
+				<DatePicker android:id="@+id/datePicker"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left" />
+					
+				<TimePicker android:id="@+id/timePicker"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="left" />
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/part3"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="4sp"
+				android:paddingRight="4sp"
+				android:visibility="gone">
+
+				<TextView android:id="@+id/txtPreview"
+					android:textColor="@color/white"
+					android:textSize="18sp"
+					android:layout_height="fill_parent"
+					android:layout_width="fill_parent" />
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout android:id="@+id/navigation"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+		<Button android:id="@+id/btnBack"
+			style="?button"
+			android:text="@string/Contact_back"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:visibility="invisible" />
+
+		<Button android:id="@+id/btnNext"
+			style="?button"
+			android:text="@string/Contact_next"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1" />
+	</LinearLayout>
+</RelativeLayout>

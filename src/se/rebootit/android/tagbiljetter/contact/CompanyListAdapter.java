@@ -3,7 +3,7 @@
  * For more information, please visit http://www.gnu.org/licenses/gpl.txt
  */
 
-package se.rebootit.android.tagbiljetter;
+package se.rebootit.android.tagbiljetter.contact;
 
 import java.util.*;
 
@@ -16,18 +16,19 @@ import android.view.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
 
+import se.rebootit.android.tagbiljetter.*;
 import se.rebootit.android.tagbiljetter.models.*;
 
 /**
  * @author Erik Fredriksen <erik@fredriksen.se>
  */
 
-public class OrderCompanyListAdapter extends BaseAdapter
+public class CompanyListAdapter extends BaseAdapter
 {
 	private List<TransportCompany> lstCompanies;
 	private Context context;
  
-	public OrderCompanyListAdapter(List<TransportCompany> lstCompanies, Context context) {
+	public CompanyListAdapter(List<TransportCompany> lstCompanies, Context context) {
 		this.lstCompanies = lstCompanies;
 		this.context = context;
 	}
@@ -51,20 +52,20 @@ public class OrderCompanyListAdapter extends BaseAdapter
 
 		itemLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.companylist_item, parent, false);
 		
-		if (transportCompany.getTransportAreaCount() > 0 && transportCompany.getTicketTypeCount() > 0)
+		if (transportCompany.getEmail() != null && !"".equals(transportCompany.getEmail()))
 		{
 			ImageView imgLogo = (ImageView)itemLayout.findViewById(R.id.companylogo);
 			TextView txtName = (TextView)itemLayout.findViewById(R.id.companyname);
 
 			int logo = context.getResources().getIdentifier((transportCompany.getLogo() != null ? transportCompany.getLogo() : "nologo"), "drawable","se.rebootit.android.tagbiljetter");
 			imgLogo.setImageResource(logo);
-			
+
 			int logobg = context.getResources().getIdentifier(transportCompany.getLogo()+"_bg", "drawable","se.rebootit.android.tagbiljetter");
 			itemLayout.setBackgroundResource((logobg == 0 ? R.drawable.header_background : logobg));
 
 			txtName.setTextColor(Color.parseColor(transportCompany.getTextColor()));
 			txtName.setText(transportCompany.getName());
-			
+
 			return itemLayout;
 		}
 		else

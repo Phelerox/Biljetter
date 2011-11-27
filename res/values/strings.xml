@@ -18,12 +18,21 @@
 
 	<string name="TicketList_menu_findnewsms">Hitta nya biljetter</string>
 	<string name="TicketList_menu_order">Beställ biljett</string>
+	<string name="TicketList_menu_contact">Kontakta</string>
 	<string name="TicketList_menu_settings">Inställningar</string>
 	<string name="TicketList_menu_about">Om Biljetter</string>
 
 	<string name="Wizard_header">Biljetter</string>
 	<string name="Wizard_description">Den här appen kommer hjälpa ditt resande genom att hålla koll på dina inkommande sms-biljetter och göra det lätt att visa den för chaufförer och kontrollanter.\n\nI appen finns det även stöd för att beställa nya biljetter från flera olika reseföretag.\nAllt med bara några tryck!</string>
 	<string name="Wizard_btnClose">Stäng</string>
+
+	<string name="Contact_header">Kontakt</string>
+	<string name="Contact_reason">Orsak</string>
+	<string name="Contact_city">Stad</string>
+	<string name="Contact_line">Linje</string>
+	<string name="Contact_departure">Avgångstid</string>
+	<string name="Contact_back">Bakåt</string>
+	<string name="Contact_next">Nästa</string>
 
 	<string name="Settings_header">Inställningar</string>
 	<string name="Settings_header_incoming">Inkommande SMS</string>
