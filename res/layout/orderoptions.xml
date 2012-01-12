@@ -81,6 +81,11 @@
 				android:text="@string/OrderOptions_send"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content" />
+			<Button android:id="@+id/btnSendNotif"
+				style="?button"
+				android:text="@string/OrderOptions_sendfromnotifications"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" />
 		</LinearLayout>
 	</ScrollView>
 </LinearLayout>

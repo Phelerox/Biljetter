@@ -26,6 +26,7 @@ import se.rebootit.android.tagbiljetter.models.*;
  
 public class OrderOptions extends Activity implements OnClickListener, OnItemSelectedListener
 {
+	public static final int NOTIFICATION_ORDER_TICKET = 1100;
 	TransportCompany transportCompany;
 
 	List<TransportArea> areas;
@@ -85,7 +86,7 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 		spnType.setAdapter(adapterType);
 
 		((Button)findViewById(R.id.btnSend)).setOnClickListener(this);
-
+		((Button)findViewById(R.id.btnSendNotif)).setOnClickListener(this);
 		spnArea.setOnItemSelectedListener(this);
 		spnType.setOnItemSelectedListener(this);
 	}
@@ -142,8 +143,34 @@ public class OrderOptions extends Activity implements OnClickListener, OnItemSel
 				builder.setNegativeButton("Nej", dialogClickListener);
 				builder.setIcon(android.R.drawable.ic_dialog_alert);
 				builder.show();
-				
 				break;
+			case R.id.btnSendNotif:
+				TransportArea area_notif = areas.get(((Spinner)findViewById(R.id.spnArea)).getSelectedItemPosition());
+				TicketType type_notif = types.get(((Spinner)findViewById(R.id.spnType)).getSelectedItemPosition());
+
+				Context context = getApplicationContext();
+				NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+				Notification notification = new Notification(R.drawable.icon, "Beställ SMS-biljett", System.currentTimeMillis());
+
+				CharSequence contentTitle = "Klicka för att beställa SMS-biljett";
+				CharSequence contentText = "För: " + ((Spinner)findViewById(R.id.spnArea)).getSelectedItem().toString() + ", " + ((Spinner)findViewById(R.id.spnType)).getSelectedItem().toString();
+				Intent notificationIntent = new Intent(context, TicketList.class);
+				notificationIntent.putExtra("number", transportCompany.getPhoneNumber());
+				notificationIntent.putExtra("smsMessage", transportCompany.getMessage(area_notif, type_notif));
+				notificationIntent.putExtra("notificationOrderSmsTicket", true);
+				notificationIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
+				notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+				PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+				notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+				notification.flags = Notification.FLAG_AUTO_CANCEL;
+				notification.defaults |= Notification.DEFAULT_SOUND;
+				try {
+				  mNotificationManager.notify(NOTIFICATION_ORDER_TICKET, notification);
+				  } catch (Exception e) { }
+				 break;
 		}
 	}
 	

@@ -58,7 +58,7 @@ public class SmsReceiver extends BroadcastReceiver
 						ticket.setProvider(provider);
 						ticket.setMessage(message);
 						ticket.setTicketTimestamp(tickettime);
-
+						
 						NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 						Notification notification = new Notification(R.drawable.icon, context.getString(R.string.SmsReceiver_newticket), System.currentTimeMillis());

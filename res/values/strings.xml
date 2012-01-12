@@ -54,4 +54,6 @@
 	<string name="OrderOptions_area">Område</string>
 	<string name="OrderOptions_type">Biljettyp</string>
 	<string name="OrderOptions_send">Skicka beställning</string>
+	<string name="OrderOptions_sendfromnotifications">Skicka beställning vid behov från statusfältet</string>
+	
 </resources>

@@ -20,6 +20,7 @@ import android.view.ContextMenu.*;
 import android.view.View.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
+import android.telephony.gsm.*;
 
 import se.rebootit.android.tagbiljetter.models.*;
 
@@ -110,6 +111,14 @@ public class TicketList extends Activity implements OnClickListener
 
 		// Load tickets and update the list
 		updateList();
+
+		Intent intent = getIntent();
+		if (intent.getBooleanExtra("notificationOrderSmsTicket", false)) {
+			Toast.makeText(Biljetter.getContext(), "Skickar beställning!", Toast.LENGTH_LONG).show();
+			
+			SmsManager sm = SmsManager.getDefault();
+			sm.sendTextMessage(intent.getStringExtra("number"), null, intent.getStringExtra("smsMessage"), null, null);
+		}
 	}
 
 	/**
